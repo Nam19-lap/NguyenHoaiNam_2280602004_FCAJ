@@ -1,23 +1,23 @@
 ---
 title: "Báo cáo thực tập"
-date: 2024-01-01
+date: 2024-04-20
 weight: 1
 chapter: false
 ---
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Vũ Gia Hiếu
+&emsp; **Họ và tên:** Nguyễn Hoài Nam
 
-&emsp; **Số điện thoại:** 0368208284
+&emsp; **Số điện thoại:** 0707646790
 
-&emsp; **Email:** g.hieu12345@gmail.com
+&emsp; **Email:** nguyenhoainam241104@gmail.com
 
 &emsp; **Trường:** Đại học Công nghệ TPHCM (HUTECH)
 
 &emsp; **Ngành:** Công nghệ phần mềm
 
-&emsp; **Lớp:** 22DTHC1
+&emsp; **Lớp:** 22DTHC6
 
 &emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Vietnam
 

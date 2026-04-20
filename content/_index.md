@@ -1,6 +1,6 @@
 ---
 title: "Internship Report"
-date: 2024-01-01
+date: 2024-04-20
 weight: 1
 chapter: false
 ---
@@ -13,17 +13,17 @@ chapter: false
 {{% /notice %}}
 
 ### Student Information:
-&emsp; **Full Name:** Vũ Gia Hiếu
+&emsp; **Full Name:** Nguyễn Hoài Nam
 
-&emsp; **Phone Number:** 0368208284 
+&emsp; **Phone Number:** 0707646790
 
-&emsp; **Email:** g.hieu12345@gmail.com
+&emsp; **Email:** nguyenhoainam241104@gmail.com
 
 &emsp; **University:** HCMC University of Technology (HUTECH)
 
 &emsp; **Major:** Software Engineering
 
-&emsp; **Class:** 22DTHC1
+&emsp; **Class:** 22DTHC6
 
 &emsp; **Internship Company:** Amazon Web Services Vietnam Co., Ltd.
 
