@@ -10,117 +10,152 @@ pre: " <b> 4.1. </b> "
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
 {{% /notice %}}
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Summary Report: “FCAJ Community Day 2026”
+
+### Event Information
+
+- **Event Name:** FCAJ Community Day 2026
+- **Date & Time:** Saturday, May 9, 2026
+- **Role:** Attendee
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Help learners improve study effectiveness and maintain motivation throughout their personal development journey.
+- Share practical ways to use AI properly in learning, software development, and career orientation.
+- Provide real-world perspectives from experts on learning skills, work mindset, and employer evaluation criteria.
+- Introduce a modern software development approach using AI Agents in the SDLC process.
 
 ### Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Huynh Hoang Long**
+- **Nguyen Tuan Thinh**
+- **Nguyen Khang** - Solutions Architect, Cloud Kinetics
+- **Thao** - Software Developer at VIB
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### Building study motivation through the Dopamine mechanism
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+This session focused on how the brain reacts to instant rewards from social media and video games. This is one of the reasons many people easily lose focus and struggle to maintain long-term study motivation.
 
-#### Transitioning to modern application architecture – Microservices
+- Create small rewards after each study period to maintain interest.
+- Build a continuous study habit by creating a daily streak and using the motivation of not wanting to lose existing progress.
+- Apply the 2-minute rule: if a task can be completed in about two minutes, do it immediately to avoid procrastination.
+- Break learning goals into smaller parts instead of trying to complete too much at once, reducing pressure and increasing long-term consistency.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+#### Prompt Engineering and AI optimization
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+The speaker explained how to build effective prompts to improve the response quality of large language models (LLMs). A complete prompt should include:
 
-#### Domain-Driven Design (DDD)
+- **Role**
+- **Instruction**
+- **Context**
+- **Input**
+- **Output Format**
+- **Examples**
+- **Constraints**
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+The program also introduced techniques such as **Chain of Thought** and **Tree of Thought** to improve AI reasoning and reduce hallucination.
 
-#### Event-Driven Architecture
+The speaker demonstrated **Proptimizer**, a prompt optimization system built with a Serverless architecture on AWS using:
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+- **Amazon S3** and **CloudFront** for the user interface.
+- **Amazon Cognito** for user authentication.
+- **Amazon API Gateway** with **AWS Lambda** for business logic processing.
+- **Amazon DynamoDB** for data storage.
+- **Amazon Bedrock** for AI Foundation Models that support prompt processing.
 
-#### Compute Evolution
+#### Employer perspectives on fresh graduates
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+The sharing session emphasized that fundamental knowledge and problem-solving mindset are more important than knowing many technologies. With a solid foundation, learning new frameworks or services becomes easier.
 
-#### Amazon Q Developer
+The speaker also pointed out that AI is only a supporting tool. If users do not understand the nature of the problem and rely entirely on AI, their weaknesses can become visible during interviews or real work.
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+Common employer evaluation criteria for Fresher candidates include:
+
+- Work attitude.
+- Knowledge and professional level.
+- Practical skills.
+- Experience from projects.
+- Personal qualities.
+
+In addition, **Integrity** was highlighted as an important factor, shown through responsibility, commitment to completing tasks, and a cooperative team spirit.
+
+#### Software development with AI Agents using the BMX method
+
+The speaker analyzed the limitations of using AI through ordinary question-and-answer interactions. Without a clear process, AI can easily lose context, generate hard-to-maintain source code, and reduce project quality.
+
+To address this, the **BMX** method applies a **Multi-Agent** model, where each AI takes a specific role in the software development process:
+
+- **PM Agent** analyzes requirements and creates PRD documents.
+- **Architect Agent** designs system architecture and selects technologies.
+- **Scrum Master** or **BO Agent** breaks Epics into Stories and manages work status.
+- **Developer Agent** automatically implements approved Stories.
+- **QA/Review Agent** tests, reviews quality, and provides feedback until issues are resolved.
+
+Dividing tasks by Agent reduces the amount of context each AI needs to process, improves accuracy, supports system scalability, and still allows human intervention when needed.
 
 ### Key Takeaways
 
-#### Design Mindset
+#### Learning Skills And Self-Management
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+- Learned how to build sustainable study habits by applying motivation mechanisms based on Dopamine.
+- Learned how to break down goals, maintain study streaks, and handle small tasks immediately to reduce procrastination.
+- Recognized the importance of managing instant rewards from social media and video games.
 
-#### Technical Architecture
+#### AI Usage Skills
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+- Understood the principles of designing effective prompts to use AI more accurately.
+- Learned the importance of context, output format, examples, and constraints when working with AI models.
+- Became familiar with techniques such as Chain of Thought and Tree of Thought to improve AI reasoning and reduce hallucination.
 
-#### Modernization Strategy
+#### Career Orientation And Software Development
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+- Gained a clearer view of Serverless AI architecture on AWS through Amazon S3, CloudFront, Cognito, API Gateway, Lambda, DynamoDB, and Amazon Bedrock.
+- Recognized the importance of fundamental thinking, problem-solving ability, work attitude, and integrity for a software engineer.
+- Learned more about modern software development workflows using AI Agent systems to automate multiple stages of the Software Development Life Cycle (SDLC).
 
 ### Applying to Work
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- **Build learning habits:** Break study plans into smaller goals, maintain daily progress, and create suitable rewards after each milestone.
+- **Optimize AI usage:** Write prompts with clear role, instruction, context, input, output format, examples, and constraints.
+- **Develop foundational thinking:** Understand the core problem before using AI or frameworks to solve it.
+- **Apply Serverless AI concepts:** Refer to architectures using S3, CloudFront, Cognito, API Gateway, Lambda, DynamoDB, and Bedrock for AI applications.
+- **Explore Multi-Agent workflows:** Study how PM, Architect, Developer, and QA Agents can be divided in software projects.
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending **“FCAJ Community Day 2026”** was a valuable experience that gave me practical perspectives on effective learning, proper AI usage, and preparation for working in the technology field.
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+#### Learning from experienced speakers
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+- The speakers shared practical experiences in learning, software development, recruitment, and AI application.
+- The content was close to students' needs, helping me connect it directly to my own learning journey and career orientation.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+#### Practical knowledge exposure
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+- I understood more clearly how dopamine affects study motivation and concentration.
+- I learned how to design clearer prompts so AI can produce better responses.
+- I gained additional perspectives on how companies evaluate Fresher candidates, especially through attitude, foundational knowledge, and integrity.
+
+#### Applying modern technology
+
+- The program helped me understand more about Serverless architecture on AWS when building AI applications.
+- The sharing about AI Agents and the BMX method helped me imagine how AI can participate in many stages of software development.
+
+#### Networking and orientation
+
+- The event created an opportunity to listen to experiences from people working in the technology industry.
+- Through the sessions, I realized that I need to study proactively, strengthen problem-solving thinking, and use AI as a supporting tool instead of depending on it entirely.
 
 #### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+
+- Effective learning requires method, small goals, and consistent effort.
+- AI can support learning and software development significantly when used properly.
+- Fundamental knowledge, work attitude, and integrity are important factors when preparing for a professional environment.
 
 #### Some event photos
-*Add your event photos here*  
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+![Photo from FCAJ Community Day 2026](/images/4-EventParticipated/4.1-Event1/fcaj-community-day-2026.jpg)
+
+> Overall, the event not only provided knowledge about AI and software development but also helped me gain clearer direction in learning, skill development, and career preparation.

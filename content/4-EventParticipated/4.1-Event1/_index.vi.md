@@ -10,116 +10,152 @@ pre: " <b> 4.1. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Bài thu hoạch “FCAJ Community Day 2026”
+
+### Thông Tin Sự Kiện
+
+- **Tên sự kiện:** FCAJ Community Day 2026
+- **Thời gian:** Thứ Bảy, ngày 09/05/2026
+- **Vai trò trong sự kiện:** Người tham dự
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- Giúp học viên nâng cao hiệu quả học tập và duy trì động lực trong quá trình phát triển bản thân.
+- Chia sẻ cách tận dụng AI đúng cách trong học tập, phát triển phần mềm và định hướng nghề nghiệp.
+- Cung cấp góc nhìn thực tế từ các chuyên gia về kỹ năng học tập, tư duy làm việc và tiêu chí tuyển dụng.
+- Giới thiệu phương pháp phát triển phần mềm hiện đại với AI Agent trong quy trình SDLC.
 
 ### Danh Sách Diễn Giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- **Anh Huỳnh Hoàng Long**
+- **Anh Nguyễn Tuấn Thịnh**
+- **Anh Nguyễn Khang** - Solutions Architect, Cloud Kinetics
+- **Chị Thảo** - Software Developer tại VIB
 
 ### Nội Dung Nổi Bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### Phương pháp tạo động lực học tập bằng cơ chế Dopamine
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+Phần chia sẻ tập trung vào cách não bộ phản ứng với các phần thưởng tức thời từ mạng xã hội và trò chơi điện tử. Đây là một trong những nguyên nhân khiến nhiều người dễ mất tập trung và thiếu động lực học tập trong thời gian dài.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+- Tự tạo các phần thưởng nhỏ sau mỗi khoảng thời gian học để duy trì hứng thú.
+- Xây dựng thói quen học tập liên tục bằng cách tạo chuỗi (streak) mỗi ngày nhằm tận dụng tâm lý không muốn đánh mất thành quả đã đạt được.
+- Áp dụng quy tắc 2 phút: nếu một công việc có thể hoàn thành trong khoảng hai phút thì nên thực hiện ngay để tránh trì hoãn.
+- Chia nhỏ mục tiêu học tập thành từng phần thay vì cố gắng hoàn thành quá nhiều nội dung trong một lần, giúp giảm áp lực và tăng khả năng duy trì lâu dài.
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+#### Prompt Engineering và tối ưu hóa AI
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+Diễn giả trình bày cách xây dựng prompt hiệu quả để nâng cao chất lượng phản hồi của các mô hình ngôn ngữ lớn (LLM). Một prompt đầy đủ nên bao gồm các thành phần như:
 
-#### Domain-Driven Design (DDD)
+- **Vai trò (Role)**
+- **Yêu cầu (Instruction)**
+- **Ngữ cảnh (Context)**
+- **Dữ liệu đầu vào (Input)**
+- **Định dạng đầu ra (Output Format)**
+- **Ví dụ minh họa (Examples)**
+- **Ràng buộc (Constraints)**
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+Ngoài ra, chương trình còn giới thiệu các kỹ thuật như **Chain of Thought** và **Tree of Thought** nhằm cải thiện khả năng suy luận của AI và hạn chế hiện tượng AI tạo ra thông tin không chính xác (hallucination).
 
-#### Event-Driven Architecture
+Diễn giả cũng trình diễn ứng dụng **Proptimizer**, một hệ thống tối ưu prompt được xây dựng theo kiến trúc Serverless trên AWS với các dịch vụ:
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+- **Amazon S3** và **CloudFront** cho giao diện người dùng.
+- **Amazon Cognito** quản lý xác thực người dùng.
+- **Amazon API Gateway** kết hợp **AWS Lambda** xử lý nghiệp vụ.
+- **Amazon DynamoDB** lưu trữ dữ liệu.
+- **Amazon Bedrock** cung cấp các mô hình AI Foundation phục vụ xử lý prompt.
 
-#### Compute Evolution
+#### Góc nhìn của nhà tuyển dụng đối với sinh viên mới ra trường
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+Buổi chia sẻ nhấn mạnh rằng nền tảng kiến thức và tư duy giải quyết vấn đề luôn quan trọng hơn việc biết nhiều công nghệ. Khi có nền tảng vững chắc, việc học các framework hoặc dịch vụ mới sẽ trở nên dễ dàng hơn.
 
-#### Amazon Q Developer
+Diễn giả cũng cho rằng AI chỉ là công cụ hỗ trợ. Nếu người sử dụng không hiểu bản chất vấn đề mà chỉ phụ thuộc hoàn toàn vào AI thì rất dễ bộc lộ điểm yếu trong quá trình phỏng vấn hoặc làm việc thực tế.
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+Các tiêu chí doanh nghiệp thường đánh giá đối với ứng viên Fresher bao gồm:
+
+- Thái độ làm việc.
+- Kiến thức và trình độ chuyên môn.
+- Kỹ năng thực hành.
+- Kinh nghiệm hoặc trải nghiệm từ các dự án.
+- Tố chất cá nhân.
+
+Bên cạnh đó, tính **Integrity (liêm chính)** được đánh giá là yếu tố quan trọng, thể hiện ở việc có trách nhiệm với công việc, hoàn thành nhiệm vụ đến cùng và luôn giữ tinh thần hợp tác trong nhóm.
+
+#### Phát triển phần mềm với AI Agent theo phương pháp BMX
+
+Diễn giả phân tích những hạn chế khi sử dụng AI theo cách hỏi đáp thông thường. Nếu không có quy trình rõ ràng, AI dễ mất ngữ cảnh, sinh ra mã nguồn khó bảo trì và chất lượng dự án không được đảm bảo.
+
+Để khắc phục điều này, phương pháp **BMX** áp dụng mô hình **Multi-Agent**, trong đó mỗi AI đảm nhận một vai trò riêng trong quy trình phát triển phần mềm:
+
+- **PM Agent** phân tích yêu cầu và tạo tài liệu PRD.
+- **Architect Agent** thiết kế kiến trúc hệ thống và lựa chọn công nghệ.
+- **Scrum Master** hoặc **BO Agent** chia Epic thành các Story và quản lý trạng thái công việc.
+- **Developer Agent** tự động lập trình theo các Story đã được phê duyệt.
+- **QA/Review Agent** kiểm thử, đánh giá chất lượng và phản hồi cho đến khi lỗi được xử lý.
+
+Việc phân chia nhiệm vụ theo từng Agent giúp giảm lượng ngữ cảnh cần xử lý cho mỗi AI, tăng độ chính xác, dễ mở rộng hệ thống và vẫn đảm bảo con người có thể can thiệp khi cần thiết.
 
 ### Những Gì Học Được
 
-#### Tư Duy Thiết Kế
+#### Kỹ Năng Học Tập Và Tự Quản Lý
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+- Hiểu cách xây dựng thói quen học tập bền vững bằng việc áp dụng cơ chế tạo động lực từ Dopamine.
+- Biết cách chia nhỏ mục tiêu, duy trì streak học tập và xử lý các công việc nhỏ ngay để hạn chế trì hoãn.
+- Nhận ra tầm quan trọng của việc kiểm soát các phần thưởng tức thời từ mạng xã hội và trò chơi điện tử.
 
-#### Kiến Trúc Kỹ Thuật
+#### Kỹ Năng Khai Thác AI
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+- Nắm được nguyên tắc thiết kế Prompt hiệu quả để khai thác AI chính xác hơn.
+- Hiểu vai trò của context, output format, ví dụ minh họa và constraints khi làm việc với các mô hình AI.
+- Biết thêm các kỹ thuật như Chain of Thought và Tree of Thought để cải thiện khả năng suy luận của AI và hạn chế hallucination.
 
-#### Chiến Lược Hiện Đại Hóa
+#### Định Hướng Nghề Nghiệp Và Phát Triển Phần Mềm
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+- Có cái nhìn rõ hơn về mô hình Serverless tích hợp AI trên AWS thông qua Amazon S3, CloudFront, Cognito, API Gateway, Lambda, DynamoDB và Amazon Bedrock.
+- Nhận thức được tầm quan trọng của tư duy nền tảng, khả năng giải quyết vấn đề, thái độ làm việc và tính liêm chính đối với một kỹ sư phần mềm.
+- Biết thêm quy trình phát triển phần mềm hiện đại sử dụng hệ thống AI Agent nhằm tự động hóa nhiều giai đoạn trong Software Development Life Cycle (SDLC).
 
 ### Ứng Dụng Vào Công Việc
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- **Rèn luyện thói quen học tập:** Chia nhỏ kế hoạch học tập, duy trì tiến độ hằng ngày và tạo phần thưởng phù hợp sau mỗi mục tiêu nhỏ.
+- **Tối ưu cách sử dụng AI:** Viết prompt có đầy đủ vai trò, yêu cầu, ngữ cảnh, dữ liệu đầu vào, định dạng đầu ra, ví dụ và ràng buộc.
+- **Phát triển tư duy nền tảng:** Tập trung hiểu bản chất vấn đề trước khi dùng AI hoặc framework để giải quyết.
+- **Áp dụng Serverless AI:** Tham khảo kiến trúc sử dụng S3, CloudFront, Cognito, API Gateway, Lambda, DynamoDB và Bedrock cho các ứng dụng AI.
+- **Tìm hiểu Multi-Agent workflow:** Xem xét cách chia vai trò PM, Architect, Developer và QA Agent trong các dự án phần mềm.
 
 ### Trải nghiệm trong event
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Tham gia **“FCAJ Community Day 2026”** là một trải nghiệm rất bổ ích, giúp tôi có thêm góc nhìn thực tế về cách học tập hiệu quả, cách tận dụng AI đúng hướng và cách chuẩn bị cho môi trường làm việc trong lĩnh vực công nghệ.
 
 #### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+- Các diễn giả chia sẻ nhiều kinh nghiệm thực tế về học tập, phát triển phần mềm, tuyển dụng và ứng dụng AI.
+- Nội dung được trình bày gần gũi với sinh viên, giúp tôi dễ liên hệ với quá trình học tập và định hướng nghề nghiệp của bản thân.
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+#### Trải nghiệm kiến thức thực tế
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+- Tôi hiểu rõ hơn cách dopamine ảnh hưởng đến động lực học tập và khả năng tập trung.
+- Tôi biết cách thiết kế prompt rõ ràng hơn để AI đưa ra phản hồi chất lượng hơn.
+- Tôi có thêm góc nhìn về tiêu chí doanh nghiệp đánh giá ứng viên Fresher, đặc biệt là thái độ, kiến thức nền tảng và tính liêm chính.
+
+#### Ứng dụng công nghệ hiện đại
+
+- Chương trình giúp tôi hiểu thêm về mô hình Serverless trên AWS khi xây dựng ứng dụng AI.
+- Phần chia sẻ về AI Agent và phương pháp BMX giúp tôi hình dung cách AI có thể tham gia vào nhiều giai đoạn của quy trình phát triển phần mềm.
+
+#### Kết nối và định hướng
+
+- Sự kiện tạo cơ hội lắng nghe kinh nghiệm từ các anh chị đi trước trong ngành công nghệ.
+- Qua các phần chia sẻ, tôi nhận ra cần chủ động học tập, rèn luyện tư duy giải quyết vấn đề và sử dụng AI như một công cụ hỗ trợ thay vì phụ thuộc hoàn toàn.
 
 #### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+
+- Việc học tập hiệu quả cần có phương pháp, mục tiêu nhỏ và sự duy trì đều đặn.
+- AI có thể hỗ trợ rất nhiều trong học tập và phát triển phần mềm nếu được sử dụng đúng cách.
+- Kiến thức nền tảng, thái độ làm việc và tính liêm chính là những yếu tố quan trọng khi chuẩn bị bước vào môi trường doanh nghiệp.
 
 #### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+
+![Ảnh tham gia FCAJ Community Day 2026](/images/4-EventParticipated/4.1-Event1/fcaj-community-day-2026.jpg)
+
+> Tổng thể, sự kiện không chỉ cung cấp kiến thức về AI và phát triển phần mềm mà còn giúp tôi có định hướng rõ hơn trong việc học tập, rèn luyện kỹ năng và chuẩn bị cho công việc trong tương lai.
