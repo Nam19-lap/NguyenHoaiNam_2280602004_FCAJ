@@ -1,7 +1,7 @@
 ---
 title: "Week 5 Worklog"
 date: 2026-05-11
-weight: 1
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
@@ -9,46 +9,25 @@ pre: " <b> 1.5. </b> "
 
 ### Week 5 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Continue exploring advanced Amazon S3 capabilities.
+* Learn how virtual machines can be migrated to AWS using VM Import/Export.
+* Understand hybrid cloud storage through AWS Storage Gateway.
+* Strengthen practical skills by completing storage-related laboratory exercises.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | **Lab 14: Amazon S3 Advanced & VM Import/Export** <br> - Learned the process of importing virtual machines into AWS as Amazon Machine Images (AMIs). <br> - Explored S3 Access Control Lists (ACLs) and VM export procedures. | 11/05/2026 | 11/05/2026 | [Lab 14-01](https://www.youtube.com/watch?v=Yr6oD4btfZg) <br> [Lab 14-02.1](https://www.youtube.com/watch?v=X5PI5rJHIGM) <br> [Lab 14-02.2](https://www.youtube.com/watch?v=ZIQ2uvgLUVQ) <br> [Lab 14-02.3](https://www.youtube.com/watch?v=bsbQQZ3wDzY) <br> [Lab 14-02.4](https://www.youtube.com/watch?v=Yi60WeqqNWw) <br> [Lab 14-03.1](https://www.youtube.com/watch?v=8klJUbKLLu8) <br> [Lab 14-03.2](https://www.youtube.com/watch?v=qDCTqoSZ5Dw) <br> [Lab 14-05](https://www.youtube.com/watch?v=Ipql97gmQjk) |
+| 3 | **Lab 24: AWS Storage Gateway** <br> - Configured Storage Gateway and created File Shares. <br> - Connected on-premises storage with AWS cloud storage services. | 12/05/2026 | 12/05/2026 | [Lab 24-2.1](https://www.youtube.com/watch?v=B3R87qxarWk) <br> [Lab 24-2.2](https://www.youtube.com/watch?v=PaEv0YFVVhI) <br> [Lab 24-2.3](https://www.youtube.com/watch?v=mW1Gxu8AT8c) <br> [Lab 24-3](https://www.youtube.com/watch?v=JqcvArbGqkI) |
+| 4 | **Storage Practice Review** <br> - Reviewed Storage Gateway architecture and hybrid storage scenarios. <br> - Compared Amazon S3, EBS, EFS, and Storage Gateway for different business requirements. | 13/05/2026 | 13/05/2026 | Module Review |
+| 5 | **Hands-on Review** <br> - Repeated storage-related labs to reinforce practical knowledge. | 14/05/2026 | 14/05/2026 | |
+| 6 | **Weekly Summary** <br> - Reviewed the completed storage labs and cleaned up all AWS resources created during the week. | 15/05/2026 | 15/05/2026 | |
 
 
 ### Week 5 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Understood the workflow of importing and exporting virtual machines using AWS VM Import/Export.
+* Improved practical knowledge of Amazon S3 security features, including Access Control Lists (ACLs).
+* Successfully configured AWS Storage Gateway and learned how hybrid storage solutions integrate on-premises infrastructure with AWS.
+* Gained a clearer understanding of selecting the appropriate AWS storage service for different application scenarios.
+* Completed all laboratory exercises and removed temporary resources to prevent unnecessary AWS costs.

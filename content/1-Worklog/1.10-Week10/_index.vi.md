@@ -1,7 +1,7 @@
 ---
 title: "Worklog Tuần 10"
 date: 2026-06-15
-weight: 2
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
@@ -9,48 +9,28 @@ pre: " <b> 1.10. </b> "
 
 ### Mục tiêu tuần 10:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tìm hiểu các dịch vụ AWS phục vụ data analytics và xử lý dữ liệu cơ bản.
+* Có kinh nghiệm thực hành với Amazon DynamoDB trong phát triển NoSQL database.
+* Làm quen với các AWS developer tools, bao gồm AWS CloudShell và AWS Cloud9.
+* Hiểu cách các dịch vụ analytics của AWS phối hợp với nhau để xử lý và trực quan hóa dữ liệu.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | **Lab 35: AWS Analytics Services** <br> - Tìm hiểu workflow cơ bản của data streaming và analytics trên AWS. <br> - Học cách Amazon Kinesis, AWS Glue, Amazon Athena và Amazon QuickSight được tích hợp trong một giải pháp data analytics. | 15/06/2026 | 15/06/2026 | [Lab 35-3](https://www.youtube.com/watch?v=uYCW51_pBBA) đến [Lab 35-7](https://www.youtube.com/watch?v=r9NehOtENWQ) |
+| 3 | **Lab 39 & Lab 40: Amazon DynamoDB** <br> - Tạo và quản lý DynamoDB tables. <br> - Thực hành query dữ liệu, backup và cleanup tài nguyên. <br> - Tìm hiểu các khái niệm thiết kế bảng cơ bản và kỹ thuật tối ưu chi phí. | 16/06/2026 | 16/06/2026 | [Lab 39](https://www.youtube.com/watch?v=w5bqLYPv6DA) đến [Lab 40](https://www.youtube.com/watch?v=ggFZt2JGIeM) |
+| 4 | **Lab 60: AWS Developer Tools** <br> - Sử dụng AWS CloudShell cho các thao tác command-line. <br> - Tìm hiểu AWS Management Console và các tính năng cơ bản của AWS SDK. <br> - Tạo và cấu hình môi trường phát triển AWS Cloud9. | 17/06/2026 | 17/06/2026 | [Lab 60-1](https://www.youtube.com/watch?v=cqczgtnvHjc) |
+| 5 | **Ôn tập Analytics Services** <br> - Ôn lại mục đích của Kinesis, Glue, Athena, QuickSight và DynamoDB. <br> - So sánh vai trò của từng dịch vụ trong kiến trúc data analytics hiện đại trên AWS. | 18/06/2026 | 18/06/2026 | Ôn tập Module AWS |
+| 6 | **Ôn tập tuần** <br> - Ôn lại các bài lab đã hoàn thành trong tuần. <br> - Xóa tài nguyên cloud tạm thời và tổng kết các kiến thức chính đã học. | 19/06/2026 | 19/06/2026 | |
 
 
 ### Kết quả đạt được tuần 10:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Có hiểu biết tổng quan về các dịch vụ analytics của AWS và cách chúng hỗ trợ workflow xử lý dữ liệu hiện đại.
+* Hoàn thành các bài thực hành với Amazon DynamoDB, bao gồm tạo bảng, quản lý dữ liệu, backup và cleanup tài nguyên.
+* Hiểu các nguyên tắc cơ bản khi thiết kế NoSQL database và tối ưu chi phí DynamoDB cho ứng dụng serverless.
+* Làm quen với AWS CloudShell và AWS Cloud9 trong phát triển, quản trị trên môi trường cloud.
+* Hiểu cách các dịch vụ như Amazon Kinesis, AWS Glue, Amazon Athena và Amazon QuickSight phối hợp trong một giải pháp analytics.
+* Tuân thủ best practices của AWS bằng cách xóa toàn bộ tài nguyên tạm thời sau khi hoàn thành các bài lab.
 
 

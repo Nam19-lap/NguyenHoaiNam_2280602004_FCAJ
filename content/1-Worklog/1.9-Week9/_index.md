@@ -1,7 +1,7 @@
 ---
 title: "Week 9 Worklog"
 date: 2026-06-08
-weight: 1
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
@@ -9,46 +9,27 @@ pre: " <b> 1.9. </b> "
 
 ### Week 9 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Gain hands-on experience with Amazon RDS deployment and administration.
+* Build a secure networking environment for AWS database services.
+* Deploy an application that connects to an Amazon RDS database.
+* Explore AWS Database Migration Service (DMS) and database migration workflows.
+* Understand the common challenges involved in migrating databases to AWS.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | **Lab 05 - Part 1: Network Infrastructure** <br> - Created a Virtual Private Cloud (VPC) and database subnet groups. <br> - Configured Security Groups for Amazon EC2 and Amazon RDS instances. <br> - Launched an EC2 instance to support the database environment. | 08/06/2026 | 08/06/2026 | [Lab 05-2.1](https://www.youtube.com/watch?v=B5rOeWQWg1c) <br> [Lab 05-2.2](https://www.youtube.com/watch?v=VSKRP7BFsoQ) <br> [Lab 05-2.3](https://www.youtube.com/watch?v=oMjPdSmU4co) <br> [Lab 05-2.4](https://www.youtube.com/watch?v=OWjX0FsbX9E) <br> [Lab 05-3](https://www.youtube.com/watch?v=NZZRBfCJ2AY) |
+| 3 | **Lab 05 - Part 2: Amazon RDS Deployment** <br> - Created an Amazon RDS database instance. <br> - Connected an application to the database. <br> - Practiced database backup, restoration, and resource cleanup procedures. | 09/06/2026 | 09/06/2026 | [Lab 05-4](https://www.youtube.com/watch?v=SlP-KdSs3IM) <br> [Lab 05-5](https://www.youtube.com/watch?v=P_dyDq7rp1A) <br> [Lab 05-6](https://www.youtube.com/watch?v=7So4xNZJ6bk) <br> [Lab 05-7](https://www.youtube.com/watch?v=0WiTedZTcpQ) |
+| 4 | **Lab 43 - Database Migration (Part 1)** <br> - Connected to EC2 using Remote Desktop and Fleet Manager. <br> - Configured source databases and prepared migration settings for Amazon Aurora MySQL. | 10/06/2026 | 10/06/2026 | [Lab 43-01](https://www.youtube.com/watch?v=cxwAOP1379s) to [Lab 43-08](https://www.youtube.com/watch?v=bTWkX3xHN4s) |
+| 5 | **Lab 43 - Database Migration (Part 2)** <br> - Performed schema conversion and configured migration endpoints. <br> - Created migration tasks, monitored execution, and reviewed migration logs. <br> - Investigated common migration issues and troubleshooting techniques. | 11/06/2026 | 11/06/2026 | [Lab 43-09](https://www.youtube.com/watch?v=s-6mXTFXwG8) to [Lab 43-17](https://www.youtube.com/watch?v=MU8XHe3OoxQ) |
+| 6 | **Weekly Review** <br> - Reviewed database deployment and migration workflows. <br> - Removed temporary AWS resources and summarized the key concepts learned throughout the week. | 12/06/2026 | 12/06/2026 | |
 
 
 ### Week 9 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Successfully deployed an Amazon RDS database within a secure AWS networking environment.
+* Improved practical skills in configuring VPCs, subnet groups, and Security Groups for database services.
+* Connected an application to Amazon RDS and practiced backup, recovery, and routine database management tasks.
+* Learned the complete workflow of database migration using AWS Database Migration Service (DMS) and Amazon Aurora.
+* Gained experience in monitoring migration tasks, validating migrated data, and resolving common migration issues.
+* Strengthened overall knowledge of AWS database services and followed AWS best practices by cleaning up all lab resources after completing the exercises.

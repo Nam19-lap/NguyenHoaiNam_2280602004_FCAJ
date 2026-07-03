@@ -1,7 +1,7 @@
 ---
 title: "Worklog Tuần 4"
 date: 2026-05-04
-weight: 1
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
@@ -9,48 +9,27 @@ pre: " <b> 1.4. </b> "
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tìm hiểu các dịch vụ lưu trữ của AWS và nắm được những trường hợp sử dụng phổ biến.
+* Có thêm kinh nghiệm thực hành với AWS Backup trong việc bảo vệ dữ liệu.
+* Tìm hiểu các tính năng nâng cao của Amazon S3, bao gồm storage classes và lifecycle management.
+* Hiểu cách các dịch vụ lưu trữ AWS hỗ trợ khả năng mở rộng và độ tin cậy của hệ thống.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | **Lý thuyết Module 4: AWS Storage Services** <br> - Tìm hiểu Amazon S3, EBS, EFS và các ứng dụng thực tế của từng dịch vụ. <br> - Tìm hiểu S3 Access Points, Storage Classes, Static Website Hosting, CORS, Glacier, Snow Family, Storage Gateway và AWS Backup. | 04/05/2026 | 04/05/2026 | [Module 04-01](https://www.youtube.com/watch?v=hsCfP0IxoaM) <br> [Module 04-02](https://www.youtube.com/watch?v=_yunukwcAwc) <br> [Module 04-03](https://www.youtube.com/watch?v=mPBjB6Ltl_Q) <br> [Module 04-04](https://www.youtube.com/watch?v=YXn8Q_Hpsu4) |
+| 3 | **Lab 13: AWS Backup** <br> - Xây dựng môi trường lab và cấu hình AWS Backup. <br> - Tạo backup plan, cấu hình thông báo và kiểm tra quy trình restore. | 05/05/2026 | 05/05/2026 | [Lab 13-02.1](https://www.youtube.com/watch?v=IHxgFMlL3y8) <br> [Lab 13-02.2](https://www.youtube.com/watch?v=ZQtDG-DBiYw) <br> [Lab 13-03](https://www.youtube.com/watch?v=cmIMSqeqPr4) <br> [Lab 13-04](https://www.youtube.com/watch?v=I9ISH11xIS8) <br> [Lab 13-05](https://www.youtube.com/watch?v=fZeMSyE0Spc) <br> [Lab 13-06](https://www.youtube.com/watch?v=lRbXC9UXqdo) |
+| 4 | **Tính năng nâng cao của Amazon S3** <br> - Tìm hiểu S3 Storage Classes và Lifecycle Policies. <br> - Thực hành cấu hình các tính năng S3 để quản lý lưu trữ hiệu quả và tối ưu chi phí. | 06/05/2026 | 06/05/2026 | Tiếp tục tài liệu Module 04 |
+| 5 | **Ôn tập & thực hành hands-on** <br> - Ôn lại các khái niệm về storage và thực hành lại các bài AWS Backup. <br> - So sánh các lựa chọn lưu trữ AWS dựa trên hiệu năng, độ bền và chi phí. | 07/05/2026 | 07/05/2026 | Ôn tập Module 04 |
+| 6 | **Tổng kết tuần** <br> - Ôn lại kiến thức đã học trong tuần và xóa toàn bộ tài nguyên AWS tạm thời đã tạo trong các bài lab. | 08/05/2026 | 08/05/2026 | |
 
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Nắm được kiến thức nền tảng về các dịch vụ lưu trữ chính của AWS và các trường hợp sử dụng phổ biến.
+* Cấu hình thành công AWS Backup, bao gồm backup plan, thông báo và kiểm thử restore.
+* Hiểu cách Amazon S3 Storage Classes và Lifecycle Policies giúp tối ưu chi phí lưu trữ nhưng vẫn đảm bảo khả năng truy cập dữ liệu.
+* Cải thiện khả năng lựa chọn giải pháp lưu trữ AWS phù hợp với yêu cầu ứng dụng.
+* Tuân thủ best practices về quản lý chi phí AWS bằng cách xóa toàn bộ tài nguyên lab sau khi hoàn thành bài thực hành.
 
 

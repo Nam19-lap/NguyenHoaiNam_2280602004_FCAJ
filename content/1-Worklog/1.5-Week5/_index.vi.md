@@ -1,7 +1,7 @@
 ---
 title: "Worklog Tuần 5"
 date: 2026-05-11
-weight: 1
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
@@ -9,48 +9,27 @@ pre: " <b> 1.5. </b> "
 
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tiếp tục tìm hiểu các khả năng nâng cao của Amazon S3.
+* Tìm hiểu cách di chuyển máy ảo lên AWS bằng VM Import/Export.
+* Hiểu mô hình lưu trữ hybrid cloud thông qua AWS Storage Gateway.
+* Củng cố kỹ năng thực hành bằng cách hoàn thành các bài lab liên quan đến storage.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | **Lab 14: Amazon S3 Advanced & VM Import/Export** <br> - Tìm hiểu quy trình import máy ảo vào AWS dưới dạng Amazon Machine Images (AMIs). <br> - Tìm hiểu S3 Access Control Lists (ACLs) và quy trình export máy ảo. | 11/05/2026 | 11/05/2026 | [Lab 14-01](https://www.youtube.com/watch?v=Yr6oD4btfZg) <br> [Lab 14-02.1](https://www.youtube.com/watch?v=X5PI5rJHIGM) <br> [Lab 14-02.2](https://www.youtube.com/watch?v=ZIQ2uvgLUVQ) <br> [Lab 14-02.3](https://www.youtube.com/watch?v=bsbQQZ3wDzY) <br> [Lab 14-02.4](https://www.youtube.com/watch?v=Yi60WeqqNWw) <br> [Lab 14-03.1](https://www.youtube.com/watch?v=8klJUbKLLu8) <br> [Lab 14-03.2](https://www.youtube.com/watch?v=qDCTqoSZ5Dw) <br> [Lab 14-05](https://www.youtube.com/watch?v=Ipql97gmQjk) |
+| 3 | **Lab 24: AWS Storage Gateway** <br> - Cấu hình Storage Gateway và tạo File Shares. <br> - Kết nối hệ thống lưu trữ on-premises với các dịch vụ lưu trữ trên AWS Cloud. | 12/05/2026 | 12/05/2026 | [Lab 24-2.1](https://www.youtube.com/watch?v=B3R87qxarWk) <br> [Lab 24-2.2](https://www.youtube.com/watch?v=PaEv0YFVVhI) <br> [Lab 24-2.3](https://www.youtube.com/watch?v=mW1Gxu8AT8c) <br> [Lab 24-3](https://www.youtube.com/watch?v=JqcvArbGqkI) |
+| 4 | **Ôn tập thực hành Storage** <br> - Ôn lại kiến trúc Storage Gateway và các tình huống hybrid storage. <br> - So sánh Amazon S3, EBS, EFS và Storage Gateway theo các yêu cầu nghiệp vụ khác nhau. | 13/05/2026 | 13/05/2026 | Ôn tập Module |
+| 5 | **Ôn tập hands-on** <br> - Thực hành lại các bài lab liên quan đến storage để củng cố kiến thức thực tế. | 14/05/2026 | 14/05/2026 | |
+| 6 | **Tổng kết tuần** <br> - Ôn lại các bài lab storage đã hoàn thành và xóa toàn bộ tài nguyên AWS được tạo trong tuần. | 15/05/2026 | 15/05/2026 | |
 
 
 ### Kết quả đạt được tuần 5:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Hiểu quy trình import và export máy ảo bằng AWS VM Import/Export.
+* Cải thiện kiến thức thực hành về các tính năng bảo mật của Amazon S3, bao gồm Access Control Lists (ACLs).
+* Cấu hình thành công AWS Storage Gateway và hiểu cách giải pháp hybrid storage tích hợp hạ tầng on-premises với AWS.
+* Có cái nhìn rõ hơn về cách lựa chọn dịch vụ lưu trữ AWS phù hợp cho từng tình huống ứng dụng.
+* Hoàn thành toàn bộ bài lab và xóa tài nguyên tạm thời để tránh phát sinh chi phí AWS không cần thiết.
 
 
