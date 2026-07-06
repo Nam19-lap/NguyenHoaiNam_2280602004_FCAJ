@@ -1,32 +1,45 @@
 ---
-title : "Clean up"
+title : "Clean up resources"
 date : 2024-01-01
 weight : 6
 chapter : false
 pre : " <b> 5.6. </b> "
 ---
-Congratulations on completing this workshop! 
-In this workshop, you learned architecture patterns for accessing Amazon S3 without using the Public Internet. 
-+ By creating a gateway endpoint, you enabled direct communication between EC2 resources and Amazon S3, without traversing an Internet Gateway. 
-+ By creating an interface endpoint you extended S3 connectivity to resources running in your on-premises data center via AWS Site-to-Site VPN or Direct Connect. 
 
-#### clean up
-1. Navigate to Hosted Zones on the left side of Route 53 console. Click the name of *s3.us-east-1.amazonaws.com* zone. Click Delete and confirm deletion by typing delete. 
+Congratulations on completing this workshop. To avoid unnecessary AWS charges, clean up the resources that were created during the deployment.
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
+#### 1. Delete CloudFormation stack
 
-2. Disassociate the Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
+1. Open AWS CloudFormation.
+2. Select the stack `EventApp-Backend-System`.
+3. Choose **Delete stack**.
+4. Confirm the deletion and wait until the stack is removed.
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
+CloudFormation will delete the backend resources it created, such as Lambda functions, API Gateway, DynamoDB tables, Cognito resources, IAM roles, and related configuration.
 
-4. Open the CloudFormation console  and delete the two CloudFormation Stacks that you created for this lab:
-+ PLOnpremSetup
-+ PLCloudSetup
+#### 2. Empty and delete frontend bucket
 
-![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
+1. Open Amazon S3.
+2. Select the frontend bucket from CloudFormation Outputs.
+3. Empty the bucket.
+4. Delete the bucket after it becomes empty.
 
-5. Delete S3 buckets
-+ Open S3 console
-+ Choose the bucket we created for the lab, click and confirm empty. Click delete and confirm delete.
+#### 3. Delete backend package bucket
 
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+If you created a separate S3 bucket to store the backend package, delete the uploaded backend package first, then delete the bucket.
+
+Example backend package bucket:
+
+```text
+buketbackend
+```
+
+#### 4. Remove local build artifacts
+
+You can also remove temporary local build artifacts if they are no longer needed:
+
+- Backend `dist` package
+- `backend-code.zip` or `backend.rar`
+- Frontend `dist` folder
+
+After cleanup, the workshop resources are removed and the AWS account will no longer be charged for the deployed project.

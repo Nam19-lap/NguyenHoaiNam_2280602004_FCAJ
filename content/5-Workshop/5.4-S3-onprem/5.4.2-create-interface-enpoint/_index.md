@@ -1,43 +1,39 @@
 ---
-title : "Create an S3 Interface endpoint"
+title : "Configure S3 bucket permissions"
 date : 2024-01-01
 weight : 2
 chapter : false
-pre : " <b> 5.4.2 </b> "
+pre : " <b> 5.4.2. </b> "
 ---
 
-In this section you will create and test an S3 interface endpoint using the simulated on-premises environment deployed as part of this workshop.
+#### Disable Block Public Access
 
-1. Return to the Amazon VPC menu. In the navigation pane, choose Endpoints, then click Create Endpoint.
+1. Open Amazon S3.
+2. Open the bucket created by CloudFormation, for example `eventapp-frontend-333622375466-ap-southeast-1`.
+3. Open the **Permissions** tab.
+4. In **Block public access**, choose **Edit**.
+5. Uncheck **Block all public access**.
+6. Save changes and type `confirm` when AWS asks for confirmation.
 
-2. In Create endpoint console:
-+ Name the interface endpoint
-+ In Service category, choose **aws services** 
+![Disable block public access](/images/5-Workshop/event-portal/05-disable-block-public-access.png)
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+#### Add bucket policy
 
-3.  In the Search box, type S3 and press Enter. Select the endpoint named com.amazonaws.us-east-1.s3. Ensure that the Type column indicates Interface.
+In the **Bucket policy** section, add a policy that allows public read access to website objects. Replace `<FrontendBucketName>` with your actual bucket name.
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::<FrontendBucketName>/*"
+        }
+    ]
+}
+```
 
-4. For VPC, select VPC Cloud from the drop-down.
-{{% notice warning %}}
-Make sure to choose "VPC Cloud" and not "VPC On-prem"
-{{% /notice %}}
-+ Expand **Additional settings** and ensure that Enable DNS name is *not* selected (we will use this in the next part of the workshop)
-
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
-
-5. Select 2 subnets in the following AZs: us-east-1a and us-east-1b
-
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
-
-6. For Security group, choose SGforS3Endpoint:
-
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
-
-7. Keep the default policy - full access and click Create endpoint
-
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
-
-Congratulation on successfully creating S3 interface endpoint. In the next step, we will test the interface endpoint.
+Save the bucket policy after updating the bucket name.

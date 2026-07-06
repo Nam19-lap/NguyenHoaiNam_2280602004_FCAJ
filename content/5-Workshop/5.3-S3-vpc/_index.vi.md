@@ -1,18 +1,24 @@
 ---
-title : "Truy cập S3 từ VPC"
-date : 2024-01-01 
+title : "Triển khai backend bằng CloudFormation"
+date : 2024-01-01
 weight : 3
 chapter : false
 pre : " <b> 5.3. </b> "
 ---
 
-#### Sử dụng Gateway endpoint
+#### Tổng quan
 
-Trong phần này, bạn sẽ tạo một Gateway endpoint để truy cập Amazon S3 từ một EC2 instance. Gateway endpoint sẽ cho phép tải một object lên S3 bucket mà không cần sử dụng Internet Công cộng. Để tạo endpoint, bạn phải chỉ định VPC mà bạn muốn tạo endpoint và dịch vụ (trong trường hợp này là S3) mà bạn muốn thiết lập kết nối.
+Trong phần này, ta triển khai toàn bộ backend system bằng một CloudFormation stack. Stack sẽ tạo các tài nguyên serverless chính cho dự án Event Portal, bao gồm DynamoDB tables, Cognito resources, Lambda functions và API Gateway.
 
-![overview](/images/5-Workshop/5.3-S3-vpc/diagram2.png)
+Trước khi tạo stack, cần cập nhật tất cả giá trị `CodeUri: dist/` trong file `template.yaml` để trỏ đến backend package đã upload lên Amazon S3.
 
 #### Nội dung
 
-- [Tạo gateway endpoint](3.1-create-gwe/)
-- [Test gateway endpoint](3.2-test-gwe/)
+- [Cập nhật template.yaml](5.3.1-create-gwe/)
+- [Tạo CloudFormation stack và lấy outputs](5.3.2-test-gwe/)
+
+#### Kết quả triển khai
+
+Khi stack chuyển sang trạng thái **CREATE_COMPLETE**, backend đã được triển khai hoàn tất.
+
+![CloudFormation stack hoàn tất](/images/5-Workshop/event-portal/04-cloudformation-complete.png)

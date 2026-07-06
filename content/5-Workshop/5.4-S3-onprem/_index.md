@@ -1,5 +1,5 @@
 ---
-title : "Access S3 from on-premises"
+title : "Deploy frontend with Amazon S3"
 date : 2024-01-01
 weight : 4
 chapter : false
@@ -8,13 +8,11 @@ pre : " <b> 5.4. </b> "
 
 #### Overview
 
-+ In this section, you will create an Interface endpoint to access Amazon S3 from a simulated on-premises environment. The Interface endpoint will allow you to route to Amazon S3 over a VPN connection from your simulated on-premises environment.
+In this section, you deploy the frontend of the Event Portal as a static website on Amazon S3. CloudFormation already creates the frontend bucket, so you only need to configure local environment variables, build the frontend, enable public website access, and upload the generated files.
 
-+ Why using **Interface endpoint**: 
-    + Gateway endpoints only work with resources running in the VPC where they are created. Interface endpoints work with resources running in VPC, and also resources running in on-premises environments. Connectivty from your on-premises environment to the cloud can be provided by AWS Site-to-Site VPN or AWS Direct Connect.
-    + Interface endpoints allow you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and partners in their own VPCs (referred to as PrivateLink Endpoint Services), and supported AWS Marketplace Partner services. For this workshop, we will focus on connecting to Amazon S3.
+#### Content
 
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
-
-
-
+- [Configure frontend locally](5.4.1-prepare/)
+- [Configure frontend S3 bucket permissions](5.4.2-create-interface-enpoint/)
+- [Enable static website hosting](5.4.3-test-endpoint/)
+- [Upload frontend files and test website](5.4.4-dns-simulation/)

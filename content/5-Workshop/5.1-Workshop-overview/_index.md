@@ -1,18 +1,31 @@
 ---
-title : "Introduction"
+title : "Workshop overview"
 date : 2024-01-01 
 weight : 1 
 chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### VPC endpoints
-+ **VPC endpoints** are virtual devices. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between your compute resources and AWS services without imposing availability risks.
-+ Compute resources running in VPC can access  **Amazon S3**  using a Gateway endpoint. PrivateLink interface endpoints can be used by compute resources running in VPC or on-premises.
+#### Deploy quickly with CloudFormation
 
-#### Workshop overview
-In this workshop, you will use two VPCs. 
-+ **"VPC Cloud"** is for cloud resources such as a  **Gateway endpoint** and an EC2 instance to test with. 
-+ **"VPC On-Prem"** simulates an on-premises environment such as a factory or corporate datacenter. An EC2 instance running strongSwan VPN software has been deployed in "VPC On-prem" and automatically configured to establish a Site-to-Site VPN tunnel with AWS Transit Gateway. This VPN simulates connectivity from an on-premises location to the AWS cloud. To minimize costs, only one VPN instance is provisioned to support this workshop. When planning VPN connectivity for your production workloads, AWS recommends using multiple VPN devices for high availability.
+The goal of this workshop is to deploy the Event Portal project with fewer manual steps by using **AWS CloudFormation**. The `template.yaml` file in the backend source code describes the required infrastructure, including DynamoDB, Cognito, Lambda functions, API Gateway, and the frontend S3 bucket.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+With this approach, the deployment flow becomes simple:
+
+1. Package the backend code and upload it to Amazon S3.
+2. Update `template.yaml` so Lambda functions can load the packaged code from S3.
+3. Upload the template to AWS CloudFormation and create the backend stack.
+4. Copy the CloudFormation outputs and configure the frontend.
+5. Build the frontend and upload the generated static files to the frontend S3 bucket.
+
+#### Why use Infrastructure as Code?
+
+- Reduces manual console operations.
+- Keeps the AWS architecture consistent and repeatable.
+- Makes it easier to rebuild the backend if needed.
+- Reduces configuration drift between development and deployment.
+- Helps the team document the actual infrastructure in source code.
+
+#### Final architecture
+
+The finished system includes a static frontend hosted on S3, REST APIs served through API Gateway, backend logic running on Lambda, data stored in DynamoDB, and authentication handled by Cognito.

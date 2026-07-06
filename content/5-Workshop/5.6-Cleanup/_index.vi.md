@@ -6,32 +6,40 @@ chapter : false
 pre : " <b> 5.6. </b> "
 ---
 
-#### Dọn dẹp tài nguyên
+Chúc mừng bạn đã hoàn thành workshop. Để tránh phát sinh chi phí AWS không cần thiết, hãy dọn dẹp các tài nguyên đã tạo trong quá trình triển khai.
 
-Xin chúc mừng bạn đã hoàn thành xong lab này!
-Trong lab này, bạn đã học về các mô hình kiến trúc để truy cập Amazon S3 mà không sử dụng Public Internet.
+#### 1. Xóa CloudFormation stack
 
-+ Bằng cách tạo Gateway endpoint, bạn đã cho phép giao tiếp trực tiếp giữa các tài nguyên EC2 và Amazon S3, mà không đi qua Internet Gateway.
-Bằng cách tạo Interface endpoint, bạn đã mở rộng kết nối S3 đến các tài nguyên chạy trên trung tâm dữ liệu trên chỗ của bạn thông qua AWS Site-to-Site VPN hoặc Direct Connect.
+1. Mở AWS CloudFormation.
+2. Chọn stack `EventApp-Backend-System`.
+3. Chọn **Delete stack**.
+4. Xác nhận xóa và chờ đến khi stack được remove hoàn toàn.
 
-#### Dọn dẹp
-1. Điều hướng đến Hosted Zones trên phía trái của bảng điều khiển Route 53. Nhấp vào tên của  s3.us-east-1.amazonaws.com zone. Nhấp vào Delete và xác nhận việc xóa bằng cách nhập từ khóa "delete".
+CloudFormation sẽ xóa các backend resources mà nó đã tạo, ví dụ Lambda functions, API Gateway, DynamoDB tables, Cognito resources, IAM roles và các cấu hình liên quan.
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
+#### 2. Empty và xóa frontend bucket
 
-2. Disassociate Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
+1. Mở Amazon S3.
+2. Chọn frontend bucket lấy từ CloudFormation Outputs.
+3. Empty bucket.
+4. Xóa bucket sau khi bucket đã trống.
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
+#### 3. Xóa backend package bucket
 
-4.Mở console của CloudFormation và xóa hai stack CloudFormation mà bạn đã tạo cho bài thực hành này:
-+ PLOnpremSetup
-+ PLCloudSetup
+Nếu bạn tạo một S3 bucket riêng để chứa backend package, hãy xóa backend package đã upload trước, sau đó xóa bucket.
 
-![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
+Ví dụ backend package bucket:
 
-5. Xóa các S3 bucket
+```text
+buketbackend
+```
 
-+ Mở bảng điều khiển S3
-+ Chọn bucket chúng ta đã tạo cho lab, nhấp chuột và xác nhận là empty. Nhấp Delete và xác nhận delete.
-+ 
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+#### 4. Xóa build artifacts ở local
+
+Có thể xóa thêm các build artifacts ở local nếu không còn cần dùng:
+
+- Backend `dist` package
+- `backend-code.zip` hoặc `backend.rar`
+- Frontend `dist` folder
+
+Sau khi cleanup, các tài nguyên của workshop đã được xóa và tài khoản AWS sẽ không còn bị tính phí cho project đã triển khai.

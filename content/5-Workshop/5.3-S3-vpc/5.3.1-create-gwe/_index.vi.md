@@ -1,40 +1,36 @@
 ---
-title : "Tạo một Gateway Endpoint"
-date : 2024-01-01 
+title : "Cập nhật template.yaml"
+date : 2024-01-01
 weight : 1
 chapter : false
-pre : " <b> 5.3.1 </b> "
+pre : " <b> 5.3.1. </b> "
 ---
 
-1. Mở [Amazon VPC console](https://us-east-1.console.aws.amazon.com/vpc/home?region=us-east-1#Home:)
-2. Trong thanh điều hướng, chọn **Endpoints**, click **Create Endpoint**:
+#### Mục đích
 
-{{% notice note %}}
-Bạn sẽ thấy 6 điểm cuối VPC hiện có hỗ trợ AWS Systems Manager (SSM). Các điểm cuối này được Mẫu CloudFormation triển khai tự động cho workshop này.
-{{% /notice %}}
+CloudFormation cần biết Lambda deployment package đang nằm ở đâu. Vì backend package đã được upload lên S3, ta cần cập nhật các giá trị `CodeUri` trong `template.yaml` trước khi tạo stack.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/endpoints.png)
+#### Các bước thực hiện
 
-3. Trong Create endpoint console:
-+ Đặt tên cho endpoint: s3-gwe
-+ Trong service category, chọn **aws services**
+1. Mở file `template.yaml` trong thư mục backend bằng VS Code hoặc trình soạn thảo khác.
+2. Nhấn `Ctrl + F` và tìm:
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/create-s3-gwe1.png)
+```yaml
+CodeUri: dist/
+```
 
-+ Trong **Services**, gõ "s3" trong hộp tìm kiếm và chọn dịch vụ với loại **gateway**
+3. Thay từng giá trị `dist/` bằng Object URL của backend package đã copy từ S3.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/services.png)
+Ví dụ:
 
-+ Đối với VPC, chọn **VPC Cloud** từ drop-down menu.
-+ Đối với Route tables, chọn bảng định tuyến mà đã liên kết với 2 subnets (lưu ý: đây không phải là bảng định tuyến chính cho VPC mà là bảng định tuyến thứ hai do CloudFormation tạo).
+```yaml
+CodeUri: https://buketbackend.s3.ap-southeast-1.amazonaws.com/backend.rar
+```
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/vpc.png)
+4. Lưu file lại.
 
-+ Đối với Policy, để tùy chọn mặc định là Full access để cho phép toàn quyền truy cập vào dịch vụ. Bạn sẽ triển khai VPC endpoint policy trong phần sau để chứng minh việc hạn chế quyền truy cập vào S3 bucket dựa trên các policies.
+#### Lưu ý
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/policy.png)
-
-+ Không thêm tag vào VPC endpoint.
-+ Click Create endpoint, click x sau khi nhận được thông báo tạo thành công.
-
-![endpoint](/images/5-Workshop/5.3-S3-vpc/complete.png)
+- Template có nhiều Lambda functions, vì vậy cần cập nhật tất cả các dòng `CodeUri`.
+- Object URL phải trỏ đúng đến backend package đã upload lên S3.
+- Sau khi chỉnh sửa, giữ file này để upload lên CloudFormation ở bước tiếp theo.

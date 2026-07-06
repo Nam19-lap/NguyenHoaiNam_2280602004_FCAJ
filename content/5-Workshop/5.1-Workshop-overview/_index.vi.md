@@ -1,19 +1,31 @@
 ---
-title : "Giới thiệu"
+title : "Tổng quan workshop"
 date : 2024-01-01 
-weight : 1
+weight : 1 
 chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### Giới thiệu về VPC Endpoint
+#### Triển khai nhanh bằng CloudFormation
 
-+ Điểm cuối VPC (endpoint) là thiết bị ảo. Chúng là các thành phần VPC có thể mở rộng theo chiều ngang, dự phòng và có tính sẵn sàng cao. Chúng cho phép giao tiếp giữa tài nguyên điện toán của bạn và dịch vụ AWS mà không gây ra rủi ro về tính sẵn sàng.
-+ Tài nguyên điện toán đang chạy trong VPC có thể truy cập Amazon S3 bằng cách sử dụng điểm cuối Gateway. Interface Endpoint  PrivateLink có thể được sử dụng bởi tài nguyên chạy trong VPC hoặc tại TTDL.
+Mục tiêu của workshop này là triển khai dự án Event Portal với ít thao tác thủ công hơn bằng cách sử dụng **AWS CloudFormation**. File `template.yaml` trong source code backend mô tả các tài nguyên hạ tầng cần thiết, bao gồm DynamoDB, Cognito, Lambda functions, API Gateway và S3 bucket dành cho frontend.
 
-#### Tổng quan về workshop
-Trong workshop này, bạn sẽ sử dụng hai VPC.
-+ **"VPC Cloud"** dành cho các tài nguyên cloud như Gateway endpoint và EC2 instance để kiểm tra.
-+ **"VPC On-Prem"** mô phỏng môi trường truyền thống như nhà máy hoặc trung tâm dữ liệu của công ty. Một EC2 Instance chạy phần mềm StrongSwan VPN đã được triển khai trong "VPC On-prem" và được cấu hình tự động để thiết lập đường hầm VPN Site-to-Site với AWS Transit Gateway. VPN này mô phỏng kết nối từ một vị trí tại TTDL (on-prem) với AWS cloud. Để giảm thiểu chi phí, chỉ một phiên bản VPN được cung cấp để hỗ trợ workshop này. Khi lập kế hoạch kết nối VPN cho production workloads của bạn, AWS khuyên bạn nên sử dụng nhiều thiết bị VPN để có tính sẵn sàng cao.
+Với phương pháp này, quy trình triển khai được rút gọn như sau:
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+1. Đóng gói backend code và upload lên Amazon S3.
+2. Cập nhật `template.yaml` để các Lambda functions lấy được backend package từ S3.
+3. Upload template lên AWS CloudFormation và tạo backend stack.
+4. Copy các thông số Outputs của CloudFormation và cấu hình frontend.
+5. Build frontend và upload các file tĩnh đã sinh ra lên frontend S3 bucket.
+
+#### Vì sao dùng Infrastructure as Code?
+
+- Giảm các thao tác thủ công trên AWS Console.
+- Giữ kiến trúc AWS nhất quán và có thể triển khai lại.
+- Dễ rebuild backend khi cần.
+- Hạn chế sai lệch cấu hình giữa môi trường phát triển và triển khai.
+- Giúp nhóm tài liệu hóa hạ tầng thực tế ngay trong source code.
+
+#### Kiến trúc hoàn chỉnh
+
+Sau khi hoàn thành, hệ thống gồm frontend tĩnh được host trên S3, REST APIs thông qua API Gateway, backend logic chạy bằng Lambda, dữ liệu lưu trong DynamoDB và xác thực người dùng bằng Cognito.

@@ -1,40 +1,36 @@
 ---
-title : "Create a gateway endpoint"
-date : 2024-01-01 
+title : "Update template.yaml"
+date : 2024-01-01
 weight : 1
 chapter : false
-pre : " <b> 5.3.1 </b> "
+pre : " <b> 5.3.1. </b> "
 ---
 
-1. Open the [Amazon VPC console](https://us-east-1.console.aws.amazon.com/vpc/home?region=us-east-1#Home:)
-2. In the navigation pane, choose **Endpoints**, then click **Create Endpoint**:
+#### Purpose
 
-{{% notice note %}}
-You will see **6 existing VPC endpoints** that support **AWS Systems Manager (SSM)**. These endpoints were deployed automatically by the **CloudFormation Templates** for this workshop.
-{{% /notice %}}
+CloudFormation needs to know where the Lambda deployment package is stored. Because the backend package was uploaded to S3, update the `CodeUri` values in `template.yaml` before creating the stack.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/endpoints.png)
+#### Steps
 
-3. In the Create endpoint console:
-+ Specify name of the endpoint: ```s3-gwe```
-+ In service category, choose **AWS services**
+1. Open `template.yaml` in the backend folder using VS Code or another editor.
+2. Use `Ctrl + F` to search for:
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/create-s3-gwe1.png)
+```yaml
+CodeUri: dist/
+```
 
-+ In **Services**, type ```s3``` in the search box and choose the service with type **gateway**
+3. Replace each `dist/` value with the S3 object URL copied from the backend package.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/services.png)
+Example:
 
-+ For VPC, select **VPC Cloud** from the drop-down.
-+ For **Configure route tables**, select the route table that is already associated with **two subnets** (note: this is not the main route table for the VPC, but a second route table created by CloudFormation).
+```yaml
+CodeUri: https://buketbackend.s3.ap-southeast-1.amazonaws.com/backend.rar
+```
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/vpc.png)
+4. Save the file.
 
-+ **For Policy**, leave the default option, **Full Access**, to allow full access to the service. You will deploy **a VPC endpoint policy** in a later lab module to demonstrate restricting access to **S3 buckets** based on policies.
+#### Notes
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/policy.png)
-
-+ Do not add a tag to the VPC endpoint at this time.
-+ Click **Create endpoint**, then click x after receiving a successful creation message.
-
-![endpoint](/images/5-Workshop/5.3-S3-vpc/complete.png)
+- The template contains multiple Lambda functions, so update every `CodeUri` occurrence.
+- The object URL must point to the backend package uploaded to S3.
+- Keep the file saved locally because it will be uploaded to CloudFormation in the next step.

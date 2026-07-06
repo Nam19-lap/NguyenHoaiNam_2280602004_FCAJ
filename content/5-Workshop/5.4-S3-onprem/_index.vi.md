@@ -1,20 +1,18 @@
 ---
-title : "Truy cập S3 từ môi trường truyền thống"
-date : 2024-01-01 
-weight : 4 
+title : "Triển khai frontend bằng Amazon S3"
+date : 2024-01-01
+weight : 4
 chapter : false
 pre : " <b> 5.4. </b> "
 ---
 
 #### Tổng quan
 
-+ Trong phần này, bạn sẽ tạo một Interface Endpoint để truy cập Amazon S3 từ môi trường truyền thống mô phỏng. Interface Endpoint sẽ cho phép bạn định tuyến đến Amazon S3 qua kết nối VPN từ môi trường truyền thống mô phỏng của bạn.
+Trong phần này, ta triển khai frontend của Event Portal dưới dạng static website trên Amazon S3. CloudFormation đã tạo sẵn frontend bucket, vì vậy ta chỉ cần cấu hình biến môi trường ở local, build frontend, bật quyền public website access và upload các file đã build.
 
-+ Tại sao nên sử dụng **Interface Endpoint**:
-    + Các Gateway endpoints chỉ hoạt động với các tài nguyên đang chạy trong VPC nơi chúng được tạo. Interface Endpoint  hoạt động với tài nguyên chạy trong VPC và cả tài nguyên chạy trong môi trường truyền thống. Khả năng kết nối từ môi trường truyền thống của bạn với aws cloud có thể được cung cấp bởi AWS Site-to-Site VPN hoặc AWS Direct Connect.
-    + Interface Endpoint cho phép bạn kết nối với các dịch vụ do AWS PrivateLink cung cấp. Các dịch vụ này bao gồm một số dịch vụ AWS, dịch vụ do các đối tác và khách hàng AWS lưu trữ trong VPC của riêng họ (gọi tắt là Dịch vụ PrivateLink endpoints) và các dịch vụ Đối tác AWS Marketplace. Đối với workshop này, chúng ta sẽ tập trung vào việc kết nối với Amazon S3.
-    
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
+#### Nội dung
 
-
-
+- [Cấu hình frontend ở local](5.4.1-prepare/)
+- [Cấu hình quyền cho frontend S3 bucket](5.4.2-create-interface-enpoint/)
+- [Bật static website hosting](5.4.3-test-endpoint/)
+- [Upload frontend files và kiểm tra website](5.4.4-dns-simulation/)
