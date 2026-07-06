@@ -6,51 +6,27 @@ chapter: false
 pre: " <b> 1.11. </b> "
 ---
 
+### Mục tiêu tuần 11
 
-### Mục tiêu tuần 11:
+* Bắt đầu phát triển dự án AWS Serverless Event Portal của nhóm.
+* Phát triển các dịch vụ backend và REST APIs cho ứng dụng.
+* Thiết kế và triển khai cơ sở dữ liệu Amazon DynamoDB.
+* Hỗ trợ tích hợp frontend bằng cách cung cấp các backend APIs cần thiết.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Công việc trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | ---------- | --------------- | --------- |
+| 2 | **Thiết lập backend project** <br> - Thiết lập cấu trúc backend project. <br> - Cấu hình môi trường phát triển và các dependencies của project. | 22/06/2026 | 22/06/2026 | Project Repository |
+| 3 | **Thiết kế database** <br> - Thiết kế các bảng Amazon DynamoDB cho Event Portal. <br> - Xác định data models và các thuộc tính chính mà ứng dụng cần sử dụng. | 23/06/2026 | 23/06/2026 | Amazon DynamoDB Documentation |
+| 4 | **Phát triển backend** <br> - Triển khai các REST APIs cốt lõi. <br> - Kết nối backend services với Amazon DynamoDB. <br> - Thực hiện các thao tác CRUD cơ bản để kiểm thử. | 24/06/2026 | 24/06/2026 | Project Source Code |
+| 5 | **Hỗ trợ tích hợp frontend** <br> - Hỗ trợ tích hợp các frontend components với backend APIs. <br> - Kiểm tra định dạng request và response giữa frontend và backend. | 25/06/2026 | 25/06/2026 | Internal Project |
+| 6 | **Đánh giá project** <br> - Kiểm thử chức năng backend với database. <br> - Review các tính năng đã hoàn thành và chuẩn bị cho giai đoạn phát triển tiếp theo. | 26/06/2026 | 26/06/2026 | Internal Testing |
 
+### Kết quả đạt được tuần 11
 
-### Kết quả đạt được tuần 11:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hoàn thành nền tảng backend ban đầu cho dự án Event Portal.
+* Thiết kế và triển khai thành công cơ sở dữ liệu Amazon DynamoDB.
+* Phát triển và kiểm thử các REST APIs cốt lõi được kết nối với DynamoDB.
+* Hỗ trợ tích hợp frontend bằng cách cung cấp các backend endpoints hoạt động ổn định.
+* Xây dựng nền tảng ổn định để tiếp tục phát triển project trong giai đoạn tiếp theo.

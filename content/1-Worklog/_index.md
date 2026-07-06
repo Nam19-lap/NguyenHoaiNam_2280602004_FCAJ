@@ -31,6 +31,6 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 10:** [Doing task L...](1.10-week10/)
 
-**Week 11:** [Doing task M...](1.11-week11/)
+**Week 11:** [Developing the AWS Serverless Event Portal backend](1.11-week11/)
 
-**Week 12:** [Doing task N...](1.12-week12/)
+**Week 12:** [Improving Event Portal integration and AWS architecture](1.12-week12/)

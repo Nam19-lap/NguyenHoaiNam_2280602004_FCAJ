@@ -1,127 +1,172 @@
 ---
-title: "Blog 2"
-date: 2024-01-01
-weight: 1
+title: "Blog 2: Đạt quyền truy cập least-privilege cho Amazon Route 53 Profiles"
+date: 2026-06-04
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+*bởi Aanchal Agrawal và Anushree Shetty*
+*vào ngày 04 Tháng 6, 2026*
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+Nếu bạn quản lý DNS trên nhiều tài khoản AWS bằng Amazon Route 53 Profiles, việc đạt được quyền truy cập tối thiểu cần thiết cho từng nhóm có thể khá khó khăn. Nếu không có quyền chi tiết, một nhóm có thể vô tình chỉnh sửa tài nguyên của nhóm khác, dẫn đến lỗ hổng quản trị, rủi ro bảo mật và làm chậm quá trình áp dụng quản lý DNS tập trung. Các quyền AWS Identity and Access Management (AWS IAM) chi tiết mới cho Amazon Route 53 Profiles giải quyết vấn đề này bằng cách cho phép định nghĩa kiểm soát truy cập ở cấp tài nguyên và cấp hành động. Mỗi nhóm chỉ nhận đúng các quyền cần thiết, từ đó giảm rủi ro và tăng hiệu quả vận hành.
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+Trong bài viết này, bạn sẽ tìm hiểu cách áp dụng IAM policies chi tiết cho Amazon Route 53 Profiles để giới hạn phạm vi quyền. Các quyền có thể được giới hạn theo loại tài nguyên, ARN của tài nguyên, tên miền, độ ưu tiên của firewall rule group và Amazon Virtual Private Cloud (Amazon VPC) ID. Bài viết đi qua ba kịch bản thực tế để giới hạn quyền cho application teams, security teams và network engineers bằng IAM policies với các condition keys mới thuộc namespace `route53profiles`. Sau bài viết, bạn sẽ có các IAM policy templates có thể tái sử dụng để thực thi least-privilege access cho quản lý DNS đa tài khoản.
 
----
+## Điều kiện tiên quyết
 
-## Hướng dẫn kiến trúc
+Để làm theo hướng dẫn này, bạn cần có:
+- Một tài khoản AWS có quyền tạo và quản lý IAM policies
+- Kiến thức mức trung cấp về AWS IAM và Amazon Route 53
+- Một Route 53 Profile đã tồn tại, hoặc khả năng tạo mới Profile
+- Hiểu biết về AWS Resource Access Manager (AWS RAM) và kiến trúc đa tài khoản, điều này hữu ích nhưng không bắt buộc
+- Tùy chọn: Mô hình đa tài khoản đã cấu hình AWS RAM sharing để kiểm thử các kịch bản cross-account
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+## Amazon Route 53 Profiles là gì?
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+Với Amazon Route 53 Profiles, bạn có thể định nghĩa một cấu hình DNS chuẩn của Route 53 và áp dụng cấu hình đó nhất quán trên nhiều VPC và nhiều tài khoản AWS. Một Profile bao gồm các liên kết private hosted zone, Amazon Route 53 Resolver rules như forwarding rules và system rules, DNS Firewall rule groups, cấu hình Resolver Query Logging, liên kết interface VPC endpoint và các cấu hình VPC, bao gồm reverse DNS lookup cho Resolver Rules, DNS Firewall failure mode configuration và DNSSEC validation configuration.
 
-**Kiến trúc giải pháp bây giờ như sau:**
+Bạn chỉ cần định nghĩa DNS settings một lần trong Profile, chia sẻ Profile đó sang các tài khoản khác bằng AWS RAM, sau đó liên kết Profile với các VPC. Khi bạn cập nhật Profile, các thay đổi sẽ tự động lan truyền đến những VPC đã liên kết, giúp giảm cấu hình thủ công trên từng VPC và hạn chế tình trạng sai lệch cấu hình.
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+## Thách thức: Quản lý quyền DNS ở quy mô lớn
 
----
+Trước đây, Route 53 Profiles chỉ hỗ trợ IAM permissions ở cấp API action. Điều này có nghĩa là:
+- Một application team cần liên kết private hosted zone cũng có thể vô tình liên kết hoặc hủy liên kết DNS Firewall rule groups.
+- Một security team quản lý DNS Firewall policies có thể vô tình chỉnh sửa Resolver rules.
+- Một network engineer liên kết VPC với Profile có quyền ngầm định để chỉnh sửa các resource associations bên trong Profile đó.
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+Các IAM condition keys mới trong namespace `route53profiles` cho phép triển khai quyền chi tiết hơn:
+- `route53profiles:ResourceTypes`
+- `route53profiles:ResourceArns`
+- `route53profiles:HostedZoneDomains`
+- `route53profiles:ResolverRuleDomains`
+- `route53profiles:FirewallRuleGroupPriority`
+- `route53profiles:ResourceIds`
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+## Kiến trúc: Ủy quyền DNS đa tài khoản
 
----
+Hãy xem xét một kiến trúc doanh nghiệp điển hình, trong đó tài khoản networking trung tâm sở hữu Route 53 Profile và chia sẻ Profile này thông qua AWS RAM:
+1. Tài khoản application team: Liên kết private hosted zones
+2. Tài khoản security team: Quản lý DNS Firewall rule groups
+3. Shared services team: Quản lý VPC associations
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+![Hình 1: Ủy quyền DNS đa tài khoản với Amazon Route 53 Profiles và IAM permissions chi tiết](https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2026/06/04/Route53Profiles-IAMPermissions.png)
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+*Hình 1: Ủy quyền DNS đa tài khoản với Amazon Route 53 Profiles và IAM permissions chi tiết*
 
----
+## Kịch bản 1: Application team - Chỉ liên kết và hủy liên kết private hosted zones
 
-## The pub/sub hub
+Application team cần liên kết các private hosted zones của họ với một Route 53 Profile dùng chung.
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowHostedZoneAssociationOnly",
+      "Effect": "Allow",
+      "Action": [
+        "route53profiles:AssociateResourceToProfile",
+        "route53profiles:DisassociateResourceFromProfile"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "route53profiles:ResourceTypes": "HostedZone"
+        }
+      }
+    },
+    {
+      "Sid": "AllowProfileReadAccess",
+      "Effect": "Allow",
+      "Action": [
+        "route53profiles:GetProfileResourceAssociation",
+        "route53profiles:ListProfileResourceAssociations",
+        "route53profiles:GetProfile",
+        "route53profiles:ListProfiles"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+## Kịch bản 2: Security team - Chỉ quản lý DNS Firewall rule groups
 
----
+Security team gắn DNS Firewall rule groups vào Profiles để thực thi chính sách lọc DNS trên các VPC.
 
-## Core microservice
+```json
+{
+   "Version": "2012-10-17",
+   "Statement": [
+       {
+           "Sid": "AllowFirewallRuleGroupAssociationOnly",
+           "Effect": "Allow",
+           "Action": [
+               "route53profiles:AssociateResourceToProfile",
+               "route53profiles:DisassociateResourceFromProfile",
+               "route53profiles:UpdateProfileResourceAssociation"
+           ],
+           "Resource": "*",
+           "Condition": {
+               "StringEquals": {
+                   "route53profiles:ResourceTypes": "FirewallRuleGroup"
+               }
+           }
+       },
+       {
+           "Sid": "AllowProfileReadAccess",
+           "Effect": "Allow",
+           "Action": [
+               "route53profiles:GetProfileResourceAssociation",
+               "route53profiles:ListProfileResourceAssociations",
+               "route53profiles:GetProfile",
+               "route53profiles:ListProfiles"
+           ],
+           "Resource": "*"
+       }
+   ]
+}
+```
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+## Kịch bản 3: Shared services team - Chỉ liên kết và hủy liên kết VPCs
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+VPC associations sử dụng các API actions khác với resource associations: `AssociateProfile` và `DisassociateProfile`.
 
----
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowVpcAssociationOnly",
+      "Effect": "Allow",
+      "Action": [
+        "route53profiles:AssociateProfile",
+        "route53profiles:DisassociateProfile"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "route53profiles:ResourceIds": "vpc-1111111111111"
+        }
+      }
+    },
+    {
+      "Sid": "AllowProfileReadAccess",
+      "Effect": "Allow",
+      "Action": [
+        "route53profiles:GetProfileAssociation",
+        "route53profiles:ListProfileAssociations",
+        "route53profiles:GetProfile",
+        "route53profiles:ListProfiles"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
 
-## Front door microservice
+## Kết luận
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
-
----
-
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
-
----
-
-## Tính năng mới trong giải pháp
-
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Trong bài viết này, bạn đã tìm hiểu cách sử dụng các AWS IAM condition keys chi tiết cho Amazon Route 53 Profiles để thực thi least-privilege access đối với Profile resource associations và VPC associations. Bằng cách sử dụng các condition keys như `route53profiles:ResourceTypes`, `route53profiles:ResourceArns`, `route53profiles:FirewallRuleGroupPriority` và `route53profiles:ResourceIds`, riêng lẻ hoặc kết hợp trong cùng một policy statement, bạn có thể ủy quyền các thao tác Profile cụ thể cho đúng nhóm mà không cấp thêm các quyền không cần thiết.

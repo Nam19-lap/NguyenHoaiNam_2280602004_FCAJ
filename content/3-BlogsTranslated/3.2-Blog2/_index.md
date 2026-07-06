@@ -1,126 +1,172 @@
 ---
-title: "Blog 2"
-date: 2024-01-01
-weight: 1
+title: "Blog 2: Achieve least-privilege access for Amazon Route 53 Profiles"
+date: 2026-06-04
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+*by Aanchal Agrawal and Anushree Shetty*
+*on 04 JUN 2026*
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+If you manage DNS across multiple AWS accounts with Amazon Route 53 Profiles, achieving least-privilege access for each team can be challenging. Without fine-grained permissions, one team might inadvertently modify another team's resources, leading to governance gaps, security risks, and slower adoption of centralized DNS management. The new fine-grained AWS Identity and Access Management (AWS IAM) permissions for Amazon Route 53 Profiles solve this by letting you define access controls at the resource and action level. Each team gets only the permissions they need, which reduces risk and increases operational efficiency.
 
----
+In this post, you learn how to apply fine-grained IAM policies for Amazon Route 53 Profiles that scope permissions. The permissions are scoped by resource type, resource ARN, domain name, firewall rule group priority, and Amazon Virtual Private Cloud (Amazon VPC) ID. You walk through three real-world scenarios scoping permissions for application teams, security teams, and network engineers using IAM policies with the new route53profiles condition keys. By the end, you have reusable IAM policy templates that enforce least-privilege access for multi-account DNS management.
 
-## Architecture Guidance
+## Prerequisites
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+To follow along with this walkthrough, you need the following:
+- An AWS account with permissions to create and manage IAM policies
+- An intermediate-level familiarity with AWS IAM and Amazon Route 53
+- An existing Route 53 Profile (or the ability to create one)
+- Familiarity with AWS Resource Access Manager (AWS RAM) and multi-account architecture (helpful but not required)
+- (Optional) A multi-account setup with AWS RAM sharing configured for testing cross-account scenarios
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+## What are Amazon Route 53 Profiles?
 
-**The solution architecture is now as follows:**
+With Amazon Route 53 Profiles, you can define a standard Route 53 DNS configuration and apply it consistently across multiple VPCs and AWS accounts. A Profile encapsulates private hosted zone associations, Amazon Route 53 Resolver rules (forwarding and system rules), DNS Firewall rule groups, Resolver Query Logging configurations, interface VPC endpoint associations, and VPC configurations (including reverse DNS lookup configuration for Resolver Rules, DNS Firewall failure mode configuration, and DNSSEC validation configuration).
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+You define DNS settings once in a Profile, share it across accounts using AWS RAM, and associate it with VPCs. When you update the Profile, those changes propagate automatically to associated VPCs, which reduces per-VPC manual configuration and minimizes configuration drift.
 
----
+## The Challenge: Managing DNS Permissions at Scale
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+Previously, Route 53 Profiles supported IAM permissions only at the API-action level. This meant:
+- An application team that needed to associate with a private hosted zone might also associate or disassociate DNS Firewall rule groups.
+- A security team managing DNS Firewall policies might unintentionally modify Resolver rules.
+- A network engineer associating VPCs with a Profile had implicit permission to modify resource associations within that Profile.
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+New IAM condition keys in the `route53profiles` namespace implement fine-grained permissions:
+- `route53profiles:ResourceTypes`
+- `route53profiles:ResourceArns`
+- `route53profiles:HostedZoneDomains`
+- `route53profiles:ResolverRuleDomains`
+- `route53profiles:FirewallRuleGroupPriority`
+- `route53profiles:ResourceIds`
 
----
+## Architecture: Multi-account DNS Delegation
 
-## Technology Choices and Communication Scope
+Consider a typical enterprise architecture with a central networking account that owns the Route 53 Profile and shares it through AWS RAM:
+1. Application team account: Associate private hosted zones
+2. Security team account: Manage DNS Firewall rule groups
+3. Shared services team: Manage VPC associations
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+![Figure 1: Multi-account DNS delegation with Amazon Route 53 Profiles and fine-grained IAM permissions](https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2026/06/04/Route53Profiles-IAMPermissions.png)
 
----
+*Figure 1: Multi-account DNS delegation with Amazon Route 53 Profiles and fine-grained IAM permissions*
 
-## The Pub/Sub Hub
+## Scenario 1: Application team - Associate and disassociate private hosted zones only
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+Your application team needs to associate its private hosted zones with a shared Route 53 Profile.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowHostedZoneAssociationOnly",
+      "Effect": "Allow",
+      "Action": [
+        "route53profiles:AssociateResourceToProfile",
+        "route53profiles:DisassociateResourceFromProfile"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "route53profiles:ResourceTypes": "HostedZone"
+        }
+      }
+    },
+    {
+      "Sid": "AllowProfileReadAccess",
+      "Effect": "Allow",
+      "Action": [
+        "route53profiles:GetProfileResourceAssociation",
+        "route53profiles:ListProfileResourceAssociations",
+        "route53profiles:GetProfile",
+        "route53profiles:ListProfiles"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
 
----
+## Scenario 2: Security team - Manage DNS Firewall rule groups only
 
-## Core Microservice
+The security team attaches DNS Firewall rule groups to Profiles to enforce DNS filtering policies across the VPCs.
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+```json
+{
+   "Version": "2012-10-17",
+   "Statement": [
+       {
+           "Sid": "AllowFirewallRuleGroupAssociationOnly",
+           "Effect": "Allow",
+           "Action": [
+               "route53profiles:AssociateResourceToProfile",
+               "route53profiles:DisassociateResourceFromProfile",
+               "route53profiles:UpdateProfileResourceAssociation"
+           ],
+           "Resource": "*",
+           "Condition": {
+               "StringEquals": {
+                   "route53profiles:ResourceTypes": "FirewallRuleGroup"
+               }
+           }
+       },
+       {
+           "Sid": "AllowProfileReadAccess",
+           "Effect": "Allow",
+           "Action": [
+               "route53profiles:GetProfileResourceAssociation",
+               "route53profiles:ListProfileResourceAssociations",
+               "route53profiles:GetProfile",
+               "route53profiles:ListProfiles"
+           ],
+           "Resource": "*"
+       }
+   ]
+}
+```
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+## Scenario 3: Shared services team - Associate and disassociate VPCs only
 
----
+VPC associations use different API actions than resource associations: `AssociateProfile` and `DisassociateProfile`.
 
-## Front Door Microservice
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowVpcAssociationOnly",
+      "Effect": "Allow",
+      "Action": [
+        "route53profiles:AssociateProfile",
+        "route53profiles:DisassociateProfile"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "route53profiles:ResourceIds": "vpc-1111111111111"
+        }
+      }
+    },
+    {
+      "Sid": "AllowProfileReadAccess",
+      "Effect": "Allow",
+      "Action": [
+        "route53profiles:GetProfileAssociation",
+        "route53profiles:ListProfileAssociations",
+        "route53profiles:GetProfile",
+        "route53profiles:ListProfiles"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+## Conclusion
 
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
-
----
-
-## New Features in the Solution
-
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+In this post, you learned how to use the fine-grained AWS IAM condition keys for Amazon Route 53 Profiles to enforce least-privilege access for Profile resource and VPC associations. By using condition keys like `route53profiles:ResourceTypes`, `route53profiles:ResourceArns`, `route53profiles:FirewallRuleGroupPriority`, and `route53profiles:ResourceIds`, individually or combined in a single policy statement, you can delegate specific Profile operations to the right teams without granting unnecessary permissions.

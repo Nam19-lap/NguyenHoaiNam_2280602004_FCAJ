@@ -6,50 +6,27 @@ chapter: false
 pre: " <b> 1.12. </b> "
 ---
 
-### Mục tiêu tuần 12:
+### Mục tiêu tuần 12
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tiếp tục phát triển dự án Event Portal.
+* Cải thiện chức năng backend và các thao tác với database.
+* Hỗ trợ cải thiện frontend dựa trên quá trình tích hợp với backend.
+* Hoàn thiện tài liệu kiến trúc AWS theo hệ thống đã triển khai.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Công việc trong tuần
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | ---------- | --------------- | --------- |
+| 2 | **Cải thiện backend** <br> - Hoàn thành thêm các API endpoints. <br> - Cải thiện validation cho request và cách xử lý response. | 29/06/2026 | 29/06/2026 | Project Repository |
+| 3 | **Cải thiện database** <br> - Tối ưu các thao tác với Amazon DynamoDB. <br> - Kiểm tra tính nhất quán của dữ liệu và cập nhật các bản ghi database trong quá trình testing. | 30/06/2026 | 30/06/2026 | Amazon DynamoDB Documentation |
+| 4 | **Hỗ trợ tích hợp frontend** <br> - Hỗ trợ điều chỉnh các frontend components để làm việc với backend responses. <br> - Kiểm tra việc hiển thị dữ liệu và tương tác người dùng bằng dữ liệu API thực tế. | 01/07/2026 | 01/07/2026 | Internal Project |
+| 5 | **Hoàn thiện kiến trúc AWS** <br> - Hỗ trợ cập nhật sơ đồ kiến trúc AWS dựa trên solution đã triển khai. <br> - Kiểm tra để đảm bảo kiến trúc phản ánh đúng các thành phần project và luồng dữ liệu. | 02/07/2026 | 02/07/2026 | Project Documentation |
+| 6 | **Integration Testing** <br> - Kiểm thử toàn bộ workflow giữa frontend, backend và Amazon DynamoDB. <br> - Sửa các lỗi tích hợp nhỏ và chuẩn bị project cho giai đoạn deployment. | 03/07/2026 | 03/07/2026 | Internal Testing |
 
-### Kết quả đạt được tuần 12:
+### Kết quả đạt được tuần 12
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Cải thiện backend với chức năng API hoàn chỉnh hơn.
+* Nâng cao các thao tác với Amazon DynamoDB và xác minh tính nhất quán của dữ liệu.
+* Tích hợp thành công các thành phần frontend, backend và database.
+* Cập nhật tài liệu kiến trúc AWS để phù hợp với hệ thống đã triển khai.
+* Hoàn thành integration testing và chuẩn bị project cho giai đoạn deployment.

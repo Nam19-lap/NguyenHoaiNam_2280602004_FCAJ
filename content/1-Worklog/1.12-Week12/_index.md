@@ -6,49 +6,27 @@ chapter: false
 pre: " <b> 1.12. </b> "
 ---
 
+### Week 12 Objectives
 
-### Week 12 Objectives:
+* Continue developing the Event Portal project.
+* Improve backend functionality and database operations.
+* Support frontend improvements based on backend integration.
+* Refine the AWS architecture documentation according to the implemented system.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### Weekly Tasks
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference |
+| --- | --- | ---------- | --------------- | --------- |
+| 2 | **Backend Enhancement** <br> - Completed additional API endpoints. <br> - Improved request validation and response handling. | 29/06/2026 | 29/06/2026 | Project Repository |
+| 3 | **Database Improvement** <br> - Optimized Amazon DynamoDB operations. <br> - Verified data consistency and updated database records during testing. | 30/06/2026 | 30/06/2026 | Amazon DynamoDB Documentation |
+| 4 | **Frontend Integration Support** <br> - Assisted in adjusting frontend components to work with backend responses. <br> - Verified data display and user interactions using live API data. | 01/07/2026 | 01/07/2026 | Internal Project |
+| 5 | **AWS Architecture Refinement** <br> - Supported updates to the AWS architecture diagram based on the implemented solution. <br> - Verified that the architecture accurately reflected the project components and data flow. | 02/07/2026 | 02/07/2026 | Project Documentation |
+| 6 | **Integration Testing** <br> - Tested the complete workflow between frontend, backend, and Amazon DynamoDB. <br> - Fixed minor integration issues and prepared the project for the deployment stage. | 03/07/2026 | 03/07/2026 | Internal Testing |
 
+### Week 12 Outcomes
 
-### Week 12 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Improved the backend implementation with more complete API functionality.
+* Enhanced Amazon DynamoDB operations and verified data consistency.
+* Successfully integrated the frontend, backend, and database components.
+* Updated the AWS architecture documentation to match the implemented system.
+* Completed integration testing and prepared the project for deployment.

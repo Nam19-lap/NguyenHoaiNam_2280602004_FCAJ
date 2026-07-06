@@ -1,127 +1,79 @@
 ---
-title: "Blog 4"
-date: 2024-01-01
-weight: 1
+title: "Blog 4: Bức tranh toàn cảnh: Giám sát thống nhất cho AWS Parallel Computing Service"
+date: 2026-06-02
+weight: 4
 chapter: false
 pre: " <b> 3.4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+*bởi Ronald Hudson và Nate Haynes*
+*vào ngày 02 Tháng 6, 2026*
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+Điện toán hiệu năng cao (HPC) trên AWS đòi hỏi khả năng giám sát chính xác, giống như công nghệ đo từ xa mà các đội đua Công thức 1 sử dụng để mang lại kết quả tối ưu. Tương tự như việc các kỹ sư đường đua theo dõi hiệu suất xe, các quản trị viên AWS Parallel Computing Service (AWS PCS) phải giám sát các số liệu điện toán trong thời gian thực. Sự cảnh giác này rất quan trọng vì hiệu suất bị suy giảm trong các tính toán dài hạn — vốn thường kéo dài nhiều ngày hoặc nhiều tuần — có thể làm ảnh hưởng đến độ chính xác của nghiên cứu và làm tăng chi phí điện toán.
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+AWS PCS cho phép các tổ chức chạy khối lượng công việc điện toán song song khổng lồ trên đám mây. Dịch vụ này hỗ trợ hàng nghìn công việc (jobs) đồng thời và tự động mở rộng tài nguyên để đáp ứng nhu cầu, giúp loại bỏ các khoản đầu tư cơ sở hạ tầng trả trước. Khả năng này biến đổi các ứng dụng HPC trên khắp các ngành công nghiệp: các phòng thí nghiệm nghiên cứu giờ đây hoàn thành giải trình tự bộ gen trong vài giờ thay vì vài tuần, các công ty kỹ thuật chạy các mô phỏng phức tạp nhanh hơn 10 lần và các tổ chức tài chính xử lý các mô hình rủi ro theo thời gian thực. AWS PCS làm cho điện toán tiên tiến có thể tiếp cận được với các tổ chức bất kể quy mô, thúc đẩy đổi mới trong nghiên cứu khoa học, mô hình hóa tài chính và học máy (machine learning).
 
----
+Chúng tôi vui mừng thông báo về giải pháp giám sát (observability solution) mới cho khách hàng AWS PCS. Giải pháp này sẽ cung cấp:
+- Khả năng hiển thị chi tiết về môi trường HPC của bạn.
+- Cung cấp thông tin chuyên sâu, rõ ràng về phân bổ và mức tiêu thụ tài nguyên.
+- Theo dõi hiệu suất công việc theo thời gian thực.
+- Truy cập nhanh hơn vào dữ liệu chẩn đoán.
 
-## Hướng dẫn kiến trúc
+Với những khả năng này, người dùng có thể nhanh chóng xác định và giải quyết các sự cố tiềm ẩn trong môi trường HPC của họ, cải thiện khả năng quản lý và hiệu quả chung của hệ thống.
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+## Khả năng giám sát với Amazon Managed Grafana
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+Giải pháp này sử dụng Amazon Managed Grafana và Amazon Managed Service for Prometheus để thu thập và trình bày một tập hợp các bảng điều khiển (dashboards) cho người dùng. Giải pháp thu thập dữ liệu từ Amazon CloudWatch Logs, Slurm Exporter, EFA Exporter, Node Exporter và DCGM (Data Center GPU Manager) Exporter. Sơ đồ sau đây minh họa toàn bộ kiến trúc tổng thể.
 
-**Kiến trúc giải pháp bây giờ như sau:**
+![Hình 1 – Kiến trúc giải pháp giám sát.](https://d2908q01vomqb2.cloudfront.net/e6c3dd630428fd54834172b8fd2735fed9416da4/2026/05/28/PCS-Observability-Architecture.jpg)
+*Hình 1 – Kiến trúc giải pháp giám sát.*
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Giải pháp sử dụng AWS Distro for OpenTelemetry Collector để lấy dữ liệu từ các Exporter (Slurm, EFA, Node, DCGM). Dữ liệu này được gửi tới Amazon Managed Service for Prometheus, sau đó được hiển thị trong Amazon Managed Grafana. Amazon Managed Grafana cũng lấy dữ liệu từ Amazon CloudWatch Logs để cung cấp thông tin chi tiết về các phiên bản máy chủ.
 
----
+Bảng điều khiển ban đầu cung cấp cho người dùng một cái nhìn tổng quan về cụm (cluster) của họ với một số thông tin cơ bản (Hình 2). Bảng điều khiển này cung cấp thông tin về tổng số CPU khả dụng, đã phân bổ, nhàn rỗi hoặc trong các trạng thái Slurm job khác.
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+![Hình 2. Bảng điều khiển tóm tắt trạng thái cụm.](https://d2908q01vomqb2.cloudfront.net/e6c3dd630428fd54834172b8fd2735fed9416da4/2026/05/28/image003-1.png)
+*Hình 2. Bảng điều khiển tóm tắt trạng thái cụm.*
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Sử dụng Danh sách Bảng điều khiển ở góc trên bên phải, người dùng có thể điều hướng đến các bảng bổ sung cung cấp thông tin chi tiết về Jobs, Nodes, GPUs, Slurm, Amazon FSx for Lustre, Logs, Partitions và Elastic Fabric Adapter (EFA).
 
----
+Bảng điều khiển công việc (Jobs Dashboard - Hình 3) cung cấp thông tin chuyên sâu về các công việc đang chạy trong cụm. Người dùng có thể xem chi tiết về các phiên bản đang chạy cùng với số liệu về mức sử dụng CPU, bộ nhớ và đĩa.
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+![Hình 3. Bảng điều khiển tóm tắt trạng thái công việc và sử dụng tài nguyên cụm.](https://d2908q01vomqb2.cloudfront.net/e6c3dd630428fd54834172b8fd2735fed9416da4/2026/05/28/image004-2.jpg)
+*Hình 3. Bảng điều khiển tóm tắt trạng thái công việc và sử dụng tài nguyên cụm.*
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Bảng điều khiển NVIDIA GPU (Hình 4) cung cấp thông tin chuyên sâu về các NVIDIA GPU trong cụm. Người dùng có thể xem các chỉ số, chẳng hạn như tải GPU và bộ nhớ đã tiêu thụ.
 
----
+![Hình 4. Bảng điều khiển tóm tắt việc sử dụng NVIDIA GPU trong cụm.](https://d2908q01vomqb2.cloudfront.net/e6c3dd630428fd54834172b8fd2735fed9416da4/2026/05/28/image005.jpg)
+*Hình 4. Bảng điều khiển tóm tắt việc sử dụng NVIDIA GPU trong cụm.*
 
-## The pub/sub hub
+Bảng điều khiển Nhật ký (Logs Dashboard - Hình 5) cung cấp chế độ xem có thể tìm kiếm đối với các nhật ký khác nhau liên quan đến cụm. Nó báo cáo các sự kiện nhật ký và dòng thời gian khi các sự kiện này xảy ra.
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+![Hình 5. Bảng điều khiển tóm tắt các nhật ký khác nhau liên quan đến cụm.](https://d2908q01vomqb2.cloudfront.net/e6c3dd630428fd54834172b8fd2735fed9416da4/2026/05/28/image006-1.png)
+*Hình 5. Bảng điều khiển tóm tắt các nhật ký khác nhau liên quan đến cụm.*
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+Bảng điều khiển Phân vùng (Partitions Dashboard - Hình 6) cung cấp thông tin chi tiết về các phân vùng Slurm. Người dùng có thể chọn một phân vùng cụm thể và xem chi tiết, chẳng hạn như số máy được phân bổ, lịch sử công việc và công việc đang chờ.
 
----
+![Hình 6. Bảng điều khiển tóm tắt phân vùng Slurm.](https://d2908q01vomqb2.cloudfront.net/e6c3dd630428fd54834172b8fd2735fed9416da4/2026/05/28/image007-1.jpg)
+*Hình 6. Bảng điều khiển tóm tắt phân vùng Slurm.*
 
-## Core microservice
+Một trong những bảng điều khiển được yêu cầu nhiều nhất là EFA. Bảng này hiển thị những node nào đang chạy EFA và cung cấp thông tin hiệu suất cho người dùng để xác minh cấu hình và hiệu suất của họ. Bảng điều khiển EFA (Hình 7) cung cấp thông tin chi tiết về các số liệu EFA, bao gồm thông tin thiết bị, lưu lượng được xử lý, số lượt đọc/ghi RDMA và gói dữ liệu bị mất (dropped packets).
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+![Hình 7. Bảng điều khiển tóm tắt số liệu EFA.](https://d2908q01vomqb2.cloudfront.net/e6c3dd630428fd54834172b8fd2735fed9416da4/2026/05/28/image008-3.jpg)
+*Hình 7. Bảng điều khiển tóm tắt số liệu EFA.*
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+## Kết luận
 
----
+Giải pháp giám sát cho AWS Parallel Computing Service đại diện cho một bước tiến đáng kể trong khả năng giám sát HPC. Bằng cách kết hợp Amazon Managed Grafana với Amazon Managed Service for Prometheus, khuôn khổ giám sát này cung cấp khả năng quan sát theo thời gian thực mà các quản trị viên HPC cần để tối ưu hóa môi trường điện toán của họ.
 
-## Front door microservice
+Các lợi ích chính của giải pháp này bao gồm:
+- Giảm thời gian giải quyết các vấn đề hiệu suất thông qua giám sát tập trung.
+- Cải thiện mức độ sử dụng tài nguyên với khả năng hiển thị chi tiết vào hiệu suất tính toán, lưu trữ và mạng.
+- Nâng cao hiệu quả hoạt động thông qua việc thu thập dữ liệu tự động và trực quan hóa trực quan.
+- Tối ưu hóa chi phí bằng cách xác định các tài nguyên chưa được sử dụng đúng mức và các điểm nghẽn hiệu suất.
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+Khi khối lượng công việc HPC tiếp tục phát triển về độ phức tạp và quy mô, việc có khả năng quan sát toàn diện ngày càng trở nên quan trọng. Giải pháp giám sát này trao quyền cho các tổ chức để tối đa hóa các khoản đầu tư AWS Parallel Computing Service của họ trong khi vẫn duy trì các tiêu chuẩn hiệu suất mà nghiên cứu và tính toán hiện đại yêu cầu.
 
----
-
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
-
----
-
-## Tính năng mới trong giải pháp
-
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Để bắt đầu, bạn có thể tải xuống giải pháp giám sát cho môi trường AWS Parallel Computing Service của mình tại liên kết sau:
+https://github.com/aws-samples/aws-hpc-recipes/tree/main/recipes/pcs/observability_for_pcs
