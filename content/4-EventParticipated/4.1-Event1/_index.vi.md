@@ -6,9 +6,6 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
 # Bài thu hoạch “FCAJ Community Day 2026”
 
@@ -16,6 +13,7 @@ pre: " <b> 4.1. </b> "
 
 - **Tên sự kiện:** FCAJ Community Day 2026
 - **Thời gian:** Thứ Bảy, ngày 09/05/2026
+- **Địa điểm:** Bitexco Financial Tower, Thành phố Hồ Chí Minh
 - **Vai trò trong sự kiện:** Người tham dự
 
 ### Mục Đích Của Sự Kiện
@@ -25,16 +23,11 @@ pre: " <b> 4.1. </b> "
 - Cung cấp góc nhìn thực tế từ các chuyên gia về kỹ năng học tập, tư duy làm việc và tiêu chí tuyển dụng.
 - Giới thiệu phương pháp phát triển phần mềm hiện đại với AI Agent trong quy trình SDLC.
 
-### Danh Sách Diễn Giả
-
-- **Anh Huỳnh Hoàng Long**
-- **Anh Nguyễn Tuấn Thịnh**
-- **Anh Nguyễn Khang** - Solutions Architect, Cloud Kinetics
-- **Chị Thảo** - Software Developer tại VIB
-
-### Nội Dung Nổi Bật
+### Nội Dung Chính
 
 #### Phương pháp tạo động lực học tập bằng cơ chế Dopamine
+
+**Diễn giả:** Anh Huỳnh Hoàng Long
 
 Phần chia sẻ tập trung vào cách não bộ phản ứng với các phần thưởng tức thời từ mạng xã hội và trò chơi điện tử. Đây là một trong những nguyên nhân khiến nhiều người dễ mất tập trung và thiếu động lực học tập trong thời gian dài.
 
@@ -44,6 +37,8 @@ Phần chia sẻ tập trung vào cách não bộ phản ứng với các phần
 - Chia nhỏ mục tiêu học tập thành từng phần thay vì cố gắng hoàn thành quá nhiều nội dung trong một lần, giúp giảm áp lực và tăng khả năng duy trì lâu dài.
 
 #### Prompt Engineering và tối ưu hóa AI
+
+**Diễn giả:** Anh Nguyễn Tuấn Thịnh
 
 Diễn giả trình bày cách xây dựng prompt hiệu quả để nâng cao chất lượng phản hồi của các mô hình ngôn ngữ lớn (LLM). Một prompt đầy đủ nên bao gồm các thành phần như:
 
@@ -67,6 +62,8 @@ Diễn giả cũng trình diễn ứng dụng **Proptimizer**, một hệ thốn
 
 #### Góc nhìn của nhà tuyển dụng đối với sinh viên mới ra trường
 
+**Diễn giả:** Anh Nguyễn Khang - Solutions Architect, Cloud Kinetics
+
 Buổi chia sẻ nhấn mạnh rằng nền tảng kiến thức và tư duy giải quyết vấn đề luôn quan trọng hơn việc biết nhiều công nghệ. Khi có nền tảng vững chắc, việc học các framework hoặc dịch vụ mới sẽ trở nên dễ dàng hơn.
 
 Diễn giả cũng cho rằng AI chỉ là công cụ hỗ trợ. Nếu người sử dụng không hiểu bản chất vấn đề mà chỉ phụ thuộc hoàn toàn vào AI thì rất dễ bộc lộ điểm yếu trong quá trình phỏng vấn hoặc làm việc thực tế.
@@ -82,6 +79,8 @@ Các tiêu chí doanh nghiệp thường đánh giá đối với ứng viên Fr
 Bên cạnh đó, tính **Integrity (liêm chính)** được đánh giá là yếu tố quan trọng, thể hiện ở việc có trách nhiệm với công việc, hoàn thành nhiệm vụ đến cùng và luôn giữ tinh thần hợp tác trong nhóm.
 
 #### Phát triển phần mềm với AI Agent theo phương pháp BMX
+
+**Diễn giả:** Chị Thảo - Software Developer tại VIB
 
 Diễn giả phân tích những hạn chế khi sử dụng AI theo cách hỏi đáp thông thường. Nếu không có quy trình rõ ràng, AI dễ mất ngữ cảnh, sinh ra mã nguồn khó bảo trì và chất lượng dự án không được đảm bảo.
 
@@ -156,6 +155,6 @@ Tham gia **“FCAJ Community Day 2026”** là một trải nghiệm rất bổ 
 
 #### Một số hình ảnh khi tham gia sự kiện
 
-![Ảnh tham gia FCAJ Community Day 2026](/images/4-EventParticipated/4.1-Event1/fcaj-community-day-2026.jpg)
+![Ảnh tham gia FCAJ Community Day 2026](/images/4-EventParticipated/4.1-Event1/fcaj-community-day-2026-group.jpg)
 
 > Tổng thể, sự kiện không chỉ cung cấp kiến thức về AI và phát triển phần mềm mà còn giúp tôi có định hướng rõ hơn trong việc học tập, rèn luyện kỹ năng và chuẩn bị cho công việc trong tương lai.

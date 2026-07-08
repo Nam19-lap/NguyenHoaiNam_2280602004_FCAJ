@@ -6,9 +6,6 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
 
 # Summary Report: “FCAJ Community Day 2026”
 
@@ -16,6 +13,7 @@ pre: " <b> 4.1. </b> "
 
 - **Event Name:** FCAJ Community Day 2026
 - **Date & Time:** Saturday, May 9, 2026
+- **Location:** Bitexco Financial Tower, Ho Chi Minh City
 - **Role:** Attendee
 
 ### Event Objectives
@@ -25,16 +23,11 @@ pre: " <b> 4.1. </b> "
 - Provide real-world perspectives from experts on learning skills, work mindset, and employer evaluation criteria.
 - Introduce a modern software development approach using AI Agents in the SDLC process.
 
-### Speakers
-
-- **Huynh Hoang Long**
-- **Nguyen Tuan Thinh**
-- **Nguyen Khang** - Solutions Architect, Cloud Kinetics
-- **Thao** - Software Developer at VIB
-
-### Key Highlights
+### Key Topics
 
 #### Building study motivation through the Dopamine mechanism
+
+**Speaker:** Anh Huynh Hoang Long
 
 This session focused on how the brain reacts to instant rewards from social media and video games. This is one of the reasons many people easily lose focus and struggle to maintain long-term study motivation.
 
@@ -44,6 +37,8 @@ This session focused on how the brain reacts to instant rewards from social medi
 - Break learning goals into smaller parts instead of trying to complete too much at once, reducing pressure and increasing long-term consistency.
 
 #### Prompt Engineering and AI optimization
+
+**Speaker:** Anh Nguyen Tuan Thinh
 
 The speaker explained how to build effective prompts to improve the response quality of large language models (LLMs). A complete prompt should include:
 
@@ -67,6 +62,8 @@ The speaker demonstrated **Proptimizer**, a prompt optimization system built wit
 
 #### Employer perspectives on fresh graduates
 
+**Speaker:** Anh Nguyen Khang - Solutions Architect, Cloud Kinetics
+
 The sharing session emphasized that fundamental knowledge and problem-solving mindset are more important than knowing many technologies. With a solid foundation, learning new frameworks or services becomes easier.
 
 The speaker also pointed out that AI is only a supporting tool. If users do not understand the nature of the problem and rely entirely on AI, their weaknesses can become visible during interviews or real work.
@@ -83,6 +80,8 @@ In addition, **Integrity** was highlighted as an important factor, shown through
 
 #### Software development with AI Agents using the BMX method
 
+**Speaker:** Chi Thao - Software Developer at VIB
+
 The speaker analyzed the limitations of using AI through ordinary question-and-answer interactions. Without a clear process, AI can easily lose context, generate hard-to-maintain source code, and reduce project quality.
 
 To address this, the **BMX** method applies a **Multi-Agent** model, where each AI takes a specific role in the software development process:
@@ -95,7 +94,7 @@ To address this, the **BMX** method applies a **Multi-Agent** model, where each 
 
 Dividing tasks by Agent reduces the amount of context each AI needs to process, improves accuracy, supports system scalability, and still allows human intervention when needed.
 
-### Key Takeaways
+### What I Learned
 
 #### Learning Skills And Self-Management
 
@@ -115,7 +114,7 @@ Dividing tasks by Agent reduces the amount of context each AI needs to process, 
 - Recognized the importance of fundamental thinking, problem-solving ability, work attitude, and integrity for a software engineer.
 - Learned more about modern software development workflows using AI Agent systems to automate multiple stages of the Software Development Life Cycle (SDLC).
 
-### Applying to Work
+### Application
 
 - **Build learning habits:** Break study plans into smaller goals, maintain daily progress, and create suitable rewards after each milestone.
 - **Optimize AI usage:** Write prompts with clear role, instruction, context, input, output format, examples, and constraints.
@@ -156,6 +155,6 @@ Attending **“FCAJ Community Day 2026”** was a valuable experience that gave 
 
 #### Some event photos
 
-![Photo from FCAJ Community Day 2026](/images/4-EventParticipated/4.1-Event1/fcaj-community-day-2026.jpg)
+![Photo from FCAJ Community Day 2026](/images/4-EventParticipated/4.1-Event1/fcaj-community-day-2026-group.jpg)
 
 > Overall, the event not only provided knowledge about AI and software development but also helped me gain clearer direction in learning, skill development, and career preparation.

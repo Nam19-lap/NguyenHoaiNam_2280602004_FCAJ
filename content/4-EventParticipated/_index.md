@@ -6,29 +6,16 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** for your report, including this warning.
-{{% /notice %}}
+> In this section, I list and describe the events I participated in during the learning program. Each event includes the event name, date and time, location, role, main activities, and the value gained from participating.
 
-> In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
-> 
-> Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
-> * Event name
-> * Date and time
-> * Location (if applicable)
-> * Your role in the event (attendee, event support, speaker, etc.)
-> * A brief description of the event’s content and main activities
-> * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
-> * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
-
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+During my internship, I participated in six events. Each event was a memorable experience that provided new, interesting, and useful knowledge, along with opportunities to connect with the AWS community.
 
 ### [Event 1](4.1-Event1/)  
 &emsp;**Event Name:** FCAJ Community Day 2026  
 
 &emsp;**Date & Time:** Saturday, May 9, 2026  
 
-&emsp;**Location:** To be updated  
+&emsp;**Location:** Bitexco Financial Tower, Ho Chi Minh City  
 
 &emsp;**Role:** Attendee  
 
@@ -38,6 +25,50 @@ During my internship, I participated in two events. Each one was a memorable exp
 &emsp;**Event Name:** FCAJ Community Day 2026  
 
 &emsp;**Date & Time:** Saturday, May 23, 2026, 9:00 AM - 12:00 PM  
+
+&emsp;**Location:** Bitexco Financial Tower, Ho Chi Minh City  
+
+&emsp;**Role:** Attendee  
+
+---
+
+### [Event 3](4.3-Event3/)  
+&emsp;**Event Name:** FCAJ Community Day 2026  
+
+&emsp;**Date & Time:** Saturday, June 6, 2026  
+
+&emsp;**Location:** Bitexco Financial Tower, Ho Chi Minh City  
+
+&emsp;**Role:** Attendee  
+
+---
+
+### [Event 4](4.4-Event4/)  
+&emsp;**Event Name:** FCAJ Community Day 2026  
+
+&emsp;**Date & Time:** Saturday, June 13, 2026  
+
+&emsp;**Location:** Bitexco Financial Tower, Ho Chi Minh City  
+
+&emsp;**Role:** Attendee  
+
+---
+
+### [Event 5](4.5-Event5/)  
+&emsp;**Event Name:** FCAJ Community Day 2026  
+
+&emsp;**Date & Time:** Saturday, June 27, 2026  
+
+&emsp;**Location:** Bitexco Financial Tower, Ho Chi Minh City  
+
+&emsp;**Role:** Attendee  
+
+---
+
+### [Event 6](4.6-Event6/)  
+&emsp;**Event Name:** Swinburne Cloud Mastery 2026  
+
+&emsp;**Date & Time:** Saturday, July 4, 2026  
 
 &emsp;**Location:** Bitexco Financial Tower, Ho Chi Minh City  
 

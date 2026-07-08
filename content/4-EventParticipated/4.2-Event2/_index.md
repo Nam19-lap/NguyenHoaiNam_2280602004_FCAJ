@@ -1,14 +1,11 @@
 ---
 title: "Event 2"
 date: 2026-05-23
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
 
 # Summary Report: “FCAJ Community Day 2026”
 
@@ -26,18 +23,11 @@ pre: " <b> 4.2. </b> "
 - Help attendees understand how AI, Amazon CloudFront, enterprise AI systems, and real-world product development can be applied in practice.
 - Create opportunities for students and technology learners to gain career-oriented knowledge from real industry experiences.
 
-### Speakers
-
-- **Tinh Truong**
-- **Anh Pham**
-- **Thinh Nguyen**
-- **Team VIB**
-- **Duc Dao**
-- **Vy Lam**
-
-### Key Highlights
+### Key Topics
 
 #### Context Is Everything: Making AI Actually Work for You
+
+**Speaker:** Anh Tinh Truong
 
 The opening session emphasized that the quality of AI-generated responses depends heavily on the context provided by users. Instead of relying only on prompts, modern AI systems increasingly combine memory and contextual information to deliver more accurate and personalized results.
 
@@ -49,6 +39,8 @@ Key ideas from this session included:
 - Receiving career advice on how students can begin building AI-powered applications.
 
 #### Friendly AI Assistant with Amazon Quick
+
+**Speaker:** Anh Pham
 
 This session introduced Amazon Quick, a platform that enables organizations to create AI-powered assistants capable of analyzing data and supporting business decision-making.
 
@@ -62,6 +54,8 @@ Main features presented included:
 The presentation demonstrated how generative AI can simplify data analysis and improve productivity across organizations.
 
 #### From Edge to Origin: CloudFront as Your Foundation
+
+**Speaker:** Anh Thinh Nguyen
 
 The speaker explained how Amazon CloudFront improves application performance by delivering content through AWS edge locations around the world.
 
@@ -77,7 +71,9 @@ This session highlighted CloudFront as an essential service for building scalabl
 
 #### 36 Hours with LotusHacks - Building UTMorpho from Idea to Reality
 
-Team VIB shared their experience participating in the LotusHacks hackathon and developing the **UTMorpho** project within only 36 hours.
+**Speakers:** Chi Thao Nguyen, Chi Mai Nguyen, and Chi Uyen Le
+
+Chi Thao Nguyen, Chi Mai Nguyen, and Chi Uyen Le from Team VIB shared their experience participating in the LotusHacks hackathon and developing the **UTMorpho** project within only 36 hours.
 
 The presentation covered:
 
@@ -90,6 +86,8 @@ The presentation covered:
 The session emphasized teamwork, time management, and iterative development under real project constraints.
 
 #### Non-Determinism of Deterministic LLM Settings
+
+**Speaker:** Anh Duc Dao
 
 This technical presentation focused on how Large Language Models generate responses and explained why setting the temperature parameter to zero does not always guarantee identical outputs.
 
@@ -104,6 +102,8 @@ Participants gained a better understanding of the limitations of LLM inference a
 
 #### Enterprise-Grade Multi-Agent System: The Case of Startup Credit Scoring
 
+**Speaker:** Chi Vy Lam
+
 The final session introduced the architecture of enterprise-level Multi-Agent AI systems through a startup credit scoring application.
 
 Main topics included:
@@ -116,7 +116,7 @@ Main topics included:
 
 The presentation demonstrated how multiple AI agents can collaborate to solve complex business problems more effectively than a single AI model.
 
-### Key Takeaways
+### What I Learned
 
 #### AI Usage And Context Engineering
 
@@ -136,7 +136,7 @@ The presentation demonstrated how multiple AI agents can collaborate to solve co
 - LLM outputs may vary even under deterministic configurations, so production AI systems need consistency control strategies.
 - Enterprise Multi-Agent systems can support complex decision-making scenarios, such as startup credit scoring, when designed with guardrails and governance.
 
-### Applying to Work
+### Application
 
 - Use better context when working with AI tools to improve the quality of generated answers and technical support.
 - Apply CloudFront knowledge when building or deploying web applications that require fast and secure content delivery.
@@ -168,6 +168,6 @@ Attending **“FCAJ Community Day 2026”** was a valuable experience because it
 
 #### Some event photos
 
-*Add your event photos here*
+![Photo from FCAJ Community Day 2026](/images/4-EventParticipated/4.2-Event2/fcaj-community-day-2026-event2.jpg)
 
 > Overall, the event helped me expand my understanding of AI, AWS cloud services, and modern software development while motivating me to keep improving my technical and teamwork skills.

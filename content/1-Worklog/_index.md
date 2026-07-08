@@ -7,29 +7,29 @@ pre: " <b> 1. </b> "
 ---
 
 
-**On this page**, you will need to introduce your worklog. **How** did you complete it? How many weeks did you take to complete the program? **What** did you do in those weeks?
+**On this page**, I summarize my weekly worklog during the AWS First Cloud Journey internship program. The worklog records what I studied, the hands-on labs I completed, and how the knowledge was applied throughout the program.
 
-Typically, and as a standard, a worklog is carried out over about 3 months (throughout the internship period) with weekly contents as follows:
+The program was completed over 12 weeks, covering AWS fundamentals, security, storage, databases, analytics, developer tools, and the final AWS Serverless Event Portal project. The weekly contents are summarized as follows:
 
 **Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
 
-**Week 2:** [Doing task A...](1.2-week2/)
+**Week 2:** [Practicing IAM, MFA, AWS Budgets, and AWS Support basics](1.2-week2/)
 
-**Week 3:** [Doing task B...](1.3-week3/)
+**Week 3:** [Learning compute and storage fundamentals with EC2, Backup, Storage Gateway, S3, and CloudFront](1.3-week3/)
 
-**Week 4:** [Doing task C...](1.4-week4/)
+**Week 4:** [Exploring AWS storage services, AWS Backup, S3 storage classes, and lifecycle management](1.4-week4/)
 
-**Week 5:** [Doing task D...](1.5-week5/)
+**Week 5:** [Practicing advanced Amazon S3, VM Import/Export, and AWS Storage Gateway](1.5-week5/)
 
-**Week 6:** [Doing task E...](1.6-week6/)
+**Week 6:** [Studying AWS security fundamentals, IAM Roles, Security Hub, Lambda automation, and resource management](1.6-week6/)
 
-**Week 7:** [Doing task G...](1.7-week7/)
+**Week 7:** [Practicing IAM quotas, AWS KMS encryption, CloudTrail logging, and Athena auditing](1.7-week7/)
 
-**Week 8:** [Doing task H...](1.8-week8/)
+**Week 8:** [Learning advanced IAM policies, AWS Secrets Manager, and AWS database service fundamentals](1.8-week8/)
 
-**Week 9:** [Doing task I...](1.9-week9/)
+**Week 9:** [Deploying Amazon RDS and practicing database migration with AWS DMS and Amazon Aurora](1.9-week9/)
 
-**Week 10:** [Doing task L...](1.10-week10/)
+**Week 10:** [Exploring AWS analytics services, Amazon DynamoDB, CloudShell, and Cloud9](1.10-week10/)
 
 **Week 11:** [Developing the AWS Serverless Event Portal backend](1.11-week11/)
 
