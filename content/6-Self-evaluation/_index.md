@@ -6,34 +6,35 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+During my participation in the **First Cloud Journey (FCAJ) Program** at **Amazon Web Services (AWS) Vietnam** from **17/04/2026 to 10/07/2026**, I had the opportunity to gain practical experience through AWS hands-on labs, Community Day events, workshops, and the development of the **AWS Serverless Event Portal** project. This program allowed me to apply the knowledge acquired at university to real-world cloud computing scenarios while strengthening my technical and teamwork skills.
 
-During my internship at **[Company/Organization Name]** from **[start date]** to **[end date]**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
-I participated in **[briefly describe the main project or task]**, through which I improved my skills in **[list skills: programming, analysis, reporting, communication, etc.]**.  
+Throughout the project, my primary responsibilities included developing the backend, designing and implementing the Amazon DynamoDB database, supporting improvements to the AWS architecture, and assisting with several frontend integration and bug-fixing tasks to ensure the application functioned correctly. In addition, I completed multiple AWS labs and actively participated in Community Day events to expand my understanding of Cloud Computing, Artificial Intelligence, and DevOps.
 
-In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
+During the program, I significantly improved my ability to learn independently, study technical documentation, solve technical problems, collaborate with teammates, and work with AWS services in practical environments. More importantly, I gained a better understanding of the complete software development lifecycle for a serverless application and experienced how collaborative teamwork contributes to the successful completion of a real-world project.
 
-To objectively reflect on my internship period, I would like to evaluate myself based on the following criteria:
+To objectively evaluate my performance throughout the program, I assessed myself based on the following criteria:
 
-| No. | Criteria                            | Description                                                                                      | Good | Fair | Average |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | ---- | ---- | ------- |
-| 1   | **Professional knowledge & skills** | Understanding of the field, applying knowledge in practice, proficiency with tools, work quality | ✅    | ☐    | ☐       |
-| 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ☐    | ✅    | ☐       |
-| 3   | **Proactiveness**                   | Taking initiative, seeking out tasks without waiting for instructions                            | ✅    | ☐    | ☐       |
-| 4   | **Sense of responsibility**         | Completing tasks on time and ensuring quality                                                    | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ☐    | ✅       |
-| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ☐    | ✅    | ☐       |
-| 7   | **Communication**                   | Presenting ideas and reporting work clearly                                                      | ☐    | ✅    | ☐       |
-| 8   | **Teamwork**                        | Working effectively with colleagues and participating in teams                                   | ✅    | ☐    | ☐       |
-| 9   | **Professional conduct**            | Respecting colleagues, partners, and the work environment                                        | ✅    | ☐    | ☐       |
-| 10  | **Problem-solving skills**          | Identifying problems, proposing solutions, and showing creativity                                | ☐    | ✅    | ☐       |
-| 11  | **Contribution to project/team**    | Work effectiveness, innovative ideas, recognition from the team                                  | ✅    | ☐    | ☐       |
-| 12  | **Overall**                         | General evaluation of the entire internship period                                               | ✅    | ☐    | ☐       |
+| No. | Evaluation Criteria | Good | Fairly Good | Average |
+| --- | --- | --- | --- | --- |
+| 1 | Professional knowledge and technical skills | ✅ | ☐ | ☐ |
+| 2 | Learning ability | ☐ | ✅ | ☐ |
+| 3 | Proactiveness | ✅ | ☐ | ☐ |
+| 4 | Responsibility | ✅ | ☐ | ☐ |
+| 5 | Discipline (working hours, regulations, and procedures) | ☐ | ☐ | ✅ |
+| 6 | Willingness to improve | ☐ | ✅ | ☐ |
+| 7 | Communication skills | ☐ | ✅ | ☐ |
+| 8 | Teamwork | ✅ | ☐ | ☐ |
+| 9 | Professional attitude | ✅ | ☐ | ☐ |
+| 10 | Problem-solving ability | ☐ | ✅ | ☐ |
+| 11 | Contribution to the project | ✅ | ☐ | ☐ |
+| 12 | Overall performance | ✅ | ☐ | ☐ |
 
-### Needs Improvement
+### Areas for Improvement
 
-* Strengthen discipline and strictly comply with the rules and regulations of the company or any organization  
-* Improve problem-solving thinking  
-* Enhance communication skills in both daily interactions and professional contexts, including handling situations effectively
+Although I gained valuable knowledge and practical experience throughout the FCAJ program, I believe there are still several areas where I can continue improving:
+
+- Improve my discipline in time management and consistently follow project procedures and schedules.
+- Continue developing stronger analytical and problem-solving skills for handling more complex technical challenges.
+- Enhance my communication skills, especially when presenting ideas and discussing technical solutions with teammates.
+- Spend more time reading English technical documentation and keeping up with emerging cloud technologies.
+- Participate in more real-world projects to gain additional practical experience and further strengthen my professional skills.

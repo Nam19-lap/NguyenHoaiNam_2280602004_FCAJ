@@ -6,42 +6,70 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud Journey program. This will help the FCJ team improve any shortcomings based on the following aspects:
+# Feedback & Suggestions
 
 ### Overall Evaluation
 
-**1. Working Environment**  
-The working environment is very friendly and open. FCJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
+#### 1. Working Environment
 
-**2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
+Throughout the FCAJ program, I felt that the learning and working environment was dynamic, open, and always encouraged participants to learn proactively. Besides the training content, the program also created many opportunities for students to communicate with mentors, speakers, and other members of the AWS community.
 
-**3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
+This helped me stay motivated during the learning process and feel more confident when asking questions or discussing difficulties I encountered.
 
-**4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
+#### 2. Mentor and Admin Support
 
-**5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
+The mentors and admin team provided enthusiastic support throughout the program. Whenever I faced difficulties while studying or working on the project, I received helpful suggestions and direction instead of direct answers only. This helped me improve my ability to research, think independently, and solve problems more effectively.
 
-**6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
+In addition, announcements, documents, and schedules were updated quite clearly, which made it easier for me to follow the program progress.
 
----
+#### 3. Relevance to My Major
+
+The program content was highly relevant to my major in Information Technology. The knowledge about AWS, Cloud Computing, and Serverless expanded what I had learned at university and gave me the opportunity to apply it in a real team project.
+
+In particular, participating in backend development, database design, and AWS architecture improvement helped me better understand the process of building a cloud-based system in a practical environment.
+
+#### 4. Learning and Skill Development
+
+After the program, I not only learned more about AWS services but also improved other important skills such as teamwork, reading technical documentation, managing work progress, and solving problems during project development.
+
+Through Community Day events and workshops, I also had the chance to approach many new topics such as AI, DevOps, System Design, and Cloud Architecture. These topics helped broaden my perspective on future career directions.
+
+#### 5. Culture and Teamwork
+
+One thing that impressed me was the supportive spirit among members of the program. Everyone was willing to share experience, exchange knowledge, and support each other when difficulties appeared.
+
+During the team project, the members also coordinated well to complete tasks according to the planned timeline. This helped me understand more clearly the importance of communication and collaboration in a technology project.
+
+#### 6. Program Experience
+
+Overall, I think the FCAJ program brought many valuable experiences to students, especially the opportunity to learn through labs, real projects, and Community Day sessions with industry professionals.
+
+The program also helped me better understand the real working environment and gave me clearer direction to continue developing in the field of Cloud Computing.
 
 ### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
 
----
+#### What satisfied you the most during the program?
+
+What satisfied me most was the combination of theory and hands-on practice. Directly using AWS services, joining a team project, and listening to sharing sessions from professionals helped me understand the knowledge more easily and see how it can be applied in real situations.
+
+#### What do you think could be improved?
+
+In my opinion, the program could include more in-depth sessions about real project deployment or experience sharing on common situations when building systems on AWS. This would give students more chances to approach practical business problems.
+
+#### Would you recommend this program to your friends? Why?
+
+Yes. I would recommend the FCAJ program to friends who are interested in Cloud Computing and AWS because it provides many opportunities to learn, practice, and connect with the technology community. It is a suitable environment for students to gain experience before entering the job market.
 
 ### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+
+I hope the program will continue organizing more Community Day events, in-depth workshops, and project-based practice activities so that students can learn more from engineers currently working in the industry.
+
+In addition, more activities connecting different teams or sharing sessions from alumni would help students gain more motivation and clearer career orientation.
+
+#### Would you like to continue participating in this program in the future?
+
+Yes. If I have the opportunity, I would like to continue participating in FCAJ programs or activities to update my knowledge about AWS, Cloud Computing, and AI, while gaining more experience through real projects and community activities.
+
+### Other Comments
+
+I would like to sincerely thank all mentors, the admin team, and the speakers who accompanied us throughout the program. The knowledge and experience I gained from the program will be an important foundation for my continued learning and career development in Cloud Computing.
