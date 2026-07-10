@@ -1,6 +1,6 @@
 ---
 title: "Week 2 Worklog"
-date: 2026-04-20
+date: 2026-04-27
 weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
@@ -16,9 +16,9 @@ pre: " <b> 1.2. </b> "
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Practice creating an account and configuring MFA security <br> - Create Admin Group and Admin User                                                                                                   | 04/20/2026 | 04/20/2026      | [Lab 01-01: Create account](https://www.youtube.com/watch?v=waR5S_lljrk) <br> [Lab 01-02: Setup MFA](https://www.youtube.com/watch?v=1dG5xutGbr4) <br> [Lab 01-03: Admin Setup](https://www.youtube.com/watch?v=b9pK1oG534Q) |
-| 3-5 | - Practice cost management with AWS Budgets (Cost, Usage, RI, Savings Plans Budgets) <br> - Delete budgets after practice                                                                              | 04/21/2026 | 04/23/2026      | [Lab 07-01: Budget Template](https://www.youtube.com/watch?v=_a09nLVw6Sg) <br> [Lab 07-02: Cost Budget](https://www.youtube.com/watch?v=sd_KCcZOou0) <br> [Lab 07-06: Clean Up](https://www.youtube.com/watch?v=KeZi7eOLpOA) |
-| 6-7 | - Research and practice managing AWS Support Packages <br> - Submit a sample support request                                                                                                            | 04/24/2026 | 04/25/2026      | [Lab 09-01: Support Packages](https://www.youtube.com/watch?v=R0uW6z5K5o0) <br> [Lab 09-04: Manage requests](https://www.youtube.com/watch?v=R0uW6z5K5o0) |
+| 2   | - Practice creating an account and configuring MFA security <br> - Create Admin Group and Admin User                                                                                                   | 04/27/2026 | 04/27/2026      | [Lab 01-01: Create account](https://www.youtube.com/watch?v=waR5S_lljrk) <br> [Lab 01-02: Setup MFA](https://www.youtube.com/watch?v=1dG5xutGbr4) <br> [Lab 01-03: Admin Setup](https://www.youtube.com/watch?v=b9pK1oG534Q) |
+| 3-5 | - Practice cost management with AWS Budgets (Cost, Usage, RI, Savings Plans Budgets) <br> - Delete budgets after practice                                                                              | 04/28/2026 | 04/30/2026      | [Lab 07-01: Budget Template](https://www.youtube.com/watch?v=_a09nLVw6Sg) <br> [Lab 07-02: Cost Budget](https://www.youtube.com/watch?v=sd_KCcZOou0) <br> [Lab 07-06: Clean Up](https://www.youtube.com/watch?v=KeZi7eOLpOA) |
+| 6-7 | - Research and practice managing AWS Support Packages <br> - Submit a sample support request                                                                                                            | 05/01/2026 | 05/02/2026      | [Lab 09-01: Support Packages](https://www.youtube.com/watch?v=R0uW6z5K5o0) <br> [Lab 09-04: Manage requests](https://www.youtube.com/watch?v=R0uW6z5K5o0) |
 
 
 ### Week 2 Achievements:

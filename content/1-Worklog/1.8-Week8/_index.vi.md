@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 8"
-date: 2026-06-01
+date: 2026-06-08
 weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
@@ -18,11 +18,11 @@ pre: " <b> 1.8. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --- | --- | --- | --- |
-| 2 | **Lab 44: Advanced IAM Policies** <br> - Tìm hiểu sự khác nhau giữa Inline Policies và Managed Policies. <br> - Thực hành ủy quyền và tìm hiểu cách AWS đánh giá IAM policies. | 01/06/2026 | 01/06/2026 | [Lab 44-2.2](https://www.youtube.com/watch?v=BivRALFsoxQ) <br> [Lab 44-2.5](https://www.youtube.com/watch?v=7_1A2Jxl7_c) <br> [Lab 44-3.1](https://www.youtube.com/watch?v=-iGkIHh9mXo) <br> [Lab 44-3.2](https://www.youtube.com/watch?v=aq-YDewEyhA) |
-| 3 | **Lab 48: AWS Secrets Manager & Secure Access** <br> - So sánh việc sử dụng IAM Roles và Access Keys. <br> - Lưu trữ và quản lý credentials nhạy cảm bằng AWS Secrets Manager. <br> - Ôn lại các best practices xác thực an toàn cho ứng dụng AWS. | 02/06/2026 | 02/06/2026 | [Lab 48-2.1](https://www.youtube.com/watch?v=vkBJ0Cxc6Nw) <br> [Lab 48-2.2](https://www.youtube.com/watch?v=XXjEpIRWJBk) <br> [Lab 48-3.1](https://www.youtube.com/watch?v=pJWANviu8QM) <br> [Lab 48-3.4](https://www.youtube.com/watch?v=Yr-09VhrNHU) |
-| 4 | **Lý thuyết Module 6: AWS Database Services** <br> - Tìm hiểu kiến thức nền tảng về database và các giải pháp managed database trên AWS. <br> - Học kiến trúc và use case của Amazon RDS, Amazon Aurora, Amazon Redshift và Amazon ElastiCache. | 03/06/2026 | 03/06/2026 | [Module 06-01](https://www.youtube.com/watch?v=OOD2RwWuLRw) <br> [Module 06-02](https://www.youtube.com/watch?v=qbrobQZrokY) <br> [Module 06-03](https://www.youtube.com/watch?v=UvdiRW34aNI) |
-| 5 | **Ôn tập kiến trúc Database** <br> - So sánh relational và non-relational database services trên AWS. <br> - Ôn lại high availability, automated backups, Multi-AZ deployments và read replicas. | 04/06/2026 | 04/06/2026 | Ôn tập Module 06 |
-| 6 | **Tổng kết tuần** <br> - Ôn lại các khái niệm bảo mật và database đã học trong tuần. <br> - Sắp xếp ghi chú học tập và chuẩn bị môi trường AWS cho các bài lab triển khai database. | 05/06/2026 | 05/06/2026 | |
+| 2 | **Lab 44: Advanced IAM Policies** <br> - Tìm hiểu sự khác nhau giữa Inline Policies và Managed Policies. <br> - Thực hành ủy quyền và tìm hiểu cách AWS đánh giá IAM policies. | 08/06/2026 | 08/06/2026 | [Lab 44-2.2](https://www.youtube.com/watch?v=BivRALFsoxQ) <br> [Lab 44-2.5](https://www.youtube.com/watch?v=7_1A2Jxl7_c) <br> [Lab 44-3.1](https://www.youtube.com/watch?v=-iGkIHh9mXo) <br> [Lab 44-3.2](https://www.youtube.com/watch?v=aq-YDewEyhA) |
+| 3 | **Lab 48: AWS Secrets Manager & Secure Access** <br> - So sánh việc sử dụng IAM Roles và Access Keys. <br> - Lưu trữ và quản lý credentials nhạy cảm bằng AWS Secrets Manager. <br> - Ôn lại các best practices xác thực an toàn cho ứng dụng AWS. | 09/06/2026 | 09/06/2026 | [Lab 48-2.1](https://www.youtube.com/watch?v=vkBJ0Cxc6Nw) <br> [Lab 48-2.2](https://www.youtube.com/watch?v=XXjEpIRWJBk) <br> [Lab 48-3.1](https://www.youtube.com/watch?v=pJWANviu8QM) <br> [Lab 48-3.4](https://www.youtube.com/watch?v=Yr-09VhrNHU) |
+| 4 | **Lý thuyết Module 6: AWS Database Services** <br> - Tìm hiểu kiến thức nền tảng về database và các giải pháp managed database trên AWS. <br> - Học kiến trúc và use case của Amazon RDS, Amazon Aurora, Amazon Redshift và Amazon ElastiCache. | 10/06/2026 | 10/06/2026 | [Module 06-01](https://www.youtube.com/watch?v=OOD2RwWuLRw) <br> [Module 06-02](https://www.youtube.com/watch?v=qbrobQZrokY) <br> [Module 06-03](https://www.youtube.com/watch?v=UvdiRW34aNI) |
+| 5 | **Ôn tập kiến trúc Database** <br> - So sánh relational và non-relational database services trên AWS. <br> - Ôn lại high availability, automated backups, Multi-AZ deployments và read replicas. | 11/06/2026 | 11/06/2026 | Ôn tập Module 06 |
+| 6 | **Tổng kết tuần** <br> - Ôn lại các khái niệm bảo mật và database đã học trong tuần. <br> - Sắp xếp ghi chú học tập và chuẩn bị môi trường AWS cho các bài lab triển khai database. | 12/06/2026 | 12/06/2026 | |
 
 
 ### Kết quả đạt được tuần 8:

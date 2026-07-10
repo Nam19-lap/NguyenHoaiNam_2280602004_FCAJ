@@ -1,6 +1,6 @@
 ---
 title: "Week 6 Worklog"
-date: 2026-05-18
+date: 2026-05-25
 weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
@@ -17,11 +17,11 @@ pre: " <b> 1.6. </b> "
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 2 | **Module 5 Theory: AWS Security Fundamentals** <br> - Studied the Shared Responsibility Model, IAM, Amazon Cognito, AWS Organizations, Identity Center, AWS KMS, and Security Hub. | 18/05/2026 | 18/05/2026 | Module 05 Learning Materials |
-| 3 | **Lab 18: AWS Security Hub** <br> - Enabled AWS Security Hub and explored security compliance standards for AWS resources. | 19/05/2026 | 19/05/2026 | Lab 18 |
-| 4 | **Lab 22: AWS Lambda Automation** <br> - Created a Lambda function to automate EC2 instance management. <br> - Explored EventBridge integration and automated cloud operations. | 20/05/2026 | 20/05/2026 | Lab 22 |
-| 5 | **Lab 27 & Lab 28** <br> - Practiced resource organization using Tags and Resource Groups. <br> - Configured IAM Policies, IAM Roles, and tested role switching between AWS Regions. | 21/05/2026 | 21/05/2026 | Lab 27 & Lab 28 |
-| 6 | **Weekly Review** <br> - Reviewed security concepts and cleaned up all lab resources created during the exercises. | 22/05/2026 | 22/05/2026 | |
+| 2 | **Module 5 Theory: AWS Security Fundamentals** <br> - Studied the Shared Responsibility Model, IAM, Amazon Cognito, AWS Organizations, Identity Center, AWS KMS, and Security Hub. | 25/05/2026 | 25/05/2026 | Module 05 Learning Materials |
+| 3 | **Lab 18: AWS Security Hub** <br> - Enabled AWS Security Hub and explored security compliance standards for AWS resources. | 26/05/2026 | 26/05/2026 | Lab 18 |
+| 4 | **Lab 22: AWS Lambda Automation** <br> - Created a Lambda function to automate EC2 instance management. <br> - Explored EventBridge integration and automated cloud operations. | 27/05/2026 | 27/05/2026 | Lab 22 |
+| 5 | **Lab 27 & Lab 28** <br> - Practiced resource organization using Tags and Resource Groups. <br> - Configured IAM Policies, IAM Roles, and tested role switching between AWS Regions. | 28/05/2026 | 28/05/2026 | Lab 27 & Lab 28 |
+| 6 | **Weekly Review** <br> - Reviewed security concepts and cleaned up all lab resources created during the exercises. | 29/05/2026 | 29/05/2026 | |
 
 
 ### Week 6 Achievements:

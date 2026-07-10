@@ -1,6 +1,6 @@
 ---
 title: "Week 12 Worklog"
-date: 2026-06-29
+date: 2026-07-06
 weight: 12
 chapter: false
 pre: " <b> 1.12. </b> "
@@ -17,11 +17,11 @@ pre: " <b> 1.12. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference |
 | --- | --- | ---------- | --------------- | --------- |
-| 2 | **Backend Enhancement** <br> - Completed additional API endpoints. <br> - Improved request validation and response handling. | 29/06/2026 | 29/06/2026 | Project Repository |
-| 3 | **Database Improvement** <br> - Optimized Amazon DynamoDB operations. <br> - Verified data consistency and updated database records during testing. | 30/06/2026 | 30/06/2026 | Amazon DynamoDB Documentation |
-| 4 | **Frontend Integration Support** <br> - Assisted in adjusting frontend components to work with backend responses. <br> - Verified data display and user interactions using live API data. | 01/07/2026 | 01/07/2026 | Internal Project |
-| 5 | **AWS Architecture Refinement** <br> - Supported updates to the AWS architecture diagram based on the implemented solution. <br> - Verified that the architecture accurately reflected the project components and data flow. | 02/07/2026 | 02/07/2026 | Project Documentation |
-| 6 | **Integration Testing** <br> - Tested the complete workflow between frontend, backend, and Amazon DynamoDB. <br> - Fixed minor integration issues and prepared the project for the deployment stage. | 03/07/2026 | 03/07/2026 | Internal Testing |
+| 2 | **Backend Enhancement** <br> - Completed additional API endpoints. <br> - Improved request validation and response handling. | 06/07/2026 | 06/07/2026 | Project Repository |
+| 3 | **Database Improvement** <br> - Optimized Amazon DynamoDB operations. <br> - Verified data consistency and updated database records during testing. | 07/07/2026 | 07/07/2026 | Amazon DynamoDB Documentation |
+| 4 | **Frontend Integration Support** <br> - Assisted in adjusting frontend components to work with backend responses. <br> - Verified data display and user interactions using live API data. | 08/07/2026 | 08/07/2026 | Internal Project |
+| 5 | **AWS Architecture Refinement** <br> - Supported updates to the AWS architecture diagram based on the implemented solution. <br> - Verified that the architecture accurately reflected the project components and data flow. | 09/07/2026 | 09/07/2026 | Project Documentation |
+| 6 | **Integration Testing** <br> - Tested the complete workflow between frontend, backend, and Amazon DynamoDB. <br> - Fixed minor integration issues and prepared the project for the deployment stage. | 10/07/2026 | 10/07/2026 | Internal Testing |
 
 ### Week 12 Outcomes
 

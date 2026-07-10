@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 2"
-date: 2026-04-20
+date: 2026-04-27
 weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
@@ -16,9 +16,9 @@ pre: " <b> 1.2. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Thực hành tạo tài khoản và cấu hình bảo mật MFA <br> - Tạo Admin Group và Admin User                                                                                                      | 20/04/2026   | 20/04/2026      | [Lab 01-01: Create account](https://www.youtube.com/watch?v=waR5S_lljrk) <br> [Lab 01-02: Setup MFA](https://www.youtube.com/watch?v=1dG5xutGbr4) <br> [Lab 01-03: Admin Setup](https://www.youtube.com/watch?v=b9pK1oG534Q) |
-| 3-5 | - Thực hành quản lý chi phí với AWS Budgets (Cost, Usage, RI, Savings Plans Budgets) <br> - Xóa các Budget sau khi thực hành xong                                                           | 21/04/2026   | 23/04/2026      | [Lab 07-01: Budget Template](https://www.youtube.com/watch?v=_a09nLVw6Sg) <br> [Lab 07-02: Cost Budget](https://www.youtube.com/watch?v=sd_KCcZOou0) <br> [Lab 07-06: Clean Up](https://www.youtube.com/watch?v=KeZi7eOLpOA) |
-| 6-7 | - Tìm hiểu và thực hành quản lý các gói hỗ trợ (AWS Support Packages) <br> - Gửi yêu cầu hỗ trợ mẫu                                                                                         | 24/04/2026   | 25/04/2026      | [Lab 09-01: Support Packages](https://www.youtube.com/watch?v=R0uW6z5K5o0) <br> [Lab 09-04: Manage requests](https://www.youtube.com/watch?v=R0uW6z5K5o0) |
+| 2   | - Thực hành tạo tài khoản và cấu hình bảo mật MFA <br> - Tạo Admin Group và Admin User                                                                                                      | 27/04/2026   | 27/04/2026      | [Lab 01-01: Create account](https://www.youtube.com/watch?v=waR5S_lljrk) <br> [Lab 01-02: Setup MFA](https://www.youtube.com/watch?v=1dG5xutGbr4) <br> [Lab 01-03: Admin Setup](https://www.youtube.com/watch?v=b9pK1oG534Q) |
+| 3-5 | - Thực hành quản lý chi phí với AWS Budgets (Cost, Usage, RI, Savings Plans Budgets) <br> - Xóa các Budget sau khi thực hành xong                                                           | 28/04/2026   | 30/04/2026      | [Lab 07-01: Budget Template](https://www.youtube.com/watch?v=_a09nLVw6Sg) <br> [Lab 07-02: Cost Budget](https://www.youtube.com/watch?v=sd_KCcZOou0) <br> [Lab 07-06: Clean Up](https://www.youtube.com/watch?v=KeZi7eOLpOA) |
+| 6-7 | - Tìm hiểu và thực hành quản lý các gói hỗ trợ (AWS Support Packages) <br> - Gửi yêu cầu hỗ trợ mẫu                                                                                         | 01/05/2026   | 02/05/2026      | [Lab 09-01: Support Packages](https://www.youtube.com/watch?v=R0uW6z5K5o0) <br> [Lab 09-04: Manage requests](https://www.youtube.com/watch?v=R0uW6z5K5o0) |
 
 
 ### Kết quả đạt được tuần 2:
