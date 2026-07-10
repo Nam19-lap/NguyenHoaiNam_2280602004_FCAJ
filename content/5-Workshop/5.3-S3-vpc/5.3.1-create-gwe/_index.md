@@ -19,12 +19,12 @@ CloudFormation needs to know where the Lambda deployment package is stored. Beca
 CodeUri: dist/
 ```
 
-3. Replace each `dist/` value with the S3 object URL copied from the backend package.
+3. Replace each `dist/` value with the S3 URI copied from the backend package.
 
 Example:
 
 ```yaml
-CodeUri: https://buketbackend.s3.ap-southeast-1.amazonaws.com/backend.rar
+CodeUri: s3://eventapp-backend-package-ap-southeast-1/backend-code.zip
 ```
 
 4. Save the file.
@@ -32,5 +32,5 @@ CodeUri: https://buketbackend.s3.ap-southeast-1.amazonaws.com/backend.rar
 #### Notes
 
 - The template contains multiple Lambda functions, so update every `CodeUri` occurrence.
-- The object URL must point to the backend package uploaded to S3.
+- The S3 URI must point to the backend `.zip` package uploaded to S3.
 - Keep the file saved locally because it will be uploaded to CloudFormation in the next step.

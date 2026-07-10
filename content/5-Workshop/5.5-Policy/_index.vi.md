@@ -40,9 +40,7 @@ Mở frontend S3 bucket và kiểm tra:
 
 #### 4. Frontend files
 
-Xác nhận toàn bộ file trong thư mục `dist` của frontend đã được upload thành công lên frontend bucket.
-
-![Frontend upload hoàn tất](/images/5-Workshop/event-portal/08-upload-frontend-files.png)
+Xác nhận toàn bộ file nằm bên trong thư mục `dist` của frontend đã được upload thành công lên root của frontend bucket. Bucket cần có `index.html` ở root để S3 static website endpoint có thể tải ứng dụng đúng cách.
 
 #### Kết quả
 

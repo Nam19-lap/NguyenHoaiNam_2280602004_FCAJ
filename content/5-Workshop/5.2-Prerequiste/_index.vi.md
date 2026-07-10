@@ -33,30 +33,24 @@ npm run build
 
 5. Sau khi build xong, thư mục backend sẽ sinh ra thư mục `dist`.
 6. Copy `package.json` và `node_modules` vào trong thư mục `dist`.
-7. Nén toàn bộ file bên trong `dist` thành package, ví dụ `backend-code.zip` hoặc `backend.rar`.
+7. Nén toàn bộ file bên trong `dist` thành Lambda deployment package tên `backend-code.zip`.
 
 #### 2. Tạo S3 bucket để chứa backend package
 
-Mở Amazon S3 console và tạo bucket ở Region **Asia Pacific (Singapore) ap-southeast-1**. Trong workshop này, backend package được upload vào bucket tên `buketbackend`.
-
-![Tạo backend bucket](/images/5-Workshop/event-portal/01-create-backend-bucket.png)
+Mở Amazon S3 console và tạo bucket ở Region **Asia Pacific (Singapore) ap-southeast-1**. Trong workshop này, backend package được upload vào một bucket tạm tên `eventapp-backend-package-ap-southeast-1`.
 
 #### 3. Upload backend package
 
-Mở bucket, chọn **Upload**, chọn file backend đã nén và upload lên S3.
+Mở bucket, chọn **Upload**, chọn package `backend-code.zip` và upload lên S3.
 
-![Upload backend package](/images/5-Workshop/event-portal/02-upload-backend-code.png)
+#### 4. Copy S3 URI
 
-#### 4. Copy Object URL hoặc S3 URI
+Sau khi upload thành công, mở object vừa upload và copy **S3 URI**. Giá trị này sẽ được dùng cho các dòng Lambda `CodeUri` trong file `template.yaml`.
 
-Sau khi upload thành công, mở object vừa upload và copy **Object URL** hoặc **S3 URI**. Giá trị này sẽ được dùng trong file `template.yaml`.
-
-![Copy backend object URL](/images/5-Workshop/event-portal/03-copy-backend-object-url.png)
-
-Ví dụ Object URL:
+Ví dụ S3 URI:
 
 ```text
-https://buketbackend.s3.ap-southeast-1.amazonaws.com/backend.rar
+s3://eventapp-backend-package-ap-southeast-1/backend-code.zip
 ```
 
-Sau bước này, cần lưu lại backend package URL để dùng ở bước triển khai CloudFormation.
+Sau bước này, cần lưu lại S3 URI của backend package để dùng ở bước triển khai CloudFormation.

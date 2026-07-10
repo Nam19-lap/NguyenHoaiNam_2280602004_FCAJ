@@ -19,12 +19,12 @@ CloudFormation cần biết Lambda deployment package đang nằm ở đâu. Vì
 CodeUri: dist/
 ```
 
-3. Thay từng giá trị `dist/` bằng Object URL của backend package đã copy từ S3.
+3. Thay từng giá trị `dist/` bằng S3 URI của backend package đã copy từ S3.
 
 Ví dụ:
 
 ```yaml
-CodeUri: https://buketbackend.s3.ap-southeast-1.amazonaws.com/backend.rar
+CodeUri: s3://eventapp-backend-package-ap-southeast-1/backend-code.zip
 ```
 
 4. Lưu file lại.
@@ -32,5 +32,5 @@ CodeUri: https://buketbackend.s3.ap-southeast-1.amazonaws.com/backend.rar
 #### Lưu ý
 
 - Template có nhiều Lambda functions, vì vậy cần cập nhật tất cả các dòng `CodeUri`.
-- Object URL phải trỏ đúng đến backend package đã upload lên S3.
+- S3 URI phải trỏ đúng đến backend package dạng `.zip` đã upload lên S3.
 - Sau khi chỉnh sửa, giữ file này để upload lên CloudFormation ở bước tiếp theo.

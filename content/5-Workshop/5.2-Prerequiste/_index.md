@@ -33,30 +33,24 @@ npm run build
 
 5. After the build completes, the backend folder will contain a `dist` folder.
 6. Copy `package.json` and `node_modules` into the `dist` folder.
-7. Compress all files inside `dist` into a package such as `backend-code.zip` or `backend.rar`.
+7. Compress all files inside `dist` into a Lambda deployment package named `backend-code.zip`.
 
 #### 2. Create an S3 bucket for backend package
 
-Open the Amazon S3 console and create a bucket in the **Asia Pacific (Singapore) ap-southeast-1** Region. In this workshop, the backend package was uploaded to a bucket named `buketbackend`.
-
-![Create backend bucket](/images/5-Workshop/event-portal/01-create-backend-bucket.png)
+Open the Amazon S3 console and create a bucket in the **Asia Pacific (Singapore) ap-southeast-1** Region. In this workshop, the backend package was uploaded to a temporary package bucket named `eventapp-backend-package-ap-southeast-1`.
 
 #### 3. Upload backend package
 
-Open the bucket, choose **Upload**, select the packaged backend file, and upload it to S3.
+Open the bucket, choose **Upload**, select the `backend-code.zip` package, and upload it to S3.
 
-![Upload backend package](/images/5-Workshop/event-portal/02-upload-backend-code.png)
+#### 4. Copy the S3 URI
 
-#### 4. Copy the object URL or S3 URI
+After the upload succeeds, open the uploaded object and copy the **S3 URI**. This value will be used in `template.yaml` for the Lambda `CodeUri` values.
 
-After the upload succeeds, open the uploaded object and copy the **Object URL** or **S3 URI**. This value will be used in `template.yaml`.
-
-![Copy backend object URL](/images/5-Workshop/event-portal/03-copy-backend-object-url.png)
-
-Example object URL:
+Example S3 URI:
 
 ```text
-https://buketbackend.s3.ap-southeast-1.amazonaws.com/backend.rar
+s3://eventapp-backend-package-ap-southeast-1/backend-code.zip
 ```
 
-After this step, keep the backend package URL carefully and continue to the CloudFormation deployment step.
+After this step, keep the backend package S3 URI carefully and continue to the CloudFormation deployment step.

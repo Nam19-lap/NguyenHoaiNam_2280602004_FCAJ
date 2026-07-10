@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 5.6. </b> "
 ---
 
-Chúc mừng bạn đã hoàn thành workshop. Sau khi kiểm tra deployment của Event Portal, bước cuối cùng là dọn dẹp các tài nguyên AWS đã tạo trong quá trình thực hành. Việc này giúp tránh phát sinh chi phí không cần thiết từ S3 bucket tạm, CloudFormation resources và các thành phần networking.
+Chúc mừng bạn đã hoàn thành workshop. Sau khi kiểm tra deployment của Event Portal, bước cuối cùng là dọn dẹp các tài nguyên AWS đã tạo trong quá trình thực hành. Việc này giúp tránh phát sinh chi phí không cần thiết từ S3 bucket tạm và CloudFormation resources.
 
 #### 1. Xóa CloudFormation stack
 
@@ -45,21 +45,15 @@ Nếu bạn tạo một S3 bucket riêng để chứa backend package, hãy xóa
 Ví dụ backend package bucket:
 
 ```text
-buketbackend
+eventapp-backend-package-ap-southeast-1
 ```
 
-#### 4. Xóa networking resources nếu có tạo
-
-Nếu workshop có tạo thêm tài nguyên networking như NAT Gateway, hãy xóa sau khi không còn sử dụng ứng dụng. Đây là bước quan trọng vì NAT Gateway vẫn có thể phát sinh chi phí nếu để hoạt động.
-
-![Xóa NAT Gateway](/images/5-Workshop/event-portal/13-delete-nat-gateway.png)
-
-#### 5. Xóa build artifacts ở local
+#### 4. Xóa build artifacts ở local
 
 Có thể xóa thêm các build artifacts ở local nếu không còn cần dùng:
 
 - Backend `dist` package
-- `backend-code.zip` hoặc `backend.rar`
+- `backend-code.zip`
 - Frontend `dist` folder
 
 Sau khi cleanup, các tài nguyên của workshop đã được xóa và tài khoản AWS sẽ không còn bị tính phí cho project đã triển khai.

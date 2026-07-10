@@ -40,9 +40,7 @@ Open the frontend S3 bucket and confirm that:
 
 #### 4. Frontend files
 
-Confirm that all files from the frontend `dist` folder were uploaded successfully to the frontend bucket.
-
-![Frontend upload completed](/images/5-Workshop/event-portal/08-upload-frontend-files.png)
+Confirm that all files from inside the frontend `dist` folder were uploaded successfully to the root of the frontend bucket. The bucket should contain `index.html` at the root level so that the S3 static website endpoint can load the application correctly.
 
 #### Result
 

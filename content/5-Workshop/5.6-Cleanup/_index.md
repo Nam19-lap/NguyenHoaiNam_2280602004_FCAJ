@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 5.6. </b> "
 ---
 
-Congratulations on completing this workshop. After testing the Event Portal deployment, the final step is to clean up the AWS resources that were created during the lab. This helps avoid unnecessary costs from temporary S3 buckets, CloudFormation resources, and networking components.
+Congratulations on completing this workshop. After testing the Event Portal deployment, the final step is to clean up the AWS resources that were created during the lab. This helps avoid unnecessary costs from temporary S3 buckets and CloudFormation resources.
 
 #### 1. Delete CloudFormation stack
 
@@ -45,21 +45,15 @@ If you created a separate S3 bucket to store the backend package, delete the upl
 Example backend package bucket:
 
 ```text
-buketbackend
+eventapp-backend-package-ap-southeast-1
 ```
 
-#### 4. Delete networking resources if created
-
-If the workshop created extra networking resources such as a NAT Gateway, remove them after the application is no longer needed. This is important because NAT Gateway can continue generating charges while it remains active.
-
-![Delete NAT Gateway](/images/5-Workshop/event-portal/13-delete-nat-gateway.png)
-
-#### 5. Remove local build artifacts
+#### 4. Remove local build artifacts
 
 You can also remove temporary local build artifacts if they are no longer needed:
 
 - Backend `dist` package
-- `backend-code.zip` or `backend.rar`
+- `backend-code.zip`
 - Frontend `dist` folder
 
 After cleanup, the workshop resources are removed and the AWS account will no longer be charged for the deployed project.

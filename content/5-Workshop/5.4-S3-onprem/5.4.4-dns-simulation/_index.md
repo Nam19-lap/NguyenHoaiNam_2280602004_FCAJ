@@ -12,9 +12,7 @@ pre : " <b> 5.4.4. </b> "
 2. Open the **Objects** tab.
 3. Choose **Upload**.
 4. Select all files and folders inside the local frontend `dist` folder.
-5. Upload them to the bucket.
-
-![Upload frontend files](/images/5-Workshop/event-portal/08-upload-frontend-files.png)
+5. Upload them to the root of the bucket, not inside a nested `dist` folder. The bucket root should contain `index.html` and the generated asset folders.
 
 #### Test the website
 
