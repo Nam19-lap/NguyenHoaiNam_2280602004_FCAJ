@@ -9,7 +9,7 @@ pre: " <b> 2. </b> "
 # AWS Serverless Event Portal Proposal
 
 **Project Name:** AWS Serverless Event Portal  
-**Group:** Hieu An  
+**Group:** An Hiếu  
 **Project Type:** Cloud-native event management application
 
 ## 1. Executive Summary

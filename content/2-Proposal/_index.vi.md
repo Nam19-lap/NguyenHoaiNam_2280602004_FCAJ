@@ -9,7 +9,7 @@ pre: " <b> 2. </b> "
 # Đề Xuất Dự Án AWS Serverless Event Portal
 
 **Tên dự án:** AWS Serverless Event Portal  
-**Nhóm:** Hiếu An  
+**Nhóm:** An Hiếu  
 **Loại dự án:** Ứng dụng quản lý sự kiện cloud-native
 
 ## 1. Tóm Tắt Dự Án
