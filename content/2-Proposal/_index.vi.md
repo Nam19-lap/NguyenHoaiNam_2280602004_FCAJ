@@ -5,104 +5,255 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+# Đề Xuất Dự Án AWS Serverless Event Portal
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+**Tên dự án:** AWS Serverless Event Portal  
+**Nhóm:** Hiếu An  
+**Loại dự án:** Ứng dụng quản lý sự kiện cloud-native
 
-### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+## 1. Tóm Tắt Dự Án
 
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+**AWS Serverless Event Portal** là một ứng dụng web cloud-native được xây dựng nhằm đơn giản hóa quá trình tổ chức và tham gia sự kiện bằng các dịch vụ AWS Serverless. Hệ thống cung cấp một nền tảng tập trung để người dùng có thể xem danh sách sự kiện, đăng ký trực tuyến, nhận vé điện tử, check-in bằng mã QR, gửi phản hồi và xem các gợi ý sự kiện phù hợp. Đồng thời, quản trị viên có thể quản lý sự kiện, người tham gia, lượt đăng ký và dữ liệu điểm danh thông qua một giao diện web bảo mật.
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+Thay vì sử dụng mô hình máy chủ truyền thống, dự án tận dụng các dịch vụ được quản lý của AWS để cải thiện khả năng mở rộng, tính sẵn sàng và hiệu quả vận hành. Frontend được host bằng **Amazon S3** và phân phối qua **Amazon CloudFront**. Backend API được cung cấp thông qua **Amazon API Gateway** và xử lý bằng **AWS Lambda**. **Amazon Cognito** đảm nhiệm xác thực và phân quyền người dùng, trong khi **Amazon DynamoDB** lưu trữ dữ liệu sự kiện, lượt đăng ký, vé, lịch sử check-in và phản hồi. Log, metric, cảnh báo và thông báo vận hành được quản lý thông qua **Amazon CloudWatch** và **Amazon SNS**.
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+Dự án vừa là một bài thực hành ứng dụng trong môi trường đại học, vừa là minh chứng cho cách phát triển ứng dụng hiện đại bằng kiến trúc AWS Serverless. Nhờ sử dụng các dịch vụ managed cloud, hệ thống giảm đáng kể công việc quản trị hạ tầng và tạo nền tảng có thể mở rộng trong tương lai.
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+## 2. Vấn Đề Cần Giải Quyết
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+### Vấn đề hiện tại
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+Nhiều trường đại học, câu lạc bộ sinh viên và đơn vị tổ chức sự kiện quy mô nhỏ vẫn quản lý sự kiện bằng các công cụ thủ công hoặc bán thủ công như bảng tính, ứng dụng nhắn tin và biểu mẫu trực tuyến. Cách làm này có thể phù hợp với các hoạt động nhỏ, nhưng nhanh chóng trở nên kém hiệu quả khi số lượng sự kiện hoặc người tham gia tăng lên.
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+Một số vấn đề thường gặp gồm dữ liệu đăng ký bị trùng lặp, quá trình điểm danh chậm, khó theo dõi số lượng người tham gia, thiếu cái nhìn tổng quan về dữ liệu người dùng và mất nhiều thời gian để tổng hợp báo cáo. Người tham gia cũng chưa có một nền tảng tập trung để tìm kiếm sự kiện sắp diễn ra, quản lý đăng ký hoặc truy cập vé điện tử.
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+Nếu không có một hệ thống quản lý tích hợp, ban tổ chức phải tốn nhiều công sức để duy trì dữ liệu sự kiện, kiểm tra điểm danh, quản lý danh sách chờ và thu thập phản hồi sau sự kiện.
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+### Giải pháp đề xuất
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+**AWS Serverless Event Portal** giải quyết các vấn đề trên bằng cách cung cấp một nền tảng quản lý sự kiện tích hợp trên nền tảng cloud.
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+Người dùng truy cập ứng dụng web thông qua trình duyệt. Frontend giao tiếp với backend API thông qua Amazon API Gateway. API Gateway gọi các AWS Lambda function để xử lý logic chính của hệ thống, bao gồm tạo sự kiện, đăng ký sự kiện, check-in bằng mã QR, gợi ý sự kiện, xử lý phản hồi và các thao tác quản trị.
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+Amazon Cognito bảo mật quá trình đăng nhập và kiểm soát quyền truy cập. Amazon DynamoDB lưu trữ dữ liệu ứng dụng với độ sẵn sàng cao và độ trễ thấp. Amazon CloudWatch thu thập log và metric, trong khi Amazon SNS có thể gửi thông báo khi CloudWatch alarm được kích hoạt.
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+Hệ thống dự kiến hỗ trợ các chức năng chính sau:
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+- Xác thực và phân quyền người dùng
+- Xem và tìm kiếm sự kiện
+- Đăng ký sự kiện trực tuyến
+- Quản lý vé điện tử
+- Check-in bằng mã QR
+- Quản lý danh sách chờ
+- Gợi ý sự kiện
+- Quản lý phản hồi và đánh giá
+- Trang quản trị dành cho ban tổ chức
 
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+### Lợi ích và giá trị mang lại
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+Hệ thống giúp giảm công việc thủ công bằng cách tập trung hóa quá trình đăng ký sự kiện, quản lý người tham gia, phát hành vé và theo dõi điểm danh. Ban tổ chức có thể quản lý thông tin sự kiện trên một nền tảng duy nhất thay vì sử dụng nhiều công cụ rời rạc.
 
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+Về mặt kỹ thuật, các dịch vụ AWS Serverless giúp giảm nhu cầu quản lý máy chủ, hệ điều hành và chính sách mở rộng thủ công. Các dịch vụ như AWS Lambda, Amazon DynamoDB và Amazon API Gateway có thể mở rộng theo nhu cầu thực tế, phù hợp với mô hình sự kiện của sinh viên, workshop và các hệ thống quản lý sự kiện quy mô nhỏ đến trung bình.
 
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+Giải pháp cũng có giá trị lâu dài vì kiến trúc module có thể được mở rộng thêm các tính năng như gợi ý nâng cao, dashboard phân tích, nhắc lịch qua email hoặc tích hợp AI hỗ trợ quản lý sự kiện.
+
+## 3. Kiến Trúc Giải Pháp
+
+AWS Serverless Event Portal sử dụng kiến trúc serverless, tách riêng các thành phần gồm phân phối frontend, xác thực, xử lý API, logic nghiệp vụ, lưu trữ dữ liệu và giám sát vận hành thành các dịch vụ managed độc lập. Cách thiết kế này giúp hệ thống dễ bảo trì hơn và từng thành phần có thể mở rộng theo tải riêng của nó.
+
+Frontend được host trên Amazon S3 và phân phối đến người dùng thông qua Amazon CloudFront. Amazon Cognito xử lý xác thực người dùng. Sau khi đăng nhập, frontend gửi request đã xác thực đến Amazon API Gateway. API Gateway xác thực và định tuyến request đến các AWS Lambda function tương ứng. Lambda xử lý logic ứng dụng và đọc/ghi dữ liệu trong Amazon DynamoDB. Log và metric vận hành được thu thập bằng Amazon CloudWatch, còn các cảnh báo quan trọng có thể gửi thông báo cho quản trị viên thông qua Amazon SNS.
+
+![Kiến trúc AWS Serverless Event Portal](/images/2-Proposal/serverless-event-portal-architecture.png)
+
+### Các Dịch Vụ AWS Sử Dụng
+
+| Dịch vụ AWS | Mục đích sử dụng |
+| --- | --- |
+| Amazon S3 | Host ứng dụng frontend React và static assets. |
+| Amazon CloudFront | Phân phối nội dung frontend với độ trễ thấp hơn. |
+| Amazon Cognito | Cung cấp xác thực và phân quyền người dùng. |
+| Amazon API Gateway | Cung cấp REST API để frontend giao tiếp với backend. |
+| AWS Lambda | Thực thi logic backend của ứng dụng. |
+| Amazon DynamoDB | Lưu sự kiện, người dùng, lượt đăng ký, vé, phản hồi và dữ liệu check-in. |
+| Amazon CloudWatch | Thu thập log, metric và alarm. |
+| Amazon SNS | Gửi thông báo vận hành khi alarm được kích hoạt. |
+| AWS SAM / CloudFormation | Triển khai và quản lý hạ tầng serverless. |
+
+### Thiết Kế Thành Phần
+
+**Lớp Frontend**  
+Người dùng truy cập Event Portal thông qua Amazon CloudFront. CloudFront phân phối frontend React được host trên Amazon S3, giúp cải thiện tốc độ tải trang và tính sẵn sàng.
+
+**Lớp Xác Thực**  
+Amazon Cognito quản lý đăng nhập và phân quyền người dùng. JWT token do Cognito cấp được dùng để bảo vệ các API request.
+
+**Lớp API**  
+Amazon API Gateway đóng vai trò là điểm vào bảo mật cho các request từ frontend và chuyển request đến đúng Lambda function.
+
+**Lớp Logic Nghiệp Vụ**  
+AWS Lambda chứa logic chính của ứng dụng, bao gồm quản lý sự kiện, xử lý đăng ký, check-in bằng mã QR, xử lý gợi ý sự kiện, xử lý phản hồi và các thao tác quản trị.
+
+**Lớp Dữ Liệu**  
+Amazon DynamoDB lưu trữ dữ liệu ứng dụng như hồ sơ người dùng, thông tin sự kiện, lượt đăng ký, vé điện tử, lịch sử check-in, phản hồi và thông báo.
+
+**Lớp Giám Sát**  
+Amazon CloudWatch giám sát quá trình thực thi Lambda, hoạt động API, log và metric. CloudWatch alarm có thể kích hoạt Amazon SNS để gửi thông báo khi xuất hiện tình trạng bất thường.
+
+## 4. Triển Khai Kỹ Thuật
+
+### Các Giai Đoạn Triển Khai
+
+Dự án được lập kế hoạch và phát triển qua bốn giai đoạn chính.
+
+| Giai đoạn | Nội dung chính |
+| --- | --- |
+| Giai đoạn 1 - Phân tích yêu cầu và thiết kế kiến trúc | Phân tích yêu cầu hệ thống, xác định dịch vụ AWS phù hợp, thiết kế kiến trúc serverless, chuẩn bị schema cơ sở dữ liệu và luồng hoạt động của ứng dụng. |
+| Giai đoạn 2 - Phát triển backend | Phát triển AWS Lambda functions, cấu hình Amazon API Gateway, tích hợp Amazon Cognito, triển khai bảng Amazon DynamoDB và xây dựng backend APIs. |
+| Giai đoạn 3 - Phát triển frontend | Xây dựng frontend bằng React và Vite, tạo giao diện xem sự kiện, đăng ký, vé, QR check-in, phản hồi và quản trị. |
+| Giai đoạn 4 - Tích hợp, kiểm thử và triển khai | Tích hợp frontend và backend, kiểm thử các chức năng chính, triển khai serverless resources bằng AWS SAM và CloudFormation, host frontend bằng Amazon S3 và CloudFront. |
+
+### Yêu Cầu Kỹ Thuật
+
+**Môi trường phát triển**
+
+- Node.js
+- React + Vite
+- TypeScript
+- GitHub
+- Visual Studio Code
+
+**Dịch vụ AWS**
+
+- Amazon S3
+- Amazon CloudFront
+- Amazon Cognito
+- Amazon API Gateway
+- AWS Lambda
+- Amazon DynamoDB
+- Amazon CloudWatch
+- Amazon SNS
+- AWS SAM
+- AWS CloudFormation
+
+### Tính Năng Ứng Dụng
+
+Hệ thống hoàn chỉnh dự kiến hỗ trợ:
+
+- Xác thực người dùng
+- Xem danh sách sự kiện
+- Đăng ký sự kiện
+- Quản lý vé điện tử
+- Check-in bằng mã QR
+- Quản lý danh sách chờ
+- Gợi ý sự kiện
+- Phản hồi và đánh giá
+- Dashboard quản trị
+- Giám sát và ghi log trên cloud
+
+## 5. Timeline & Milestones
+
+### Timeline Dự Án
+
+Dự án AWS Serverless Event Portal được lên kế hoạch hoàn thành trong khoảng hai tháng. Quá trình phát triển được chia thành bốn giai đoạn chính để đảm bảo việc triển khai, kiểm thử và hoàn thiện diễn ra có hệ thống.
+
+| Giai đoạn | Thời gian | Hoạt động |
+| --- | --- | --- |
+| Giai đoạn 1 - Lập kế hoạch và thiết kế kiến trúc | Tuần 1-2 | Phân tích yêu cầu, xác định dịch vụ AWS, thiết kế kiến trúc serverless, database schema và luồng hoạt động của ứng dụng. |
+| Giai đoạn 2 - Phát triển backend | Tuần 3-4 | Phát triển Lambda functions, cấu hình API Gateway, tích hợp Cognito, triển khai DynamoDB và xây dựng backend APIs. |
+| Giai đoạn 3 - Phát triển frontend và tích hợp | Tuần 5-6 | Phát triển frontend React, tích hợp backend APIs, triển khai tính năng đăng ký, QR check-in, gợi ý sự kiện và xác thực. |
+| Giai đoạn 4 - Kiểm thử và triển khai | Tuần 7-8 | Kiểm thử hệ thống, sửa lỗi, triển khai serverless resources bằng AWS SAM và CloudFormation, deploy frontend lên S3 và CloudFront, chuẩn bị demo cuối cùng. |
+
+### Các Mốc Quan Trọng
+
+- Hoàn thành thiết kế kiến trúc AWS
+- Hoàn thành backend API
+- Tích hợp frontend
+- Xác thực người dùng bằng Amazon Cognito
+- Hoàn thành QR Code Check-in
+- Hoàn thành deployment trên AWS
+- Kiểm thử hệ thống cuối cùng
+- Trình bày workshop và demo dự án
+
+## 6. Ước Tính Ngân Sách
+
+AWS Serverless Event Portal được phát triển chủ yếu như một dự án học thuật và demo workshop. Vì hệ thống chưa hướng đến lưu lượng production ở giai đoạn này, chi phí vận hành dự kiến ở mức thấp.
+
+Chi phí vận hành chi tiết có thể được đánh giá trong giai đoạn triển khai bằng **AWS Pricing Calculator**. Việc ước tính cần xem xét mức sử dụng hằng tháng của các dịch vụ sau:
+
+- Amazon S3 storage và request
+- Amazon CloudFront data transfer
+- Amazon API Gateway requests
+- AWS Lambda invocations
+- Amazon DynamoDB storage và read/write requests
+- Amazon Cognito Monthly Active Users (MAU)
+- Amazon CloudWatch logs và monitoring
+- Amazon SNS notification delivery
+
+Do kiến trúc sử dụng mô hình serverless pay-as-you-go, tài nguyên được tính phí dựa trên mức sử dụng thực tế thay vì phải duy trì máy chủ chạy liên tục. Điều này làm cho giải pháp phù hợp với dự án sinh viên, sự kiện trong trường đại học và hệ thống quản lý sự kiện quy mô nhỏ đến trung bình.
+
+## 7. Đánh Giá Rủi Ro
+
+### Ma Trận Rủi Ro
+
+| Rủi ro | Xác suất | Mức ảnh hưởng |
+| --- | --- | --- |
+| Lỗi cấu hình dịch vụ AWS | Trung bình | Cao |
+| Lỗi xác thực người dùng | Thấp | Cao |
+| Lỗi API hoặc Lambda execution | Trung bình | Cao |
+| Dữ liệu DynamoDB không nhất quán | Thấp | Trung bình |
+| Vấn đề khi quét mã QR | Trung bình | Trung bình |
+| Chi phí AWS phát sinh ngoài dự kiến | Thấp | Trung bình |
+
+### Chiến Lược Giảm Thiểu
+
+**Cấu hình AWS**  
+Các tài nguyên AWS nên được triển khai bằng AWS SAM và CloudFormation để cấu hình hạ tầng nhất quán và dễ tái tạo.
+
+**Xác thực**  
+Amazon Cognito cung cấp xác thực và phân quyền an toàn bằng JWT token, giúp giảm rủi ro truy cập trái phép vào các API được bảo vệ.
+
+**Giám sát**  
+Amazon CloudWatch giám sát quá trình thực thi Lambda, log ứng dụng và metric vận hành. CloudWatch alarm có thể thông báo cho quản trị viên thông qua Amazon SNS khi phát hiện hành vi bất thường.
+
+**Độ tin cậy dữ liệu**  
+Amazon DynamoDB cung cấp khả năng lưu trữ NoSQL có tính sẵn sàng và độ bền cao, đồng thời hỗ trợ tự động mở rộng để giảm gánh nặng quản trị cơ sở dữ liệu.
+
+**QR Code Check-in**  
+Ứng dụng hỗ trợ quét mã QR thông qua camera trình duyệt. Trong trường hợp không truy cập được camera, người dùng có thể nhập mã vé thủ công như phương án thay thế.
+
+### Kế Hoạch Dự Phòng
+
+Nếu gặp sự cố deployment trong buổi demo, dự án vẫn có thể được trình bày bằng môi trường local và mock services. Cách này đảm bảo các chức năng cốt lõi như xem sự kiện, đăng ký, QR check-in và quản trị vẫn có thể được demo.
+
+## 8. Kết Quả Kỳ Vọng
+
+### Kết Quả Kỹ Thuật
+
+Khi hoàn thành, AWS Serverless Event Portal dự kiến cung cấp:
+
+- Một nền tảng quản lý sự kiện serverless hoạt động được
+- Xác thực người dùng an toàn bằng Amazon Cognito
+- Đăng ký sự kiện trực tuyến và quản lý người tham gia
+- Tạo vé điện tử và QR Code Check-in
+- Chức năng gợi ý sự kiện
+- Dashboard quản trị sự kiện
+- Giám sát và thông báo vận hành trên cloud
+- Backend có khả năng mở rộng bằng AWS Lambda và Amazon DynamoDB
+
+### Kết Quả Học Tập
+
+Dự án mang lại kinh nghiệm thực tế trong việc thiết kế và triển khai ứng dụng cloud-native bằng công nghệ AWS Serverless. Thành viên trong nhóm có cơ hội thực hành với:
+
+- AWS Serverless Architecture
+- Infrastructure as Code bằng AWS SAM và CloudFormation
+- Phát triển REST API với Amazon API Gateway
+- Phát triển backend serverless bằng AWS Lambda
+- Thiết kế NoSQL database với Amazon DynamoDB
+- Xác thực người dùng bằng Amazon Cognito
+- Giám sát cloud bằng Amazon CloudWatch
+- Triển khai frontend bằng Amazon S3 và Amazon CloudFront
+
+### Giá Trị Dài Hạn
+
+AWS Serverless Event Portal có thể trở thành nền tảng tái sử dụng cho các ứng dụng quản lý sự kiện và dự án cloud computing trong tương lai. Kiến trúc serverless dạng module cho phép tích hợp thêm tính năng hoặc dịch vụ AWS mới mà không cần thay đổi quá nhiều về kiến trúc. Dự án cũng thể hiện quy trình phát triển ứng dụng cloud hiện đại và có thể mở rộng để hỗ trợ quy mô lớn hơn hoặc các ý tưởng tích hợp AI hỗ trợ sự kiện trong tương lai.
