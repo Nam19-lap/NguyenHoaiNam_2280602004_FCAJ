@@ -26,8 +26,6 @@ Main User features:
 6. Review registered tickets in **My Tickets**.
 7. Track **Attendance History** to see registered, checked-in, and checked-out states.
 
-![User attendance history](/images/5-Workshop/event-portal-demo/08-user-attendance-history.png)
-
 #### 2. Admin role
 
 The Admin operates the event management system. Admin uses a prepared account to access the dashboard, manage events, view registered members, and handle check-in/check-out at the event gate.
@@ -41,8 +39,6 @@ Main Admin features:
 5. Select the event to operate on the QR Check-in screen.
 6. Choose **Check-in** or **Check-out** mode before scanning QR/entering a ticket code.
 7. Confirm attendance status and update backend data.
-
-![Admin QR Check-in and Check-out](/images/5-Workshop/event-portal-demo/09-admin-qr-checkin-checkout-mode.png)
 
 #### 3. Overall workflow
 

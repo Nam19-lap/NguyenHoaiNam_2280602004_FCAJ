@@ -26,8 +26,6 @@ Các chức năng chính của User gồm:
 6. Xem lại vé đã đăng ký trong mục **Vé của tôi**.
 7. Theo dõi **Lịch sử tham dự** để biết vé nào đã check-in, check-out hoặc còn chờ tham dự.
 
-![User xem lịch sử tham dự](/images/5-Workshop/event-portal-demo/08-user-attendance-history.png)
-
 #### 2. Vai trò Admin
 
 Admin là người vận hành hệ thống sự kiện. Admin sử dụng tài khoản được cấp sẵn để truy cập dashboard quản trị, quản lý sự kiện, xem danh sách thành viên và xử lý check-in/check-out tại cổng sự kiện.
@@ -41,8 +39,6 @@ Các chức năng chính của Admin gồm:
 5. Chọn sự kiện cần vận hành tại màn QR Check-in.
 6. Chọn mode **Check-in** hoặc **Check-out** trước khi quét QR/nhập ticket code.
 7. Xác nhận trạng thái tham dự và cập nhật dữ liệu về backend.
-
-![Admin QR Check-in và Check-out](/images/5-Workshop/event-portal-demo/09-admin-qr-checkin-checkout-mode.png)
 
 #### 3. Luồng hoạt động tổng quát
 
