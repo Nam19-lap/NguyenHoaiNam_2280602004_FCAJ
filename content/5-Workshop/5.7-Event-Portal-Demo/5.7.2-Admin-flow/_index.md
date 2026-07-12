@@ -6,94 +6,78 @@ chapter : false
 pre : " <b> 5.7.2. </b> "
 ---
 
-#### Objective of the Admin flow
+#### Admin flow objective
 
-The Admin flow shows the role of the event operator on the deployed Event Portal website. The admin can do more than view data; they can manage events, monitor registrations, inspect member lists, and support check-in.
+The Admin flow demonstrates the operator role in Event Portal. Admin can manage events, monitor registrations, view event members, and handle check-in/check-out at the event gate.
 
-The administrator does not create an account through the public registration form. Instead, an admin account is prepared and provided in advance so that only authorized users can access the management features.
+Admin accounts are prepared separately and are not created from the public registration form.
 
-#### 1. Sign in as Admin
+#### 1. Log in as Admin
 
-The admin signs in through the same login screen as a normal user, but uses the provided admin credentials. After successful login, the system recognizes the administrator role and shows the admin navigation items.
+Admin logs in from the same login page as users, using the prepared admin account. After login, the navigation displays admin-only sections.
 
-![EventPortal login screen](/images/5-Workshop/event-portal-demo/00-login-page.png)
+![Login page](/images/5-Workshop/event-portal-demo/00-login-page.png)
 
-After this step, the admin can access:
+Admin can access:
 
 - **Admin**: dashboard and event management.
-- **Check-in**: QR/ticket-code check-in simulation.
+- **Check-in**: QR operation screen for check-in/check-out.
 - **Profile**: current account information.
 
 #### 2. Admin dashboard
 
-The dashboard is the main admin screen. It summarizes total events, total ticket registrations, and average fill rate.
+The dashboard summarizes total events, total registrations, and average fill rate.
 
 ![Admin dashboard](/images/5-Workshop/event-portal-demo/04-admin-dashboard.png)
 
-Main dashboard sections:
+Main areas:
 
-1. **Metric cards**: total events, total registrations, and fill rate.
-2. **Event table**: image, title, category, date, location, and ticket count.
-3. **Members button**: open the registered member list for an event.
-4. **Edit button**: open the event edit form.
-5. **Delete button**: remove an event if needed.
-6. **Open QR Check-in**: navigate to the attendance screen.
-
-The dashboard helps the admin quickly understand the operational status of the portal without manually checking each API.
+1. Metric cards for event and registration statistics.
+2. Event table with image, title, category, date, location, and booked tickets.
+3. Member button to view registered users.
+4. Edit button to update event details.
+5. Delete button to remove an event.
+6. QR Check-in button to open the gate operation screen.
 
 #### 3. Create or edit events
 
-When selecting **Add new event**, the application opens a modal form. The form allows the admin to enter the title, category, total seats, time, location, image URL, and description.
+Admin can open the create event modal and enter event title, category, seats, date, location, cover image URL, and description.
 
-![Admin create event modal](/images/5-Workshop/event-portal-demo/06-admin-create-event-modal.png)
+![Create event modal](/images/5-Workshop/event-portal-demo/06-admin-create-event-modal.png)
 
-Create event processing flow:
-
-1. Admin enters event data.
-2. Frontend validates required fields such as title, time, location, and total seats.
-3. Frontend sends a create-event request to the backend.
-4. Backend creates event metadata and a default ticket when needed.
-5. After saving, the event list is refreshed.
-
-This feature demonstrates that the system is not only reading data but also supports admin operations that modify backend data.
+The frontend validates required fields, sends the request to the backend, and refreshes the event list after success.
 
 #### 4. View event members
 
-From the dashboard, the admin can select **Members** to view users registered for a specific event.
+From the dashboard, Admin can open the registered member list of each event.
 
-![Admin event member list](/images/5-Workshop/event-portal-demo/05-admin-members.png)
+![Member list](/images/5-Workshop/event-portal-demo/05-admin-members.png)
 
-The member list helps with:
+This helps Admin verify registered users, compare ticket codes, and prepare for check-in/check-out operations.
 
-- Checking which users registered for an event.
-- Verifying ticket codes before check-in.
-- Tracking attendee status.
-- Preparing an attendance list for event operations.
+#### 5. QR Check-in and Check-out
 
-The backend retrieves registrations by event id, and the frontend displays the corresponding member list.
+The **QR Check-in** screen is used to operate attendance status at the event gate. The updated screen includes a **Check-in / Check-out** mode switch so Admin can choose the action before scanning QR or entering a ticket code.
 
-#### 5. QR Check-in
+![Admin QR Check-in và Check-out](/images/5-Workshop/event-portal-demo/09-admin-qr-checkin-checkout-mode.png)
 
-The **QR Check-in** screen simulates attendance verification at the event entrance. The admin selects an event, enters or scans a ticket code, and confirms check-in.
 
-![Admin QR Check-in](/images/5-Workshop/event-portal-demo/07-admin-qr-checkin.png)
 
-Main components:
+Updated components:
 
-1. **Event dropdown**: select the event for check-in.
-2. **Camera/QR area**: simulate camera-based QR scanning.
-3. **Ticket code / QR payload**: manually enter a ticket code if needed.
-4. **Ticket code examples**: available ticket codes used during check-in verification.
-5. **Checked-in list**: display tickets already confirmed.
-
-When the admin selects a ticket to scan, the frontend calls the check-in API. The backend verifies the ticket code, updates `checkedIn`, and returns the result to the frontend.
+1. Event dropdown.
+2. Scan mode: **Check-in** or **Check-out**.
+3. Camera/QR area for real ticket scanning.
+4. Ticket code / QR payload input for manual fallback.
+5. Attendee ticket list for the selected event.
+6. Ticket status: not checked in, checked in waiting for check-out, or checked out.
+7. Session activity list for recent admin actions.
 
 #### 6. Admin flow summary
 
-The Admin flow can be summarized as:
-
 ```text
-Admin sign in -> Open dashboard -> Manage events -> View members -> Check in attendees
+Admin login -> Open dashboard -> Manage events -> View members -> Choose Check-in/Check-out mode -> Scan QR or enter ticket code -> Update attendance status
 ```
 
-This flow proves that the system includes the core event operation features required by organizers: monitoring data, managing events, checking member lists, and supporting attendance verification.
+This proves the system supports key event operations: monitoring data, managing events, checking registered users, confirming entry, and confirming exit.
+

@@ -8,65 +8,68 @@ pre : " <b> 5.7. </b> "
 
 #### Demo objective
 
-After completing the backend and frontend deployment steps in the workshop, this section documents the demonstration of the **AWS Serverless Event Portal** running on AWS services. The goal is not only to show screenshots, but also to explain how the main features work for the two primary roles:
+After completing the backend and frontend deployment steps, this section documents the demo flow of **AWS Serverless Event Portal** for the two main roles: **User** and **Admin**. The demo starts from registration/login and then covers the key workflows: browsing events, registering tickets, check-in, check-out, and attendance history.
 
-- **User**: an event participant who can browse events, register an account, sign in, view event details, register for tickets, and manage personal tickets.
-- **Admin**: an administrator who uses a provided admin account to review the dashboard, manage events, inspect event members, and support QR/ticket-code check-in.
+The React/Vite frontend calls the configured backend APIs. Therefore, event listing, ticket creation, check-in, check-out, and attendance history are not static UI screens; they represent data processed by the backend.
 
-During the demo, the React/Vite frontend is hosted as a static website on Amazon S3, while the backend APIs are exposed through Amazon API Gateway and processed by AWS Lambda. The application data is stored and retrieved through the deployed backend services, which makes the demo closer to the actual serverless architecture of the project.
+#### 1. User role
 
-#### 1. Starting from the login screen
+The User is the event attendee. After registering or logging in, the user can browse events, open event details, register for a ticket, and review personal tickets.
 
-When the user selects **Login**, the application opens the authentication form. The same form is used by both User and Admin accounts. Normal users can register and sign in through the application, while administrators use accounts that are prepared and provided in advance.
+Main User features:
 
-![EventPortal login screen](/images/5-Workshop/event-portal-demo/00-login-page.png)
+1. Register a new account or log in with an existing account.
+2. View event data from the backend.
+3. Search and filter events by category.
+4. View event details before registration.
+5. Register for a ticket and receive a ticket code.
+6. Review registered tickets in **My Tickets**.
+7. Track **Attendance History** to see registered, checked-in, and checked-out states.
 
-The login screen contains:
+![User attendance history](/images/5-Workshop/event-portal-demo/08-user-attendance-history.png)
 
-1. An **Email** field to identify the account.
-2. A **Password** field to simulate authentication.
-3. A provided admin account can be used to access the administrator role.
-4. A **Register now** link for new users.
+#### 2. Admin role
 
-After a successful login, authenticated requests are sent to the deployed backend APIs. The backend uses the account role to determine whether the current user should access normal participant features or administrator functions.
+The Admin operates the event management system. Admin uses a prepared account to access the dashboard, manage events, view registered members, and handle check-in/check-out at the event gate.
 
-#### 2. Registering a new user account
+Main Admin features:
 
-If a participant does not have an account, they can switch to the registration form. The registration form asks for name, email, and password so a new user account can be created for event registration.
+1. Log in with the prepared admin account.
+2. View event and registration metrics from the admin dashboard.
+3. Create, update, or delete events.
+4. View the registered member list of each event.
+5. Select the event to operate on the QR Check-in screen.
+6. Choose **Check-in** or **Check-out** mode before scanning QR/entering a ticket code.
+7. Confirm attendance status and update backend data.
 
-![User registration screen](/images/5-Workshop/event-portal-demo/00-register-page.png)
+![Admin QR Check-in and Check-out](/images/5-Workshop/event-portal-demo/09-admin-qr-checkin-checkout-mode.png)
 
-This registration flow verifies that:
+#### 3. Overall workflow
 
-1. The user can provide basic profile information.
-2. The frontend calls the registration function from AuthContext.
-3. The backend authentication flow processes the registration request.
-4. After the account is created, the user can sign in and use event registration features.
+User flow:
 
-Administrator accounts are not created through this public registration form. They are prepared and assigned separately so that only authorized users can access management functions.
+```text
+Register/Login -> Browse events -> View details -> Register ticket -> View ticket -> Track attendance history
+```
 
-#### 3. Home page after backend integration
+Admin flow:
 
-After opening the application, the home page displays events returned by the backend API. Summary metrics such as total events, total registrations, and fill rate are calculated from backend data.
+```text
+Admin login -> Open dashboard -> Manage events -> View members -> Check-in -> Check-out
+```
 
-![Event listing page](/images/5-Workshop/event-portal-demo/01-homepage-events.png)
+The new demo point is that the system now supports the full event attendance lifecycle. Users can review their attendance status after being checked in or checked out, while Admins can confirm both entry and exit actions.
 
-Main functions on the home page:
+#### 4. Detailed role-based sections
 
-- Display events as event cards.
-- Search events by name or content.
-- Filter events by category such as Technology, Music, or Education.
-- Open the detail page to view full information and perform registration actions.
-
-#### 4. Splitting the demo by role
-
-For clarity, the detailed demo is divided into two sub-sections:
+The detailed demo is split into two subsections:
 
 1. [User flow](5.7.1-User-flow/)
 2. [Admin flow](5.7.2-Admin-flow/)
 
-This structure makes the responsibilities of each role easier to understand. The User flow focuses on the participant experience, while the Admin flow focuses on event management and check-in operations.
+This separation makes each responsibility clear. Users focus on joining events, while Admins focus on event operations.
 
 #### 5. Quick conclusion
 
-This overview confirms that the deployed system supports a complete flow from sign-up/sign-in to role-based feature usage. The frontend is not only a static interface; it calls the AWS backend APIs to retrieve events, tickets, registrations, and admin data.
+This demo shows a complete flow from authentication to real attendance operations. The check-in, check-out, and attendance history features make the application closer to a real event portal scenario.
+

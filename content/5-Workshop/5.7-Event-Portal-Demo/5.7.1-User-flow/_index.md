@@ -6,75 +6,72 @@ chapter : false
 pre : " <b> 5.7.1. </b> "
 ---
 
-#### Objective of the User flow
+#### User flow objective
 
-The User flow shows the experience of an event participant on the deployed Event Portal website. The user starts from the home page, registers or signs in, browses events, opens event details, and checks registered tickets.
+The User flow demonstrates the attendee experience in Event Portal. A user starts from registration or login, browses events, opens event details, registers for a ticket, and then tracks attendance status after Admin check-in/check-out.
 
-#### 1. Register or sign in
+#### 1. Register or log in
 
-A new participant can select **Register now** to create a user account. The registration form asks for name, email, and password. After the account is created, the user can sign in and use the event registration features.
+A new attendee can choose **Register now** to create a user account. The registration form requires name, email, and password. After creating the account, the user can log in and use event registration features.
 
-![User registration screen](/images/5-Workshop/event-portal-demo/00-register-page.png)
+![Register page](/images/5-Workshop/event-portal-demo/00-register-page.png)
 
-If the account already exists, the user can use the login screen.
+Existing users can log in from the login screen.
 
-![EventPortal login screen](/images/5-Workshop/event-portal-demo/00-login-page.png)
+![Login page](/images/5-Workshop/event-portal-demo/00-login-page.png)
 
-After signing in, the navigation bar shows **My Tickets**, which indicates that the session is active and the user can access personal features. This registration flow is intended for normal participant accounts; administrator accounts are provided separately.
+After login, the navigation bar shows **My Tickets** and **Profile**, confirming that the user session is active.
 
 #### 2. Browse events
 
-The home page displays all events returned by the backend. Each event card contains the cover image, category, date, title, location, short description, and remaining seats.
+The home page displays events returned by the backend. Each event card contains the cover image, category, date, event title, location, short description, and available seats.
 
-![Event listing page](/images/5-Workshop/event-portal-demo/01-homepage-events.png)
+![Event list](/images/5-Workshop/event-portal-demo/01-homepage-events.png)
 
-Available interactions:
+Main actions:
 
-1. **Search**: filter events by title or description.
-2. **Category filter**: select Technology, Music, or Education.
-3. **View details**: open the event detail page.
-4. **Seat status**: check available seats before registering.
+1. Search events by title or description.
+2. Filter events by category.
+3. Open event details from an event card.
+4. Check seat availability before registering.
 
-The frontend calls `GET /events`. When a category is selected, it calls a filtered endpoint such as `GET /events?category=music`.
+#### 3. View details and register ticket
 
-#### 3. View event details
+When the user opens an event, the detail page shows date, location, description, and seat status.
 
-When the user selects an event, the detail page shows full information including time, location, description, and seat status.
+![Event detail and ticket](/images/5-Workshop/event-portal-demo/02-user-event-detail-ticket.png)
 
-![User event details and ticket](/images/5-Workshop/event-portal-demo/02-user-event-detail-ticket.png)
+If the user has not registered yet, the right side displays the **Register Ticket** button. The frontend calls the registration API, and the backend creates a registration record with a ticket code.
 
-Main elements on the detail page:
+After successful registration, the user sees a ticket card. This ticket code can be scanned or entered manually by Admin during check-in/check-out.
 
-- **Cover image** for quick visual identification.
-- **Title and category** to describe the event topic.
-- **Time and location** for attendance planning.
-- **Event description** for detailed context.
-- **Seat status** showing registered seats compared with total seats.
-- **Ticket card** when the user has already registered.
+#### 4. Review registered tickets
 
-If the user has not registered yet, the right-side panel shows a **Register ticket** button. When clicked, the frontend calls the registration API. The backend creates a registration record, updates seat counts, and returns ticket information.
+The user can open **My Tickets** to review owned tickets.
 
-#### 4. Check registered tickets
+![My tickets](/images/5-Workshop/event-portal-demo/03-user-my-tickets.png)
 
-After signing in, the user can open **My Tickets** to review registered events.
+This screen helps the user confirm registration, view ticket codes, return to event details, and prepare for event entry.
 
-![User registered ticket list](/images/5-Workshop/event-portal-demo/03-user-my-tickets.png)
+#### 5. View attendance history
 
-This screen is important because it:
+After adding check-out, users can track the attendance lifecycle of each ticket in the **Attendance History** tab inside **Profile**.
 
-1. Confirms successful event registration.
-2. Shows the ticket code for check-in.
-3. Allows the user to return to event details.
-4. Demonstrates that the frontend can retrieve registration data from the backend.
+![User attendance history](/images/5-Workshop/event-portal-demo/08-user-attendance-history.png)
 
-The backend returns user registration records and enriches them with event metadata so the frontend can display event title, date, location, and ticket code.
+Statuses to explain:
 
-#### 5. User flow summary
+1. **Registered**: the user has a ticket but has not checked in yet.
+2. **Checked-in**: Admin has confirmed event entry.
+3. **Checked-out**: Admin has confirmed event exit or completion.
 
-The User flow can be summarized as:
+Each attendance item shows event title, date, location, ticket code, registration time, check-in time, and check-out time if available.
+
+#### 6. User flow summary
 
 ```text
-Open app -> Register/Sign in -> Browse events -> View details -> Register ticket -> Open My Tickets
+Open app -> Register/Login -> Browse events -> View details -> Register ticket -> View My Tickets -> View Attendance History
 ```
 
-This flow proves that the application supports the core participant features: event discovery, event details, registration, and personal ticket management.
+This proves the application supports the main attendee needs: finding events, registering tickets, using ticket codes at the gate, and tracking attendance status afterward.
+

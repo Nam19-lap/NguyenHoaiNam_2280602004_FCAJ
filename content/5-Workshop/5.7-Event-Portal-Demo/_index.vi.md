@@ -8,55 +8,57 @@ pre : " <b> 5.7. </b> "
 
 #### Mục tiêu của phần demo
 
-Sau khi hoàn thành các bước triển khai backend và frontend trong workshop, phần này ghi lại quá trình chạy thử **AWS Serverless Event Portal** trên các dịch vụ AWS đã triển khai. Mục tiêu không chỉ là chụp màn hình kết quả, mà còn giải thích cách từng chức năng hoạt động trong hai vai trò chính của hệ thống:
+Sau khi hoàn thành các bước triển khai backend và frontend trong workshop, phần này ghi lại quá trình chạy thử **AWS Serverless Event Portal** theo hai vai trò chính: **User** và **Admin**. Nội dung demo bắt đầu từ đăng ký/đăng nhập, sau đó đi vào các chức năng quan trọng của hệ thống như xem sự kiện, đăng ký vé, check-in, check-out và theo dõi lịch sử tham dự.
 
-- **User**: người tham dự sự kiện, có thể xem danh sách sự kiện, đăng ký tài khoản, đăng nhập, xem chi tiết sự kiện, đăng ký vé và quản lý vé cá nhân.
-- **Admin**: người quản trị hệ thống, sử dụng tài khoản được cấp sẵn để xem dashboard tổng quan, quản lý sự kiện, xem danh sách thành viên và hỗ trợ check-in bằng QR/ticket code.
+Trong quá trình demo, frontend React/Vite giao tiếp với backend API thông qua các endpoint đã cấu hình. Vì vậy các thao tác như lấy danh sách sự kiện, tạo vé, check-in, check-out và xem lịch sử tham dự không còn là màn hình tĩnh, mà phản ánh dữ liệu được xử lý bởi backend.
 
-Trong quá trình demo, frontend React/Vite được host dưới dạng static website trên Amazon S3, còn backend API được cung cấp thông qua Amazon API Gateway và xử lý bằng AWS Lambda. Dữ liệu của ứng dụng được lấy từ các backend services đã deploy, vì vậy phần demo phản ánh đúng hơn kiến trúc serverless của project.
+#### 1. Vai trò User
 
-#### 1. Bắt đầu từ màn hình đăng nhập
+User là người tham dự sự kiện. Sau khi đăng ký hoặc đăng nhập, user có thể xem danh sách sự kiện, mở chi tiết từng sự kiện, đăng ký vé và kiểm tra thông tin vé cá nhân.
 
-Khi người dùng chọn **Đăng nhập**, ứng dụng mở form xác thực. Form này dùng chung cho cả User và Admin. User thông thường có thể đăng ký và đăng nhập trực tiếp trên ứng dụng, còn Admin sử dụng tài khoản đã được chuẩn bị và cấp sẵn.
+Các chức năng chính của User gồm:
 
-![Màn hình đăng nhập EventPortal](/images/5-Workshop/event-portal-demo/00-login-page.png)
+1. Đăng ký tài khoản hoặc đăng nhập bằng tài khoản đã có.
+2. Xem danh sách sự kiện từ backend.
+3. Tìm kiếm và lọc sự kiện theo danh mục.
+4. Xem chi tiết sự kiện trước khi đăng ký.
+5. Đăng ký vé và nhận mã vé/ticket code.
+6. Xem lại vé đã đăng ký trong mục **Vé của tôi**.
+7. Theo dõi **Lịch sử tham dự** để biết vé nào đã check-in, check-out hoặc còn chờ tham dự.
 
-Màn hình đăng nhập gồm các thành phần chính:
+![User xem lịch sử tham dự](/images/5-Workshop/event-portal-demo/08-user-attendance-history.png)
 
-1. Trường **Email** dùng để xác định tài khoản.
-2. Trường **Mật khẩu** dùng để mô phỏng xác thực.
-3. Tài khoản admin được cấp sẵn dùng để truy cập vai trò quản trị.
-4. Liên kết **Đăng ký ngay** dành cho user mới.
+#### 2. Vai trò Admin
 
-Khi đăng nhập thành công, các request cần xác thực sẽ được gửi đến backend API đã triển khai. Backend dựa vào vai trò của tài khoản để xác định người dùng hiện tại là User hay Admin.
+Admin là người vận hành hệ thống sự kiện. Admin sử dụng tài khoản được cấp sẵn để truy cập dashboard quản trị, quản lý sự kiện, xem danh sách thành viên và xử lý check-in/check-out tại cổng sự kiện.
 
-#### 2. Đăng ký tài khoản người dùng mới
+Các chức năng chính của Admin gồm:
 
-Nếu chưa có tài khoản, người tham dự có thể chuyển sang form đăng ký. Form đăng ký yêu cầu nhập họ tên, email và mật khẩu để tạo tài khoản user phục vụ việc đăng ký sự kiện.
+1. Đăng nhập bằng tài khoản admin được cấp sẵn.
+2. Xem dashboard tổng quan về sự kiện và lượt đăng ký.
+3. Thêm, sửa hoặc xóa sự kiện.
+4. Xem danh sách thành viên đã đăng ký từng sự kiện.
+5. Chọn sự kiện cần vận hành tại màn QR Check-in.
+6. Chọn mode **Check-in** hoặc **Check-out** trước khi quét QR/nhập ticket code.
+7. Xác nhận trạng thái tham dự và cập nhật dữ liệu về backend.
 
-![Màn hình đăng ký tài khoản](/images/5-Workshop/event-portal-demo/00-register-page.png)
+![Admin QR Check-in và Check-out](/images/5-Workshop/event-portal-demo/09-admin-qr-checkin-checkout-mode.png)
 
-Luồng đăng ký giúp kiểm thử các bước:
+#### 3. Luồng hoạt động tổng quát
 
-1. User nhập thông tin cơ bản.
-2. Frontend gọi hàm đăng ký trong AuthContext.
-3. Backend authentication flow xử lý yêu cầu đăng ký.
-4. Sau khi tài khoản được tạo, user có thể đăng nhập và sử dụng các chức năng đăng ký sự kiện.
+Luồng User:
 
-Tài khoản Admin không được tạo thông qua form đăng ký công khai này. Admin sẽ được chuẩn bị và cấp tài khoản riêng để đảm bảo chỉ người có quyền mới truy cập được các chức năng quản trị.
+```text
+Đăng ký/Đăng nhập -> Xem sự kiện -> Xem chi tiết -> Đăng ký vé -> Xem vé -> Theo dõi lịch sử tham dự
+```
 
-#### 3. Trang chủ sau khi kết nối backend
+Luồng Admin:
 
-Sau khi mở ứng dụng, trang chủ hiển thị danh sách sự kiện lấy từ backend API. Các chỉ số như tổng sự kiện, tổng lượt đăng ký và tỉ lệ lấp đầy được tính dựa trên dữ liệu backend trả về.
+```text
+Đăng nhập admin -> Mở dashboard -> Quản lý sự kiện -> Xem thành viên -> Check-in -> Check-out
+```
 
-![Trang danh sách sự kiện](/images/5-Workshop/event-portal-demo/01-homepage-events.png)
-
-Các chức năng chính trên trang chủ:
-
-- Hiển thị danh sách sự kiện dưới dạng event card.
-- Tìm kiếm sự kiện theo tên hoặc nội dung.
-- Lọc sự kiện theo danh mục như Công nghệ, Âm nhạc hoặc Giáo dục.
-- Mở trang chi tiết để xem thông tin đầy đủ và thao tác đăng ký.
+Điểm mới của phần demo là hệ thống đã hỗ trợ đủ vòng đời tham dự sự kiện. User không chỉ đăng ký vé, mà còn có thể xem lại lịch sử trạng thái sau khi được admin check-in hoặc check-out. Admin không chỉ điểm danh đầu vào, mà còn có thể xác nhận người tham dự đã rời sự kiện thông qua thao tác check-out.
 
 #### 4. Chia luồng demo theo vai trò
 
@@ -65,8 +67,9 @@ Các chức năng chính trên trang chủ:
 1. [Luồng người dùng User](5.7.1-User-flow/)
 2. [Luồng quản trị Admin](5.7.2-Admin-flow/)
 
-Cách tách này giúp giải thích rõ hơn trách nhiệm của từng vai trò. User tập trung vào trải nghiệm tham gia sự kiện, còn Admin tập trung vào quản lý sự kiện và vận hành check-in.
+Cách tách này giúp giải thích rõ trách nhiệm của từng vai trò. User tập trung vào trải nghiệm tham gia sự kiện, còn Admin tập trung vào quản lý và vận hành tại cổng sự kiện.
 
 #### 5. Kết luận nhanh
 
-Qua phần demo tổng quan, hệ thống đã thể hiện được một luồng hoạt động đầy đủ từ đăng ký/đăng nhập đến sử dụng chức năng theo vai trò. Frontend không chỉ hiển thị giao diện tĩnh mà đã gọi các AWS backend APIs để lấy danh sách sự kiện, vé, đăng ký và dữ liệu quản trị.
+Qua phần demo tổng quan, hệ thống đã thể hiện được một luồng hoạt động hoàn chỉnh từ đăng ký/đăng nhập đến xử lý tham dự theo thời gian thực. Các tính năng check-in, check-out và lịch sử tham dự giúp ứng dụng phù hợp hơn với kịch bản vận hành một event portal thực tế.
+
