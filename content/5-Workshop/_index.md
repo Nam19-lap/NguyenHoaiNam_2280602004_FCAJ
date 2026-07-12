@@ -1,4 +1,4 @@
----
+﻿---
 title: "Workshop"
 date: 2026-07-01
 weight: 5
@@ -30,3 +30,5 @@ CloudFormation reads this blueprint and provisions the backend resources automat
 4. [Deploy frontend with Amazon S3](5.4-S3-onprem/)
 5. [Verify deployment result](5.5-Policy/)
 6. [Clean up resources](5.6-Cleanup/)
+7. [User and Admin flow demo](5.7-Event-Portal-Demo/)
+

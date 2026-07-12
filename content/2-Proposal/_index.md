@@ -224,7 +224,7 @@ The application supports QR Code scanning through browser camera access. Manual 
 
 ### Contingency Plans
 
-If deployment issues occur during the demonstration, the project can still be presented using a local development environment and mock services. This ensures that core features such as event browsing, registration, QR check-in, and administration remain available for demonstration purposes.
+The project has been deployed using AWS services, so the demonstration should prioritize the deployed website and backend APIs. If a temporary issue occurs during the live demo, recorded screenshots, deployment outputs, and implementation notes can be used to explain the system flow without changing the cloud-based deployment scope.
 
 ## 8. Expected Outcomes
 
