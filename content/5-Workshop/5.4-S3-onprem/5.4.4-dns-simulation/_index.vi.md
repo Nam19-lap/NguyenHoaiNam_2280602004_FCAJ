@@ -1,6 +1,6 @@
 ---
 title : "Upload frontend files"
-date : 2026-07-01
+date: 2026-06-30
 weight : 4
 chapter : false
 pre : " <b> 5.4.4. </b> "
@@ -12,7 +12,9 @@ pre : " <b> 5.4.4. </b> "
 2. Chuyển sang tab **Objects**.
 3. Chọn **Upload**.
 4. Chọn toàn bộ file và thư mục nằm bên trong thư mục `dist` của frontend ở local.
-5. Upload chúng lên root của bucket, không upload nguyên thư mục `dist` thành một thư mục con. Ở root bucket cần có `index.html` và các thư mục assets đã build.
+5. Upload chúng lên bucket.
+
+![Upload frontend files](/images/5-Workshop/event-portal/08-upload-frontend-files.png)
 
 #### Kiểm tra website
 

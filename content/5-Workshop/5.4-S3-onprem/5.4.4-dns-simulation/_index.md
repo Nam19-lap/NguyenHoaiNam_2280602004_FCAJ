@@ -14,6 +14,8 @@ pre : " <b> 5.4.4. </b> "
 4. Select all files and folders inside the local frontend `dist` folder.
 5. Upload them to the root of the bucket, not inside a nested `dist` folder. The bucket root should contain `index.html` and the generated asset folders.
 
+![Upload frontend files](/images/5-Workshop/event-portal/08-upload-frontend-files.png)
+
 #### Test the website
 
 Open the **Bucket website endpoint** copied in the previous step. The Event Portal frontend should load and communicate with the serverless backend through the API endpoint configured in `.env`.
